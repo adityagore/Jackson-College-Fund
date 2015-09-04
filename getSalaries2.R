@@ -1,8 +1,5 @@
 start.time <- Sys.time()
 
-setwd(path.expand("~/nflProject/"))
-print(getwd())
-
 print(Sys.time())
 print("Loading Packages")
 
@@ -237,9 +234,10 @@ comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,ds
     firstComb <- list(template.data)
     firstComb <- Filter(Negate(is.null),firstComb)
   }
+  print("Working on WRs")
   if(wr.num > 0){
     passData <- subset(wr.salary,
-                    !(Team %in% team.qb |
+                    !(Team %in% team.rb |
                       Name %in% template.data$Name |
                       Team %in% team.te |
                       Team %in% team.dst)
@@ -248,9 +246,13 @@ comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,ds
                          recursive=FALSE)))
     secondComb <- Filter(Negate(is.null),secondComb)
     print("Done with WR combinations")
+    print(paste0("Number of tickets formed: ",length(secondComb)))
   } else {
-    secondComb <- firstComb
+    print(system.time(secondComb <- firstComb))
+    print("Done with WR combinations")
+    print(paste0("Number of tickets formed: ",length(secondComb)))
   }
+  print("Working on RBs")
   if(rb.num > 0){
     passData <- subset(rb.salary,
                        !(Team %in% team.qb |
@@ -268,9 +270,13 @@ comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,ds
                         pos="RB",n=rb.num),recursive=FALSE)))
     thirdComb <- Filter(Negate(is.null),thirdComb)
     print("Done with RB combinations")
+    print(paste0("Number of tickets formed: ",length(thirdComb)))
   } else {
-    thirdComb <- secondComb
+    print(system.time(thirdComb <- secondComb))
+    print("Done with RB combinations")
+    print(paste0("Number of tickets formed: ",length(thirdComb)))
   }
+  print("Working on TEs")
   if(te.num > 0){
     passData <- subset(te.salary,
                        !(Team %in% team.rb |
@@ -283,9 +289,13 @@ comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,ds
                          pos="TE",n=te.num),recursive=FALSE)))
     fourthComb <- Filter(Negate(is.null),fourthComb)
     print("Done with TE combinations")
+    print(paste0("Number of tickets formed: ",length(fourthComb)))
   } else {
-    fourthComb <- thirdComb
+    print(system.time(fourthComb <- thirdComb))
+    print("Done with TE combinations")
+    print(paste0("Number of tickets formed: ",length(fourthComb)))
   }
+  print("Working on DST")
   if(dst.num > 0){
     passData <- subset(dst.salary,
                        !(Team %in% team.qb |
@@ -299,8 +309,12 @@ comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,ds
     print(system.time(lastComb <- unlist(lapply(fourthComb,combForm,useData=passData,
                        pos="DST",n=dst.num),recursive=FALSE)))
     lastComb <- Filter(Negate(is.null),lastComb)
+    print("Done with ticket formations")
+    print(paste0("Number of tickets formed: ",length(lastComb)))
   } else {
-    lastComb <- fourthComb
+    print(system.time(lastComb <- fourthComb))
+    print("Done with ticket formations")
+    print(paste0("Number of tickets formed: ",length(lastComb)))
   }
   return(lastComb)
 }
@@ -332,5 +346,6 @@ removeNamedTickets <- function(ticket,name,position,all=TRUE){
 
 print(system.time(rightTickets <- lapply(finalTickets,aboveSalary,salary=50000)))
 print(system.time(rightTickets <- Filter(Negate(is.null),rightTickets)))
+print(paste0("Number of qualified tickets: ",length(rightTickets)))
 
 save(finalTickets,rightTickets,file="totaltickets2.RData")
