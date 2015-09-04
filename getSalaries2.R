@@ -1,0 +1,336 @@
+start.time <- Sys.time()
+
+setwd(path.expand("~/nflProject/"))
+print(getwd())
+
+print(Sys.time())
+print("Loading Packages")
+
+if(!require(gRbase)){
+  source("http://bioconductor.org/biocLite.R")
+  biocLite("gRbase")
+  require(gRbase)
+} else {
+  require(gRbase)
+}
+
+if(!require(XML)){
+  install.packages("XML")
+  require(XML)
+} else {
+  require(XML)
+}
+print(Sys.time())
+print("Working on gathering playerData")
+
+if(file.exists("playerData.RData")){
+  load("playerData.RData")
+} else {
+  
+  string1 <- "http://www.foxsports.com/nfl/players?season=2015&page="
+  string2 <- "&position=0"
+  
+  playerData <- data.frame()
+  
+  for(i in seq(166)){
+    url <- paste0(string1,i,string2)
+    playerData <- rbind(playerData,
+                        readHTMLTable(url,which=1,stringsAsFactors=FALSE))
+  }
+  
+  playerData <- subset(playerData, Pos %in% c("QB","WR","RB","TE"))[,c("Player","Team","Pos")]
+  
+  playerData$Name <- gsub("(\\D+)\\r\\n\\t+(\\D+)","\\1 \\2",playerData$Player)
+  
+  playerData$Player <- NULL
+  playerData$Pos <- NULL
+  
+  save(playerData,file="playerData.RData")
+  
+}
+defenseName <- list(
+  "49ers"="SF",
+  "Bears"="CHI",
+  "Bengals"="CIN",
+  "Bills"="BUF",
+  "Broncos"= "DEN",
+  "Browns"="CLE",
+  "Buccaneers"="TB",
+  "Cardinals"="ARI",
+  "Chargers"="SD",
+  "Chiefs"="KC",
+  "Colts"="IND",
+  "Cowboys"="DAL",
+  "Dolphins"="MIA",
+  "Eagles"="PHI",
+  "Falcons"="ATL",
+  "Giants"="NYG",
+  "Jaguars"="JAX",
+  "Jets"="NYJ",
+  "Lions"="DET",
+  "Packers"="GB",
+  "Panthers"="CAR",
+  "Raiders"="OAK",
+  "Rams"="STL",
+  "Ravens"="BAL",
+  "Redskins"="WAS",
+  "Saints"="NO",
+  "Seahawks"="SEA",
+  "Texans"="HOU",
+  "Titans"="TEN",
+  "Vikings"="MIN"
+)
+
+defenseName <- stack(defenseName)
+print("Gathered Player Data")
+print(Sys.time())
+
+print("Working on cleaning data")
+print(Sys.time())
+salary.data <- read.csv("DKSalaries.csv",header=TRUE,stringsAsFactors=FALSE)
+# write.csv(salary.data[with(salary.data,order(Position,Salary,Name)),c("Name","Position","Salary")],file="playerpool.csv",row.names=FALSE)
+template <- read.csv("template.csv",stringsAsFactors=FALSE,header=TRUE)
+template$K <- NULL
+# load("playerpool.RData")
+# salary.data <- subset(salary.data,Name %in% playerpool$Name)
+teams <- strsplit(gsub("(\\w{2,3})@(\\w{2,3})\\s.*","\\1,\\2",salary.data$GameInfo),split=",")
+teams <- lapply(teams,toupper)
+salary.data[,c("Home","Away")] <- do.call(rbind,teams)
+# salary.data$preference <- 0
+salary.data$Name <- gsub("(.+)\\s+$","\\1",salary.data$Name)
+salary.data <- merge(salary.data,playerData,by="Name",all.x=TRUE)
+salary.data <- salary.data[complete.cases(salary.data$Salary),]
+salary.data[salary.data$Name %in% defenseName$ind,"Team"] <- defenseName$values
+
+template$Position <- NA
+
+template[template$PC %in% subset(salary.data,Position=="WR")$Name,"Position"] <- "WR"
+template[template$PC %in% subset(salary.data,Position=="TE")$Name, "Position"] <- "TE"
+template[is.na(template$Position),"Position"] = ""
+
+qb.salary <- subset(salary.data,Name %in% template$QB)
+wr.salary <- subset(salary.data, Name %in% template$PC & Position=="WR")
+te.salary <- subset(salary.data, Name %in% template$PC & Position == "TE")
+rb.salary <- subset(salary.data, Name %in% template$RB)
+dst.salary <- subset(salary.data, Name %in% template$DEF)
+
+
+
+playerpool <- read.csv("playerpool.csv",header=TRUE,stringsAsFactors=FALSE)
+wr.salary <- rbind(wr.salary,subset(salary.data,Name %in% playerpool$Name & Position=="WR"))
+rb.salary <- rbind(rb.salary,subset(salary.data,Name %in% playerpool$Name & Position=="RB"))
+te.salary <- rbind(te.salary,subset(salary.data, Name %in% playerpool$Name & Position=="TE"))
+
+
+set.seed(1920)
+
+print("Cleaned all the data")
+Sys.time()
+
+combForm <- function(x,useData,pos,n,flex="WR"){
+  salary.taken <- sum(x$Salary)
+  salary.left <- 50000 - salary.taken
+  qb.name <- subset(x,Position=="QB")$Name
+  if(pos=="WR"){
+    index <- combnPrim(nrow(useData),n)
+    good_rs <- with(useData,apply(index,2,function(y){
+      sum(Salary[y]) <= salary.left &
+        sum(Team[y] %in% subset(x,Position=="RB")$Team) == 0 & # No WR and RB from same team
+        sum(Team[y] %in% subset(x,Position=="TE")$Team) == 0 & # No WR and TE from same team
+        sum(Team[y] %in% subset(x,Position=="DST")$Team) == 0 # No WR and DST from same team
+    }))
+    if(sum(good_rs)>0){
+      if(n>1 & sum(good_rs)>1){
+        wrList <- do.call(list,apply(index[,good_rs],2,function(y){
+          rbind(x, useData[y,])
+        }))} else {
+          wrList <- do.call(list,sapply(index[,good_rs],function(y){
+            rbind(x, useData[y,])
+          },simplify=FALSE))
+        }} else {wrList <- NULL}
+    ifelse(is.null(wrList),return(list(NULL)),return(wrList))
+  } else if(pos=="RB"){
+    index <- combnPrim(nrow(useData),n)
+    good_rs <- with(useData,apply(index,2,function(y){
+      sum(Salary[y]) <= salary.left &
+        sum(Team[y] %in% subset(x,Position=="QB")$Team) == 0 & # No QB and RB from same team
+        sum(Team[y] %in% subset(x,Position=="WR")$Team) == 0 & # No RB and WR from same team
+        sum(Team[y] %in% subset(x,Position=="TE")$Team) == 0 & # No RB and TE from same team
+        sum(Team[y] %in% subset(x,Position=="DST")$Home) == 0 & # No RB and Home Defense
+        sum(Team[y] %in% subset(x,Position=="DST")$Away) == 0 & # No RB and Away Defense
+        sum(Team[y] %in% subset(x,Position=="K")$Home) == 0 & # No RB and K from home team
+        sum(Team[y] %in% subset(x,Position=="K")$Away) == 0 # No RB and TE from away team
+    }))
+    if(sum(good_rs)>0){
+      if(n>1 & sum(good_rs)>1){
+        rbList <- do.call(list,apply(index[,good_rs],2,function(y){
+          rbind(x,useData[y,])
+        }))} else {
+          rbList <- do.call(list,sapply(index[,good_rs],function(y){
+            rbind(x,useData[y,])
+          },simplify=FALSE))
+        }} else {rbList <- NULL}
+    ifelse(is.null(rbList),return(list(NULL)),return(rbList))
+  } else if(pos=="TE"){
+    index <- combnPrim(nrow(useData),n)
+    good_rs <- with(useData,apply(index,2,function(y){
+      sum(Salary[y]) <= salary.left &
+        sum(Team[y] %in% subset(x,Position=="RB")$Team) == 0 & # No RB and TE of same team
+        sum(Team[y] %in% subset(x,Position=="WR")$Team) == 0 & # No RB and TE of same team
+        sum(Team[y] %in% subset(x,Position=="DST")$Team) == 0 # No RB and TE of same team
+    }))
+    if(sum(good_rs)>0){
+      if(n>1 & sum(good_rs)>1){
+        teList <- do.call(list,apply(index[,good_rs],2,function(y){
+          rbind(x,useData[y,])
+        }))} else {
+          teList <- do.call(list,sapply(index[,good_rs],function(y){
+            rbind(x,useData[y,])
+          },simplify=FALSE))
+        }} else {teList <- NULL}
+    ifelse(is.null(teList),return(list(NULL)),return(teList))  
+  } else if(pos=="DST"){
+    index <- combnPrim(nrow(useData),n)
+    good_rs <- with(useData,apply(index,2,function(y){
+      sum(Salary[y]) <= salary.left &
+        sum(Team[y] %in% subset(x,Position=="QB")$Team) == 0 & #No QB and DST of same team
+        sum(Team[y] %in% subset(x,Position=="TE")$Team) == 0 & #No TE and DST of same team
+        sum(Team[y] %in% subset(x,Position=="WR")$Team) == 0 & #No WR and DST of same team
+        sum(Team[y] %in% subset(x,Position=="RB")$Home) == 0 & #No RB and DST of home team
+        sum(Team[y] %in% subset(x,Position=="RB")$Away) == 0 #No RB and DST of away team
+    }))
+    if(sum(good_rs)>0){
+      dstList <- do.call(list,sapply(index[,good_rs],function(y){
+        rbind(x,useData[y,])
+      },simplify=FALSE))} else{ dstList <- NULL}
+    ifelse(is.null(dstList),return(list(NULL)),return(dstList))
+  } else if(pos=="FLEX"){
+    return(combForm(x,pos=flex,n=n))
+  }
+}
+
+
+
+comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,dst.num=1){
+  template.data <- subset(salary.data,Name %in% template)
+  qb.num <- qb.num - sum(template.data$Position=="QB")
+  wr.num <- wr.num - sum(template.data$Position=="WR")
+  rb.num <- rb.num - sum(template.data$Position=="RB")
+  te.num <- te.num - sum(template.data$Position=="TE")
+  dst.num <- dst.num - sum(template.data$Position=="DST")
+  team.qb <- subset(template.data,Position=="QB")$Team
+  team.wr <- subset(template.data,Position=="WR")$Team
+  team.rb <- subset(template.data,Position=="RB")$Team
+  team.te <- subset(template.data,Position=="TE")$Team
+  team.dst <- subset(template.data,Position=="DST")$Team
+  team.k <- subset(template.data,Position=="K")$Team
+  dst.home <- subset(template.data,Position=="DST")$Home
+  dst.away <- subset(template.data,Position=="DST")$Away
+  k.home <- subset(template.data,Position=="K")$Home
+  k.away <- subset(template.data,Position=="K")$Away
+  rb.home <- subset(template.data,Position=="RB")$Home
+  rb.away <- subset(template.data,Position=="RB")$Away
+  print(paste0("Working on template with QB: ",template["QB"]))
+  if(qb.num == 1){
+    firstComb <- lapply(list(template.data),combForm,useData = qb.salary,pos="QB",n=qb.num)
+  } else {
+    firstComb <- list(template.data)
+    firstComb <- Filter(Negate(is.null),firstComb)
+  }
+  if(wr.num > 0){
+    passData <- subset(wr.salary,
+                    !(Team %in% team.qb |
+                      Name %in% template.data$Name |
+                      Team %in% team.te |
+                      Team %in% team.dst)
+                    )
+    print(system.time(secondComb <- unlist(lapply(firstComb,combForm,useData = passData,pos="WR",n=wr.num),
+                         recursive=FALSE)))
+    secondComb <- Filter(Negate(is.null),secondComb)
+    print("Done with WR combinations")
+  } else {
+    secondComb <- firstComb
+  }
+  if(rb.num > 0){
+    passData <- subset(rb.salary,
+                       !(Team %in% team.qb |
+                           Name %in% template.data$Name |
+                           Team %in% team.te |
+                           Team %in% dst.home |
+                           Team %in% dst.away |
+                           Team %in% k.home |
+                           Team %in% k.away |
+                           Team %in% rb.home |
+                           Team %in% rb.away
+                           )
+    )
+    print(system.time(thirdComb <- unlist(lapply(secondComb,combForm,useData=passData,
+                        pos="RB",n=rb.num),recursive=FALSE)))
+    thirdComb <- Filter(Negate(is.null),thirdComb)
+    print("Done with RB combinations")
+  } else {
+    thirdComb <- secondComb
+  }
+  if(te.num > 0){
+    passData <- subset(te.salary,
+                       !(Team %in% team.rb |
+                           Name %in% template.data$Name |
+                           Team %in% team.wr |
+                           Team %in% team.dst
+                       )
+    )
+    print(system.time(fourthComb <- unlist(lapply(thirdComb,combForm,useData=passData,
+                         pos="TE",n=te.num),recursive=FALSE)))
+    fourthComb <- Filter(Negate(is.null),fourthComb)
+    print("Done with TE combinations")
+  } else {
+    fourthComb <- thirdComb
+  }
+  if(dst.num > 0){
+    passData <- subset(dst.salary,
+                       !(Team %in% team.qb |
+                           Name %in% template.data$Name |
+                           Team %in% rb.home |
+                           Team %in% rb.away |
+                           Team %in% team.wr |
+                           Team %in% team.te
+                       )
+    )
+    print(system.time(lastComb <- unlist(lapply(fourthComb,combForm,useData=passData,
+                       pos="DST",n=dst.num),recursive=FALSE)))
+    lastComb <- Filter(Negate(is.null),lastComb)
+  } else {
+    lastComb <- fourthComb
+  }
+  return(lastComb)
+}
+
+print(system.time(finalTickets <- unlist(apply(template,1,comboFormPerTemplate),recursive=FALSE)))
+
+aboveSalary <- function(x,salary){
+  ifelse(sum(x$Salary) >= salary, return(x), return(NULL))
+}
+
+namedTickets <- function(ticket,name,position){
+  if(sum(name %in% subset(ticket,Position %in% position)$Name)==length(name)){
+    return(ticket)
+  } else {
+    return(NULL)
+  }
+}
+
+removeNamedTickets <- function(ticket,name,position,all=TRUE){
+  if(sum(name %in% subset(ticket,Position %in% position)$Name)==length(name) & all){
+    return(NULL)
+  } else if (sum(name %in% subset(ticket,Position %in% position)$Name) > 0 & !all){
+    return(NULL)
+  } else {
+    return(ticket)
+  }
+}
+
+
+print(system.time(rightTickets <- lapply(finalTickets,aboveSalary,salary=50000)))
+print(system.time(rightTickets <- Filter(Negate(is.null),rightTickets)))
+
+save(finalTickets,rightTickets,file="totaltickets2.RData")
