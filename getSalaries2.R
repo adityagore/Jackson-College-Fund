@@ -124,14 +124,15 @@ set.seed(1920)
 print("Cleaned all the data")
 Sys.time()
 
-combForm <- function(x,useData,pos,n,flex="WR"){
+combForm <- function(x,useData,pos,n,flex="WR",totalRemaining){
   salary.taken <- sum(x$Salary)
   salary.left <- 50000 - salary.taken
   qb.name <- subset(x,Position=="QB")$Name
+  ifelse((totalRemaining - n) == 0, exactSalary<-TRUE,exactSalary<-FALSE)
   if(pos=="WR"){
     index <- combnPrim(nrow(useData),n)
     good_rs <- with(useData,apply(index,2,function(y){
-      sum(Salary[y]) <= salary.left &
+      ifelse(exactSalary,sum(Salary[y]) == salary.left,sum(Salary[y]) <= salary.left) &
         sum(Team[y] %in% subset(x,Position=="RB")$Team) == 0 & # No WR and RB from same team
         sum(Team[y] %in% subset(x,Position=="TE")$Team) == 0 & # No WR and TE from same team
         sum(Team[y] %in% subset(x,Position=="DST")$Team) == 0 # No WR and DST from same team
@@ -149,7 +150,7 @@ combForm <- function(x,useData,pos,n,flex="WR"){
   } else if(pos=="RB"){
     index <- combnPrim(nrow(useData),n)
     good_rs <- with(useData,apply(index,2,function(y){
-      sum(Salary[y]) <= salary.left &
+      ifelse(exactSalary,sum(Salary[y]) == salary.left,sum(Salary[y]) <= salary.left) &
         sum(Team[y] %in% subset(x,Position=="QB")$Team) == 0 & # No QB and RB from same team
         sum(Team[y] %in% subset(x,Position=="WR")$Team) == 0 & # No RB and WR from same team
         sum(Team[y] %in% subset(x,Position=="TE")$Team) == 0 & # No RB and TE from same team
@@ -171,7 +172,7 @@ combForm <- function(x,useData,pos,n,flex="WR"){
   } else if(pos=="TE"){
     index <- combnPrim(nrow(useData),n)
     good_rs <- with(useData,apply(index,2,function(y){
-      sum(Salary[y]) <= salary.left &
+      ifelse(exactSalary,sum(Salary[y]) == salary.left,sum(Salary[y]) <= salary.left) &
         sum(Team[y] %in% subset(x,Position=="RB")$Team) == 0 & # No RB and TE of same team
         sum(Team[y] %in% subset(x,Position=="WR")$Team) == 0 & # No RB and TE of same team
         sum(Team[y] %in% subset(x,Position=="DST")$Team) == 0 # No RB and TE of same team
@@ -189,7 +190,7 @@ combForm <- function(x,useData,pos,n,flex="WR"){
   } else if(pos=="DST"){
     index <- combnPrim(nrow(useData),n)
     good_rs <- with(useData,apply(index,2,function(y){
-      sum(Salary[y]) <= salary.left &
+      ifelse(exactSalary,sum(Salary[y]) == salary.left,sum(Salary[y]) <= salary.left) &
         sum(Team[y] %in% subset(x,Position=="QB")$Team) == 0 & #No QB and DST of same team
         sum(Team[y] %in% subset(x,Position=="TE")$Team) == 0 & #No TE and DST of same team
         sum(Team[y] %in% subset(x,Position=="WR")$Team) == 0 & #No WR and DST of same team
@@ -228,6 +229,8 @@ comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,ds
   rb.home <- subset(template.data,Position=="RB")$Home
   rb.away <- subset(template.data,Position=="RB")$Away
   print(paste0("Working on template with QB: ",template["QB"]))
+  total.left <- qb.num + wr.num + rb.num + te.num + dst.num
+  print(paste0("Numbers of players to add: ",total.left ))
   if(qb.num == 1){
     firstComb <- lapply(list(template.data),combForm,useData = qb.salary,pos="QB",n=qb.num)
   } else {
@@ -242,9 +245,10 @@ comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,ds
                       Team %in% team.te |
                       Team %in% team.dst)
                     )
-    print(system.time(secondComb <- unlist(lapply(firstComb,combForm,useData = passData,pos="WR",n=wr.num),
+    print(system.time(secondComb <- unlist(lapply(firstComb,combForm,useData = passData,pos="WR",n=wr.num,totalRemaining=total.left),
                          recursive=FALSE)))
     secondComb <- Filter(Negate(is.null),secondComb)
+    print(total.left <- total.left - wr.num)
     print("Done with WR combinations")
     print(paste0("Number of tickets formed: ",length(secondComb)))
   } else {
@@ -267,8 +271,9 @@ comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,ds
                            )
     )
     print(system.time(thirdComb <- unlist(lapply(secondComb,combForm,useData=passData,
-                        pos="RB",n=rb.num),recursive=FALSE)))
+                        pos="RB",n=rb.num,totalRemaining=total.left),recursive=FALSE)))
     thirdComb <- Filter(Negate(is.null),thirdComb)
+    print(total.left <- total.left - rb.num)
     print("Done with RB combinations")
     print(paste0("Number of tickets formed: ",length(thirdComb)))
   } else {
@@ -286,8 +291,9 @@ comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,ds
                        )
     )
     print(system.time(fourthComb <- unlist(lapply(thirdComb,combForm,useData=passData,
-                         pos="TE",n=te.num),recursive=FALSE)))
+                         pos="TE",n=te.num,totalRemaining=total.left),recursive=FALSE)))
     fourthComb <- Filter(Negate(is.null),fourthComb)
+    print(total.left <- total.left - te.num)
     print("Done with TE combinations")
     print(paste0("Number of tickets formed: ",length(fourthComb)))
   } else {
@@ -307,8 +313,9 @@ comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,ds
                        )
     )
     print(system.time(lastComb <- unlist(lapply(fourthComb,combForm,useData=passData,
-                       pos="DST",n=dst.num),recursive=FALSE)))
+                       pos="DST",n=dst.num,totalRemaining=total.left),recursive=FALSE)))
     lastComb <- Filter(Negate(is.null),lastComb)
+    print(total.left <- total.left - dst.num)
     print("Done with ticket formations")
     print(paste0("Number of tickets formed: ",length(lastComb)))
   } else {
