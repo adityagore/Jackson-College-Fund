@@ -17,6 +17,13 @@ if(!require(XML)){
 } else {
   require(XML)
 }
+
+if(!require(parallel)){
+  install.packages("parallel")
+  require(parallel)
+} else {
+  require(parallel)
+}
 print(Sys.time())
 print("Working on gathering playerData")
 
@@ -209,7 +216,7 @@ combForm <- function(x,useData,pos,n,flex="WR",totalRemaining){
 
 
 
-comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,dst.num=1){
+comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,dst.num=1,envir=ls()){
   template.data <- subset(salary.data,Name %in% template)
   qb.num <- qb.num - sum(template.data$Position=="QB")
   wr.num <- wr.num - sum(template.data$Position=="WR")
@@ -232,7 +239,7 @@ comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,ds
   total.left <- qb.num + wr.num + rb.num + te.num + dst.num
   print(paste0("Numbers of players to add: ",total.left ))
   if(qb.num == 1){
-    firstComb <- lapply(list(template.data),combForm,useData = qb.salary,pos="QB",n=qb.num)
+    firstComb <- parallel.lapply(list(template.data),combForm,useData = qb.salary,pos="QB",n=qb.num,envir=envir)
   } else {
     firstComb <- list(template.data)
     firstComb <- Filter(Negate(is.null),firstComb)
@@ -245,7 +252,7 @@ comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,ds
                       Team %in% team.te |
                       Team %in% team.dst)
                     )
-    print(system.time(secondComb <- unlist(lapply(firstComb,combForm,useData = passData,pos="WR",n=wr.num,totalRemaining=total.left),
+    print(system.time(secondComb <- unlist(parallel.lapply(firstComb,FUN=combForm,useData = passData,pos="WR",n=wr.num,totalRemaining=total.left,envir=envir),
                          recursive=FALSE)))
     secondComb <- Filter(Negate(is.null),secondComb)
     print(total.left <- total.left - wr.num)
@@ -270,8 +277,8 @@ comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,ds
                            Team %in% rb.away
                            )
     )
-    print(system.time(thirdComb <- unlist(lapply(secondComb,combForm,useData=passData,
-                        pos="RB",n=rb.num,totalRemaining=total.left),recursive=FALSE)))
+    print(system.time(thirdComb <- unlist(parallel.lapply(secondComb,combForm,useData=passData,
+                        pos="RB",n=rb.num,totalRemaining=total.left,envir=envir),recursive=FALSE)))
     thirdComb <- Filter(Negate(is.null),thirdComb)
     print(total.left <- total.left - rb.num)
     print("Done with RB combinations")
@@ -290,8 +297,9 @@ comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,ds
                            Team %in% team.dst
                        )
     )
-    print(system.time(fourthComb <- unlist(lapply(thirdComb,combForm,useData=passData,
-                         pos="TE",n=te.num,totalRemaining=total.left),recursive=FALSE)))
+    print(system.time(fourthComb <- unlist(parallel.lapply(thirdComb,combForm,useData=passData,
+                         pos="TE",n=te.num,totalRemaining=total.left,
+                         envir=envir),recursive=FALSE)))
     fourthComb <- Filter(Negate(is.null),fourthComb)
     print(total.left <- total.left - te.num)
     print("Done with TE combinations")
@@ -312,8 +320,9 @@ comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,ds
                            Team %in% team.te
                        )
     )
-    print(system.time(lastComb <- unlist(lapply(fourthComb,combForm,useData=passData,
-                       pos="DST",n=dst.num,totalRemaining=total.left),recursive=FALSE)))
+    print(system.time(lastComb <- unlist(parallel.lapply(fourthComb,combForm,useData=passData,
+                       pos="DST",n=dst.num,totalRemaining=total.left,
+                       envir=envir),recursive=FALSE)))
     lastComb <- Filter(Negate(is.null),lastComb)
     print(total.left <- total.left - dst.num)
     print("Done with ticket formations")
@@ -326,7 +335,48 @@ comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,ds
   return(lastComb)
 }
 
-print(system.time(finalTickets <- unlist(apply(template,1,comboFormPerTemplate),recursive=FALSE)))
+parallel.apply <- function(x,index,fun,envir=ls(),...){
+  if(.Platform$OS.type == "windows"){
+    cluster <- makePSOCKcluster(names=detectCores())
+    clusterEvalQ(cl=cluster, expr=require(gRbase))
+    clusterEvalQ(cl=cluster,expr=require(XML))
+    clusterExport(cl=cluster,get("var",envir))
+    print(system.time(temp <- parApply(cl=cluster,X=x,MARGIN=index,FUN=fun,...)))
+    stopCluster(cl=cluster)
+    return(temp)
+  } else {
+    if(index==1){
+      print(system.time(temp <- mclapply(1:nrow(x),function(i,fun,...) fun(x[i,],...,mc.cores=detectCores()))))
+    } else {
+      print(system.time(temp <- mclapply(1:ncol(x),function(i,fun,...) fun(x[,i],...,mc.cores=detectCores()))))
+    }
+    return(temp)
+  }
+}
+
+parallel.lapply <- function(x,FUN,envir=ls(),...){
+  if(.Platform$OS.type == "windows"){
+    cluster <- makePSOCKcluster(names=detectCores())
+    clusterEvalQ(cl=cluster, expr=require(gRbase))
+    clusterExport(cl=cluster,get("var",envir))
+    print(system.time(temp <- parLapply(cl=cluster,X=x,fun=FUN,...)))
+    stopCluster(cl=cluster)
+    return(temp)
+  } else {
+    print(system.time(temp <- mclapply(x,FUN=FUN,...,mc.cores=detectCores())))
+    return(temp)
+  }
+}
+
+findArgs <- function(x,...){
+  arguments <- args(...)
+  print(args)
+}
+
+my_env <- new.env()
+my_env$var <- ls()
+
+print(system.time(finalTickets <- unlist(apply(template,1,comboFormPerTemplate,envir=my_env),recursive=FALSE)))
 
 aboveSalary <- function(x,salary){
   ifelse(sum(x$Salary) >= salary, return(x), return(NULL))
