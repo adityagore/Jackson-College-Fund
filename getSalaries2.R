@@ -439,3 +439,15 @@ getTickets <- function(x,filename){
 lapply(rightTickets,getTickets,filename="tickets.csv")
 
 save(finalTickets,rightTickets,file="totaltickets2.RData")
+
+findTickets <- function(x){
+  load("totaltickets2.RData")
+  index <- unlist(lapply(finalTickets,function(y){
+    sum(x %in% y$Name) == length(x)
+  }))
+  return(finalTickets[index])
+}
+
+removeDuplicates <- function(){
+  load("totaltickets2.RData")  
+}
