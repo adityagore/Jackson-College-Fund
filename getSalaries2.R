@@ -24,6 +24,9 @@ if(!require(parallel)){
 } else {
   require(parallel)
 }
+
+n.cores <- detectCores()
+ifelse(n.cores==48,n.cores <- 40,ifelse(n.cores==8,n.cores <- 4,ifelse(n.cores==4,n.cores <- 3,n.cores <- detectCores())))
 print(Sys.time())
 print("Working on gathering playerData")
 
@@ -93,8 +96,7 @@ print("Working on cleaning data")
 print(Sys.time())
 salary.data <- read.csv("DKSalaries.csv",header=TRUE,stringsAsFactors=FALSE)
 # write.csv(salary.data[with(salary.data,order(Position,Salary,Name)),c("Name","Position","Salary")],file="playerpool.csv",row.names=FALSE)
-template <- read.csv("template.csv",stringsAsFactors=FALSE,header=TRUE)
-template$K <- NULL
+
 # load("playerpool.RData")
 # salary.data <- subset(salary.data,Name %in% playerpool$Name)
 teams <- strsplit(gsub("(\\w{2,3})@(\\w{2,3})\\s.*","\\1,\\2",salary.data$GameInfo),split=",")
@@ -106,17 +108,23 @@ salary.data <- merge(salary.data,playerData,by="Name",all.x=TRUE)
 salary.data <- salary.data[complete.cases(salary.data$Salary),]
 salary.data[salary.data$Name %in% defenseName$ind,"Team"] <- defenseName$values
 
+template <- read.csv("template.txt",stringsAsFactors=FALSE,header=TRUE)
+template$K <- NULL
 template$Position <- NA
 
-template[template$PC %in% subset(salary.data,Position=="WR")$Name,"Position"] <- "WR"
-template[template$PC %in% subset(salary.data,Position=="TE")$Name, "Position"] <- "TE"
-template[is.na(template$Position),"Position"] = ""
+# template[template$PC %in% subset(salary.data,Position=="WR")$Name,"Position"] <- "WR"
+# template[template$PC %in% subset(salary.data,Position=="TE")$Name, "Position"] <- "TE"
+# template[is.na(template$Position),"Position"] = ""
 
-qb.salary <- subset(salary.data,Name %in% template$QB)
-wr.salary <- subset(salary.data, Name %in% template$PC & Position=="WR")
-te.salary <- subset(salary.data, Name %in% template$PC & Position == "TE")
-rb.salary <- subset(salary.data, Name %in% template$RB)
-dst.salary <- subset(salary.data, Name %in% template$DEF)
+returnData <- function(x,template,position){
+  return(subset(x, Name %in% unlist(as.list(template)) & Position==position))
+}
+
+qb.salary <- returnData(salary.data,template,"QB")
+wr.salary <- returnData(salary.data,template,"WR")
+te.salary <- returnData(salary.data,template,"TE")
+rb.salary <- returnData(salary.data,template,"RB")
+dst.salary <- returnData(salary.data,template,"DST")
 
 
 
@@ -337,7 +345,8 @@ comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,ds
 
 parallel.apply <- function(x,index,fun,envir=ls(),...){
   if(.Platform$OS.type == "windows"){
-    cluster <- makePSOCKcluster(names=detectCores())
+    n.cores <- get("n.cores",envir)
+    cluster <- makePSOCKcluster(names=n.cores)
     clusterEvalQ(cl=cluster, expr=require(gRbase))
     clusterEvalQ(cl=cluster,expr=require(XML))
     clusterExport(cl=cluster,get("var",envir))
@@ -345,10 +354,11 @@ parallel.apply <- function(x,index,fun,envir=ls(),...){
     stopCluster(cl=cluster)
     return(temp)
   } else {
+    n.cores <- get("n.cores",envir)
     if(index==1){
-      print(system.time(temp <- mclapply(1:nrow(x),function(i,fun,...) fun(x[i,],...,mc.cores=detectCores()))))
+      print(system.time(temp <- mclapply(1:nrow(x),function(i,fun,...) fun(x[i,],...,mc.cores=n.cores))))
     } else {
-      print(system.time(temp <- mclapply(1:ncol(x),function(i,fun,...) fun(x[,i],...,mc.cores=detectCores()))))
+      print(system.time(temp <- mclapply(1:ncol(x),function(i,fun,...) fun(x[,i],...,mc.cores=n.cores))))
     }
     return(temp)
   }
@@ -356,14 +366,18 @@ parallel.apply <- function(x,index,fun,envir=ls(),...){
 
 parallel.lapply <- function(x,FUN,envir=ls(),...){
   if(.Platform$OS.type == "windows"){
-    cluster <- makePSOCKcluster(names=detectCores())
+    n.cores <- get("n.cores",envir)
+    print(paste0("Number of cores used: ",n.cores))
+    cluster <- makePSOCKcluster(names=n.cores)
     clusterEvalQ(cl=cluster, expr=require(gRbase))
     clusterExport(cl=cluster,get("var",envir))
     print(system.time(temp <- parLapply(cl=cluster,X=x,fun=FUN,...)))
     stopCluster(cl=cluster)
     return(temp)
   } else {
-    print(system.time(temp <- mclapply(x,FUN=FUN,...,mc.cores=detectCores())))
+    n.cores <- get("n.cores",envir)
+    print(paste0("Number of cores used: ",n.cores))
+    print(system.time(temp <- mclapply(x,FUN=FUN,...,mc.cores=n.cores)))
     return(temp)
   }
 }
@@ -375,6 +389,7 @@ findArgs <- function(x,...){
 
 my_env <- new.env()
 my_env$var <- ls()
+my_env$n.cores <- n.cores
 
 print(system.time(finalTickets <- unlist(apply(template,1,comboFormPerTemplate,envir=my_env),recursive=FALSE)))
 
@@ -400,9 +415,27 @@ removeNamedTickets <- function(ticket,name,position,all=TRUE){
   }
 }
 
+reorderData <- function(x,order){
+  return(x[order(factor(x$Position,levels=order)),])
+}
+
 
 print(system.time(rightTickets <- lapply(finalTickets,aboveSalary,salary=50000)))
 print(system.time(rightTickets <- Filter(Negate(is.null),rightTickets)))
+
+newOrder <- c("QB","WR","RB","TE","DST")
+print(system.time(rightTickets <- parallel.lapply(rightTickets,reorderData,envir=my_env,newOrder)))
 print(paste0("Number of qualified tickets: ",length(rightTickets)))
+
+string1 <- paste0(gsub("(\\w+\\s+\\w+)","\"\\1\"",rightTickets[[1]]$Position),collapse=",")
+
+write(string1,file="tickets.csv")
+
+getTickets <- function(x,filename){
+  playerNames <- paste0(gsub("(\\w+\\s?\\w*)","\"\\1\"",x$Name),collapse=",")
+  write(playerNames,file=filename,append=TRUE)
+}
+
+lapply(rightTickets,getTickets,filename="tickets.csv")
 
 save(finalTickets,rightTickets,file="totaltickets2.RData")
