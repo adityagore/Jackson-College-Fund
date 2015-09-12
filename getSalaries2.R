@@ -2,7 +2,7 @@ draftkings <- 1L # If making tickets for draftkings set it to 1 else 0
 yahoo <- 0L # If making tickets for yahoo set it to 1 else 0
 fanduel <- 0L # If making tickets for fanduel set it to 1 else 0
 flex <- "WR" # Flex position for all tickets
-updatePlayerTeams <- 1L # Set to 1 if players moved to other team during this week. 
+updatePlayerTeams <- 0L # Set to 1 if players moved to other team during this week. 
 
 
 if(draftkings|yahoo){
@@ -258,7 +258,7 @@ combForm <- function(x,useData,pos,n,flex="WR",totalRemaining){
 
 
 
-comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,dst.num=1,envir=ls()){
+comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,dst.num=1,k.num=0,envir=ls()){
   template.data <- subset(salary.data,Name %in% template)
   qb.num <- qb.num - sum(template.data$Position=="QB")
   wr.num <- wr.num - sum(template.data$Position=="WR")
@@ -425,7 +425,8 @@ my_env <- new.env()
 my_env$var <- ls()
 my_env$n.cores <- n.cores
 
-print(system.time(finalTickets <- unlist(apply(template,1,comboFormPerTemplate,envir=my_env),recursive=FALSE)))
+print(system.time(finalTickets <- unlist(apply(template,1,comboFormPerTemplate,envir=my_env,qb.num=QB,
+                                               rb.num=RB, wr.num=WR, te.num=TE, dst.num=DST),recursive=FALSE)))
 
 aboveSalary <- function(x,salary){
   ifelse(sum(x$Salary) >= salary, return(x), return(NULL))
