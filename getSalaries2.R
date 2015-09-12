@@ -467,13 +467,22 @@ string1 <- paste0(gsub("(\\w+\\s+\\w+)","\"\\1\"",rightTickets[[1]]$Position),co
 write(string1,file="tickets.csv")
 
 getTickets <- function(x,filename){
-  playerNames <- paste0(gsub("(\\w+\\s?\\w*)","\"\\1\"",x$Name),collapse=",")
+  if(class(x)=="data.frame"){
+    playerNames <- paste0(gsub("(\\w+\\s?\\.?\\s?\\w+\\s?\\.?\\s?\\w*\\s?\\w+\\.?)","\"\\1\"",x$Name),collapse=",")
+  } else if (class(x)=="character"){
+    playerNames <- paste0(gsub("(\\w+\\s?\\.?\\s?\\w+\\s?\\.?\\s?\\w*\\s?\\w+\\.?)","\"\\1\"",x),collapse=",")
+  }
   write(playerNames,file=filename,append=TRUE)
 }
 
-lapply(rightTickets,getTickets,filename="tickets.csv")
+getUniqueTickets <- function(x){
+  names <- lapply(x,function(y) y$Name)
+  return(unique(names))
+}
 
-save(finalTickets,rightTickets,file="totaltickets2.RData")
+lapply(getUniqueTickets(rightTickets),getTickets,filename="tickets.csv")
+
+save(finalTickets,rightTickets,file="totaltickets.RData")
 
 findTickets <- function(x){
   load("totaltickets2.RData")
@@ -481,8 +490,4 @@ findTickets <- function(x){
     sum(x %in% y$Name) == length(x)
   }))
   return(finalTickets[index])
-}
-
-removeDuplicates <- function(){
-  load("totaltickets2.RData")  
 }
