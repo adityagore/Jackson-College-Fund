@@ -1,3 +1,32 @@
+draftkings <- 1L # If making tickets for draftkings set it to 1 else 0
+yahoo <- 0L # If making tickets for yahoo set it to 1 else 0
+fanduel <- 0L # If making tickets for fanduel set it to 1 else 0
+flex <- "WR" # Flex position for all tickets
+updatePlayerTeams <- 1L # Set to 1 if players moved to other team during this week. 
+
+
+if(draftkings|yahoo){
+  QB <- 1
+  RB <- ifelse(flex=="RB",3,2)
+  WR <- ifelse(flex=="WR",4,3)
+  TE <- ifelse(flex=="TE",2,1)
+  DST <- 1
+  K <- 0  
+} else {
+  QB <- 1
+  RB <- 2
+  WR <- 3
+  TE <- 1
+  DST <- 1
+  K <- 1 
+}
+
+
+
+
+
+
+
 start.time <- Sys.time()
 
 print(Sys.time())
@@ -30,22 +59,27 @@ ifelse(n.cores==48,n.cores <- 40,ifelse(n.cores==8,n.cores <- 4,ifelse(n.cores==
 print(Sys.time())
 print("Working on gathering playerData")
 
-if(file.exists("playerData.RData")){
+if(file.exists("playerData.RData") & !updatePlayerTeams){
   load("playerData.RData")
 } else {
   
   string1 <- "http://www.foxsports.com/nfl/players?season=2015&page="
   string2 <- "&position=0"
   
-  playerData <- data.frame()
+  readPlayerTeams <- function(x = c(1:180),string1,string2){
+    url <- paste0(string1,x,string2)
+    return(readHTMLTable(url,which=1,stringsAsFactors=FALSE))
+  }
   
+  playerData <- data.frame()
+print(system.time(  
   for(i in seq(166)){
     url <- paste0(string1,i,string2)
     playerData <- rbind(playerData,
                         readHTMLTable(url,which=1,stringsAsFactors=FALSE))
   }
-  
-  playerData <- subset(playerData, Pos %in% c("QB","WR","RB","TE"))[,c("Player","Team","Pos")]
+  ))
+  playerData <- subset(playerData, Pos %in% c("QB","WR","RB","TE","K"))[,c("Player","Team","Pos")]
   
   playerData$Name <- gsub("(\\D+)\\r\\n\\t+(\\D+)","\\1 \\2",playerData$Player)
   
