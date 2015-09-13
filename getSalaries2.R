@@ -1,10 +1,44 @@
-draftkings <- 1L # If making tickets for draftkings set it to 1 else 0
-yahoo <- 0L # If making tickets for yahoo set it to 1 else 0
+rm(list=ls())
+
+
+draftkings <- 0L # If making tickets for draftkings set it to 1 else 0
+yahoo <- 1L # If making tickets for yahoo set it to 1 else 0
 fanduel <- 0L # If making tickets for fanduel set it to 1 else 0
 flex <- "WR" # Flex position for all tickets
 updatePlayerTeams <- 0L # Set to 1 if players moved to other team during this week. 
 
+print(Sys.time())
+print("Loading Packages")
 
+# Loading gRbase for generating combinations
+if(!require(gRbase)){
+  source("http://bioconductor.org/biocLite.R")
+  biocLite("gRbase")
+  require(gRbase)
+} else {
+  require(gRbase)
+}
+
+
+# Loading XML for scraping websites
+if(!require(XML)){
+  install.packages("XML")
+  require(XML)
+} else {
+  require(XML)
+}
+
+
+# Loading parallel for parallel computations
+if(!require(parallel)){
+  install.packages("parallel")
+  require(parallel)
+} else {
+  require(parallel)
+}
+
+
+# Setting the numbers of players by position for each website
 if(draftkings|yahoo){
   QB <- 1
   RB <- ifelse(flex=="RB",3,2)
@@ -21,50 +55,20 @@ if(draftkings|yahoo){
   K <- 1 
 }
 
-
-
-
-
-
-
-start.time <- Sys.time()
-
-print(Sys.time())
-print("Loading Packages")
-
-if(!require(gRbase)){
-  source("http://bioconductor.org/biocLite.R")
-  biocLite("gRbase")
-  require(gRbase)
-} else {
-  require(gRbase)
-}
-
-if(!require(XML)){
-  install.packages("XML")
-  require(XML)
-} else {
-  require(XML)
-}
-
-if(!require(parallel)){
-  install.packages("parallel")
-  require(parallel)
-} else {
-  require(parallel)
-}
-
+# Setting up the number of cores for parallel computation
 n.cores <- detectCores()
 ifelse(n.cores==48,n.cores <- 40,ifelse(n.cores==8,n.cores <- 4,ifelse(n.cores==4,n.cores <- 3,n.cores <- detectCores())))
 print(Sys.time())
+
 print("Working on gathering playerData")
 
 if(file.exists("playerData.RData") & !updatePlayerTeams){
   load("playerData.RData")
 } else {
-  
+  print("Gathering player teams data from:")
   string1 <- "http://www.foxsports.com/nfl/players?season=2015&page="
   string2 <- "&position=0"
+  print(string1)
   
   readPlayerTeams <- function(x = c(1:180),string1,string2){
     url <- paste0(string1,x,string2)
@@ -72,12 +76,12 @@ if(file.exists("playerData.RData") & !updatePlayerTeams){
   }
   
   playerData <- data.frame()
-print(system.time(  
-  for(i in seq(166)){
-    url <- paste0(string1,i,string2)
-    playerData <- rbind(playerData,
-                        readHTMLTable(url,which=1,stringsAsFactors=FALSE))
-  }
+  print(system.time(  
+    for(i in seq(166)){
+      url <- paste0(string1,i,string2)
+      playerData <- rbind(playerData,
+                          readHTMLTable(url,which=1,stringsAsFactors=FALSE))
+    }
   ))
   playerData <- subset(playerData, Pos %in% c("QB","WR","RB","TE","K"))[,c("Player","Team","Pos")]
   
@@ -89,6 +93,7 @@ print(system.time(
   save(playerData,file="playerData.RData")
   
 }
+ifelse(draftkings,
 defenseName <- list(
   "49ers"="SF",
   "Bears"="CHI",
@@ -120,7 +125,39 @@ defenseName <- list(
   "Texans"="HOU",
   "Titans"="TEN",
   "Vikings"="MIN"
-)
+), ifelse(yahoo,
+defenseName <- list(
+  "San Francisco 49ers"="SF",
+  "Chicago Bears"="CHI",
+  "Cincinnati Bengals"="CIN",
+  "Buffalo Bills"="BUF",
+  "Denver Broncos"= "DEN",
+  "Cleveland Browns"="CLE",
+  "Tampa Bay Buccaneers"="TB",
+  "Arizona Cardinals"="ARI",
+  "San Diego Chargers"="SD",
+  "Kansas City Chiefs"="KC",
+  "Indianapolis Colts"="IND",
+  "Dallas Cowboys"="DAL",
+  "Miami Dolphins"="MIA",
+  "Philadelphia Eagles"="PHI",
+  "Atlanta Falcons"="ATL",
+  "New York Giants"="NYG",
+  "Jacksonville Jaguars"="JAX",
+  "New York Jets"="NYJ",
+  "Detroit Lions"="DET",
+  "Green Bay Packers"="GB",
+  "Carolina Panthers"="CAR",
+  "Oakland Raiders"="OAK",
+  "St. Louis Rams"="STL",
+  "Baltimore Ravens"="BAL",
+  "Washington Redskins"="WAS",
+  "New Orleans Saints"="NO",
+  "Seattle Seahawks"="SEA",
+  "Houston Texans"="HOU",
+  "Tennessee Titans"="TEN",
+  "Minnesota Vikings"="MIN"
+),defenseName <- list()))
 
 defenseName <- stack(defenseName)
 print("Gathered Player Data")
@@ -128,23 +165,38 @@ print(Sys.time())
 
 print("Working on cleaning data")
 print(Sys.time())
-salary.data <- read.csv("DKSalaries.csv",header=TRUE,stringsAsFactors=FALSE)
-# write.csv(salary.data[with(salary.data,order(Position,Salary,Name)),c("Name","Position","Salary")],file="playerpool.csv",row.names=FALSE)
 
-# load("playerpool.RData")
-# salary.data <- subset(salary.data,Name %in% playerpool$Name)
-teams <- strsplit(gsub("(\\w{2,3})@(\\w{2,3})\\s.*","\\1,\\2",salary.data$GameInfo),split=",")
+# Reading the salaries from the file
+salaryFile <- ifelse(draftkings,"DKSalaries.csv",ifelse(yahoo,"YahooSalaries.csv","fanduelSalaries.csv"))
+salary.data <- read.csv(file=salaryFile,header=TRUE,stringsAsFactors=FALSE)
+if(draftkings){
+  salary.data$Name <- gsub("(.+)\\s+$","\\1",salary.data$Name)
+} else if(yahoo){
+  salary.data$Name <- gsub("(.*)(IR|O|Q|P|D|DTD)$","\\1",salary.data$Name)
+}
+
+gameInfo <- ifelse(draftkings,"GameInfo",ifelse(yahoo,"Opponent",""))
+pattern <- ifelse(draftkings,
+                  "(\\w{2,3})@(\\w{2,3})\\s.*", ifelse(yahoo,
+                                                       "(\\w{2,3})\\s*@\\s*(\\w{2,3})\\,.*",""))
+teams <- strsplit(gsub(pattern,"\\1,\\2",salary.data[[gameInfo]]),split=",")
 teams <- lapply(teams,toupper)
 salary.data[,c("Home","Away")] <- do.call(rbind,teams)
 # salary.data$preference <- 0
-salary.data$Name <- gsub("(.+)\\s+$","\\1",salary.data$Name)
+
+
 salary.data <- merge(salary.data,playerData,by="Name",all.x=TRUE)
 salary.data <- salary.data[complete.cases(salary.data$Salary),]
-salary.data[salary.data$Name %in% defenseName$ind,"Team"] <- defenseName$values
+salary.data[match(defenseName$ind,salary.data$Name),"Team"] <- defenseName$values
+
+if(yahoo){
+  names(salary.data) <- gsub("Pos","Position",names(salary.data))
+  salary.data[salary.data$Position=="DEF","Position"] <- "DST"
+}
 
 template <- read.csv("template.txt",stringsAsFactors=FALSE,header=TRUE)
-template$K <- NULL
-template$Position <- NA
+# template$K <- NULL
+# template$Position <- NULL
 
 # template[template$PC %in% subset(salary.data,Position=="WR")$Name,"Position"] <- "WR"
 # template[template$PC %in% subset(salary.data,Position=="TE")$Name, "Position"] <- "TE"
@@ -154,28 +206,52 @@ returnData <- function(x,template,position){
   return(subset(x, Name %in% unlist(as.list(template)) & Position==position))
 }
 
-qb.salary <- returnData(salary.data,template,"QB")
-wr.salary <- returnData(salary.data,template,"WR")
-te.salary <- returnData(salary.data,template,"TE")
-rb.salary <- returnData(salary.data,template,"RB")
-dst.salary <- returnData(salary.data,template,"DST")
+# qb.salary <- returnData(salary.data,template,"QB")
+# wr.salary <- returnData(salary.data,template,"WR")
+# te.salary <- returnData(salary.data,template,"TE")
+# rb.salary <- returnData(salary.data,template,"RB")
+# dst.salary <- returnData(salary.data,template,"DST")
+
+playerpoolfile <- ifelse(draftkings,"playerpool.csv",ifelse(yahoo,"yahooplayerpool.csv",""))
+
+playerpool <- read.csv(playerpoolfile,header=TRUE,stringsAsFactors=FALSE)
+
+if(yahoo){
+  names(playerpool) <- gsub("Pos","Position",names(playerpool))
+  playerpool$Name <- gsub("(.*)(IR|O|Q|P|D)$","\\1",playerpool$Name)
+  playerpool[playerpool$Position=="DEF","Position"] <- "DST"
+}
+# wr.salary <- rbind(wr.salary,subset(salary.data,Name %in% playerpool$Name & Position=="WR"))
+# rb.salary <- rbind(rb.salary,subset(salary.data,Name %in% playerpool$Name & Position=="RB"))
+# te.salary <- rbind(te.salary,subset(salary.data, Name %in% playerpool$Name & Position=="TE"))
+
+wr.salary <- subset(salary.data,Name %in% playerpool$Name & Position=="WR")
+rb.salary <- subset(salary.data,Name %in% playerpool$Name & Position=="RB")
+te.salary <- subset(salary.data,Name %in% playerpool$Name & Position=="TE")
+dst.salary <- subset(salary.data,Name %in% playerpool$Name & Position=="DST")
 
 
 
-playerpool <- read.csv("playerpool.csv",header=TRUE,stringsAsFactors=FALSE)
-wr.salary <- rbind(wr.salary,subset(salary.data,Name %in% playerpool$Name & Position=="WR"))
-rb.salary <- rbind(rb.salary,subset(salary.data,Name %in% playerpool$Name & Position=="RB"))
-te.salary <- rbind(te.salary,subset(salary.data, Name %in% playerpool$Name & Position=="TE"))
-
-
-set.seed(1920)
 
 print("Cleaned all the data")
 Sys.time()
 
+newOrder <- c("QB","RB","WR","TE","DST")
+maxSalary <- ifelse(draftkings,50000,ifelse(yahoo,200,0))
+
+reorderData <- function(x,order){
+  return(x[order(factor(x$Position,levels=order)),])
+}
+
+finalOrderData <- function(x,template){
+  new.x <- x[match(template,x$Name),]
+  new.x[!complete.cases(new.x),]   <- subset(x,!(Name %in% template))
+  return(new.x)
+}
+
 combForm <- function(x,useData,pos,n,flex="WR",totalRemaining){
   salary.taken <- sum(x$Salary)
-  salary.left <- 50000 - salary.taken
+  salary.left <- maxSalary - salary.taken
   qb.name <- subset(x,Position=="QB")$Name
   ifelse((totalRemaining - n) == 0, exactSalary<-TRUE,exactSalary<-FALSE)
   if(pos=="WR"){
@@ -374,6 +450,14 @@ comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,ds
     print("Done with ticket formations")
     print(paste0("Number of tickets formed: ",length(lastComb)))
   }
+  newOrder <- get("newOrder",envir)
+  lastComb <- lapply(lastComb,reorderData,newOrder)
+  print("Ordering tables")
+  n.cores <- get("n.cores",envir)
+  print(paste0("Number of cores used: ",n.cores))
+  cluster <- makePSOCKcluster(names=n.cores)
+  print(system.time(lastComb <- parLapply(cl=cluster,X=lastComb,fun=finalOrderData,template=as.character(template))))
+  stopCluster(cl=cluster)
   return(lastComb)
 }
 
@@ -416,11 +500,6 @@ parallel.lapply <- function(x,FUN,envir=ls(),...){
   }
 }
 
-findArgs <- function(x,...){
-  arguments <- args(...)
-  print(args)
-}
-
 my_env <- new.env()
 my_env$var <- ls()
 my_env$n.cores <- n.cores
@@ -432,34 +511,39 @@ aboveSalary <- function(x,salary){
   ifelse(sum(x$Salary) >= salary, return(x), return(NULL))
 }
 
-namedTickets <- function(ticket,name,position){
-  if(sum(name %in% subset(ticket,Position %in% position)$Name)==length(name)){
+namedTickets <- function(ticket,name){
+  if(sum(name %in% ticket$Name)==length(name)){
     return(ticket)
   } else {
     return(NULL)
   }
 }
 
-removeNamedTickets <- function(ticket,name,position,all=TRUE){
-  if(sum(name %in% subset(ticket,Position %in% position)$Name)==length(name) & all){
+removeNamedTickets <- function(ticket,name,all=FALSE){
+  if(sum(name %in% ticket$Name)==length(name) & all){
     return(NULL)
-  } else if (sum(name %in% subset(ticket,Position %in% position)$Name) > 0 & !all){
+  } else if (sum(name %in% ticket$Name) > 0 & !all){
     return(NULL)
   } else {
     return(ticket)
   }
 }
 
-reorderData <- function(x,order){
-  return(x[order(factor(x$Position,levels=order)),])
-}
 
+removeTickets <- function(){
+  if("finalTickets" %in% ls(globalenv())){
+    finalTickets <- get("finalTickets",globalenv())
+    names <- scan(file="",what=character(),nmax=9,quiet=TRUE,sep="\n")
+    finalTickets <<- lapply(finalTickets,removeNamedTickets,names,all=FALSE)
+    finalTickets <<- Filter(Negate(is.null),finalTickets)
+  }
+} 
 
-print(system.time(rightTickets <- lapply(finalTickets,aboveSalary,salary=50000)))
+print(system.time(rightTickets <- lapply(finalTickets,aboveSalary,salary=maxSalary)))
 print(system.time(rightTickets <- Filter(Negate(is.null),rightTickets)))
 
-newOrder <- c("QB","WR","RB","TE","DST")
-print(system.time(rightTickets <- parallel.lapply(rightTickets,reorderData,envir=my_env,newOrder)))
+
+# print(system.time(rightTickets <- parallel.lapply(rightTickets,reorderData,envir=my_env,newOrder)))
 print(paste0("Number of qualified tickets: ",length(rightTickets)))
 
 string1 <- paste0(gsub("(\\w+\\s+\\w+)","\"\\1\"",rightTickets[[1]]$Position),collapse=",")
@@ -480,14 +564,29 @@ getUniqueTickets <- function(x){
   return(unique(names))
 }
 
+print("Writing the tickets to the file")
+
 lapply(getUniqueTickets(rightTickets),getTickets,filename="tickets.csv")
 
 save(finalTickets,rightTickets,file="totaltickets.RData")
 
 findTickets <- function(x){
-  load("totaltickets2.RData")
+  load("totaltickets.RData")
   index <- unlist(lapply(finalTickets,function(y){
     sum(x %in% y$Name) == length(x)
   }))
   return(finalTickets[index])
+}
+
+howManyTickets <- function(){
+  names <- scan(file="",what=character(),nmax=9,quiet=TRUE,sep="\n")
+  names.len <- length(names)
+  if("finalTickets" %in% ls(globalenv()) & names.len == 0){
+    return(length(getUniqueTickets(get("finalTickets",globalenv()))))
+  } else {
+    finalTickets <- get("finalTickets",globalenv())
+    temp <- lapply(finalTickets,namedTickets,name=names)
+    temp <- Filter(Negate(is.null),temp)
+    return(length(getUniqueTickets(temp)))
+  }
 }

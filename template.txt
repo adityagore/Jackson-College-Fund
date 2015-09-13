@@ -1,0 +1,10 @@
+"QB","RB","RB","WR","WR","WR","TE","FLEX","DEF"
+Tyrod Taylor,Eddie Lacy,,Sammy Watkins,,,Jimmy Graham,,Philadelphia Eagles
+Tyrod Taylor,,Joseph Randle,Sammy Watkins,,,Jimmy Graham,,Philadelphia Eagles
+Andy Dalton,,Benny Cunningham,A.J. Green,,,Martellus Bennett,,Indianapolis Colts
+Andy Dalton,,Doug Martin,A.J. Green,,,Martellus Bennett,,Indianapolis Colts
+Andy Dalton,,Latavius Murray,A.J. Green,,,Martellus Bennett,,Indianapolis Colts
+Tyrod Taylor,,Darren McFadden,Jordan Matthews,,,Martellus Bennett,,Seattle Seahawks
+Kirk Cousins,,Eddie Lacy,Jordan Matthews,,Brandon Marshall,Jimmy Graham,,Indianapolis Colts
+
+
