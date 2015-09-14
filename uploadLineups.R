@@ -11,7 +11,7 @@ checkForServer()
 
 url <- "https://www.draftkings.com/"
 
-fprof <- getFirefoxProfile("firefoxprofile",useBase=TRUE)
+system("java -jar selenium-server-standalone-2.47.1.jar")
 
 cprof <- getChromeProfile("C:\\Users\\AGORE\\AppData\\Local\\Google\\Chrome\\User Data","Default")
 
@@ -30,7 +30,7 @@ webElem <- remDr$findElement(using="css selector","#fancybox-content > div:nth-c
 webElem$sendKeysToElement(list(userName,key="tab",password,key="enter"))
 # webElem <- remDr$findElement(using="css selector",".sports-nav > div:nth-child(1) > ul:nth-child(1) > li:nth-child(2) > a:nth-child(1)")
 # webElem$clickElement()
-webElem <- remDr$findElement(using="css selector","body > header > div.sports-nav > div > ul > li:nth-child(2) > a")
+webElem <- remDr$findElement(using="css selector","body > header > div.sports-nav > div > ul > li:nth-child(2) > a") #NFL
 webElem$clickElement()
 # webElem <- remDr$findElement(using="css selector","div.ui-widget-content:nth-child(5) > div:nth-child(7) > a:nth-child(1) > span:nth-child(1)")
 # webElem$clickElement()
