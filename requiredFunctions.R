@@ -62,7 +62,22 @@ removeTickets <- function(){
   if("finalTickets" %in% ls(globalenv())){
     finalTickets <- get("finalTickets",globalenv())
     names <- scan(file="",what=character(),nmax=9,quiet=TRUE,sep="\n")
-    finalTickets <<- lapply(finalTickets,removeNamedTickets,names,all=FALSE)
+    finalTickets <<- lapply(finalTickets,removeNamedTickets,names,all=TRUE)
     finalTickets <<- Filter(Negate(is.null),finalTickets)
+  }
+}
+
+playerDistribution <- function(){
+  if("finalTickets" %in% ls(globalevn())){
+    finalTickets <- get("finalTickets",globalenv())
+    names.list <- unlist(lapply(finalTickets, function(x){
+      return(x$Name)
+    }))
+    totalCounts <- count(names.list)
+    totalTickets <- howManyTickets()
+    names(totalCounts) <- c("Players","Percentage")
+    totalCounts$Percentage <- totalCounts$Percentage/totalTickets
+    totalCounts$Percentage <- paste0(as.character(totalCounts$Percentage),"%")
+    return(totalCounts)
   }
 }

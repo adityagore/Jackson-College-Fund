@@ -29,6 +29,14 @@
     require(parallel)
   }
   
+  # Loading plyr package for distribution
+  if(!require(plyr)){
+    install.packages("plyr")
+    require(plyr,quietly=TRUE)
+  } else {
+    require(plyr,quietly=TRUE)
+  }
+  
   source("requiredFunctions.R")
   print("Let's make some tickets!")    
 }
