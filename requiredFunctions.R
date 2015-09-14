@@ -68,16 +68,27 @@ removeTickets <- function(){
 }
 
 playerDistribution <- function(){
-  if("finalTickets" %in% ls(globalevn())){
+  if("finalTickets" %in% ls(globalenv())){
     finalTickets <- get("finalTickets",globalenv())
     names.list <- unlist(lapply(finalTickets, function(x){
       return(x$Name)
     }))
     totalCounts <- count(names.list)
-    totalTickets <- howManyTickets()
+    totalTickets <- length(getUniqueTickets(finalTickets))
     names(totalCounts) <- c("Players","Percentage")
     totalCounts$Percentage <- totalCounts$Percentage/totalTickets
-    totalCounts$Percentage <- paste0(as.character(totalCounts$Percentage),"%")
+    totalCounts <- totalCounts[order(totalCounts$Percentage,decreasing=TRUE),]
+    return(totalCounts)
+  } else {
+    load("totaltickets.RData")
+    names.list <- unlist(lapply(finalTickets, function(x){
+      return(x$Name)
+    }))
+    totalCounts <- count(names.list)
+    totalTickets <- length(getUniqueTickets(finalTickets))
+    names(totalCounts) <- c("Players","Percentage")
+    totalCounts$Percentage <- totalCounts$Percentage/totalTickets
+    totalCounts <- totalCounts[order(totalCounts$Percentage,decreasing=TRUE),]
     return(totalCounts)
   }
 }
