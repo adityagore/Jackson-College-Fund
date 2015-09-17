@@ -2,12 +2,15 @@ print("Loading all the required functions")
 
 # To find out how many unique tickets were formed
 howManyTickets <- function(){
+  print("Please either enter player names or just hit enter:")
   names <- scan(file="",what=character(),nmax=9,quiet=TRUE,sep="\n")
   names.len <- length(names)
-  if("finalTickets" %in% ls(globalenv()) & names.len == 0){
-    return(length(getUniqueTickets(get("finalTickets",globalenv()))))
+  is.finalTickets <- "finalTickets" %in% ls(globalenv())
+  if(!is.finalTickets) load("totaltickets.RData")
+  finalTickets <<- finalTickets
+  if(names.len == 0){
+    return(length(getUniqueTickets(finalTickets)))
   } else {
-    finalTickets <- get("finalTickets",globalenv())
     temp <- lapply(finalTickets,namedTickets,name=names)
     temp <- Filter(Negate(is.null),temp)
     return(length(getUniqueTickets(temp)))
@@ -59,36 +62,72 @@ removeNamedTickets <- function(ticket,name,all=FALSE){
 
 # To remove tickets with user provided names
 removeTickets <- function(){
-  if("finalTickets" %in% ls(globalenv())){
-    finalTickets <- get("finalTickets",globalenv())
-    names <- scan(file="",what=character(),nmax=9,quiet=TRUE,sep="\n")
-    finalTickets <<- lapply(finalTickets,removeNamedTickets,names,all=TRUE)
+  is.finalTickets <- "finalTickets" %in% ls(globalenv())
+  if(!is.finalTickets) load("totaltickets.RData")
+  finalTickets <<- finalTickets
+  names <- scan(file="",what=character(),nmax=9,quiet=TRUE,sep="\n")
+  print("Remove tickets with:")
+  print("1. All players in them.")
+  print("2. At least one player in them.")
+  print("3. Skip")
+  n <- 0
+  while(!(n %in% c(1L, 2L, 3L))){
+    n <- readline("Please select a number: ")
+  }
+  ifelse(n==1,all<-FALSE,ifelse(n==2,all<-TRUE,all <- ""))
+  if(all!=""){
+    finalTickets <<- lapply(finalTickets,removeNamedTickets,names,all=all)
     finalTickets <<- Filter(Negate(is.null),finalTickets)
   }
 }
 
 playerDistribution <- function(){
+  is.finalTickets <- "finalTickets" %in% ls(globalenv())
+  if(!is.finalTickets) load("totaltickets.RData")
+  finalTickets <<- finalTickets
+  names.list <- unlist(getUniqueTickets(finalTickets))
+  totalCounts <- count(names.list)
+  totalTickets <- length(getUniqueTickets(finalTickets))
+  names(totalCounts) <- c("Players","Tickets")
+  totalCounts$Percentage <- round(totalCounts$Tickets*100/totalTickets,digits=2)
+  totalCounts <- totalCounts[order(totalCounts$Percentage,decreasing=TRUE),]
+  totalCounts$Percentage <- paste0(as.character(totalCounts$Percentage),"%")
+  return(totalCounts)
+}
+
+savetickets <- function(){
   if("finalTickets" %in% ls(globalenv())){
-    finalTickets <- get("finalTickets",globalenv())
-    names.list <- unlist(lapply(finalTickets, function(x){
-      return(x$Name)
-    }))
-    totalCounts <- count(names.list)
-    totalTickets <- length(getUniqueTickets(finalTickets))
-    names(totalCounts) <- c("Players","Percentage")
-    totalCounts$Percentage <- totalCounts$Percentage/totalTickets
-    totalCounts <- totalCounts[order(totalCounts$Percentage,decreasing=TRUE),]
-    return(totalCounts)
+    print("Saving tickets for:")
+    print("1. DraftKings")
+    print("2. Yahoo")
+    print("3. Fanduel")
+    n <- 0
+    while(!(n %in% c(1L, 2L, 3L))){
+      n <- readline("Please select a number: ")
+    }
+    savefile <- ifelse(n==1,"dktickets.csv",ifelse(n==2,"yahootickets.csv","fandueltickets.csv"))
+    save(finalTickets,file="totaltickets.RData")
+    string1 <- paste0(gsub("(\\w+\\s+\\w+)","\"\\1\"",finalTickets[[1]]$Position),collapse=",")    
+    writeTickets(header=string1,file=savefile)
   } else {
-    load("totaltickets.RData")
-    names.list <- unlist(lapply(finalTickets, function(x){
-      return(x$Name)
-    }))
-    totalCounts <- count(names.list)
-    totalTickets <- length(getUniqueTickets(finalTickets))
-    names(totalCounts) <- c("Players","Percentage")
-    totalCounts$Percentage <- totalCounts$Percentage/totalTickets
-    totalCounts <- totalCounts[order(totalCounts$Percentage,decreasing=TRUE),]
-    return(totalCounts)
+    print("Error: No tickets found.")
   }
+}
+
+writeTickets <- function(header,file){
+  write(header,file)
+  print("Writing the tickets to the file")
+  lapply(getUniqueTickets(finalTickets),getTickets,filename=file)
+  print(paste0(length(finalTickets), " tickets written to the file \"", file,"\""))
+}
+
+salaryDistribution <- function(){
+  is.finalTickets <- "finalTickets" %in% ls(globalenv())
+  if(!is.finalTickets) load("totaltickets.RData")
+  finalTickets <<- finalTickets
+  tmp <- count(unlist(lapply(finalTickets, function(x) sum(x$Salary))))
+  tmp <- tmp[order(tmp$freq,decreasing = TRUE),]
+  names(tmp) <- c("Salary","Tickets")
+  tmp$Percentage <- paste0(as.character(round(tmp$Tickets*100/length(finalTickets),digits = 2)),"%")
+  return(tmp)
 }

@@ -1,6 +1,4 @@
 .First <- function(){
-  print("Welcome to RStudio")
-  
   # Loading gRbase for generating combinations
   print("Loading packages")
   if(!require(gRbase)){
@@ -38,7 +36,8 @@
   }
   
   source("requiredFunctions.R")
-  print("Let's make some tickets!")    
+    # source("startup.R")
+
 }
 
 .Last <- function(){
