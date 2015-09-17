@@ -377,13 +377,15 @@ comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,ds
   print("Working on WRs")
   if(wr.num > 0){
     passData <- subset(wr.salary,
-                    !(Team %in% team.rb |
-                      Name %in% template.data$Name |
-                      Team %in% team.te |
-                      Team %in% team.dst)
-                    )
+                       !(Team %in% team.rb |
+                           Name %in% template.data$Name |
+                           Team %in% team.te |
+                           Team %in% team.wr|
+                           Team %in% team.qb |
+                           Team %in% team.dst)
+    )
     print(system.time(secondComb <- unlist(parallel.lapply(firstComb,FUN=combForm,useData = passData,pos="WR",n=wr.num,totalRemaining=total.left,envir=envir),
-                         recursive=FALSE)))
+                                           recursive=FALSE)))
     secondComb <- Filter(Negate(is.null),secondComb)
     print(total.left <- total.left - wr.num)
     print("Done with WR combinations")
@@ -405,10 +407,10 @@ comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,ds
                            Team %in% k.away |
                            Team %in% rb.home |
                            Team %in% rb.away
-                           )
+                       )
     )
     print(system.time(thirdComb <- unlist(parallel.lapply(secondComb,combForm,useData=passData,
-                        pos="RB",n=rb.num,totalRemaining=total.left,envir=envir),recursive=FALSE)))
+                                                          pos="RB",n=rb.num,totalRemaining=total.left,envir=envir),recursive=FALSE)))
     thirdComb <- Filter(Negate(is.null),thirdComb)
     print(total.left <- total.left - rb.num)
     print("Done with RB combinations")
@@ -424,12 +426,13 @@ comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,ds
                        !(Team %in% team.rb |
                            Name %in% template.data$Name |
                            Team %in% team.wr |
-                           Team %in% team.dst
+                           Team %in% team.dst |
+                           Team %in% team.te
                        )
     )
     print(system.time(fourthComb <- unlist(parallel.lapply(thirdComb,combForm,useData=passData,
-                         pos="TE",n=te.num,totalRemaining=total.left,
-                         envir=envir),recursive=FALSE)))
+                                                           pos="TE",n=te.num,totalRemaining=total.left,
+                                                           envir=envir),recursive=FALSE)))
     fourthComb <- Filter(Negate(is.null),fourthComb)
     print(total.left <- total.left - te.num)
     print("Done with TE combinations")
@@ -451,8 +454,8 @@ comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,ds
                        )
     )
     print(system.time(lastComb <- unlist(parallel.lapply(fourthComb,combForm,useData=passData,
-                       pos="DST",n=dst.num,totalRemaining=total.left,
-                       envir=envir),recursive=FALSE)))
+                                                         pos="DST",n=dst.num,totalRemaining=total.left,
+                                                         envir=envir),recursive=FALSE)))
     lastComb <- Filter(Negate(is.null),lastComb)
     print(total.left <- total.left - dst.num)
     print("Done with ticket formations")
@@ -537,6 +540,7 @@ print(paste0("Number of qualified tickets: ",length(finalTickets)))
 
 ticketsfile <- ifelse(draftkings,"dktickets.csv",ifelse(yahoo,"yahootickets.csv","fandueltickets.csv"))
 
-writeTickets(header=ticketsfile,file=ticketsfile)
+string1 <- paste0(gsub("(\\w+\\s+\\w+)","\"\\1\"",rightTickets[[1]]$Position),collapse=",")
+writeTickets(header=string1,file=ticketsfile)
 
 save(finalTickets,file="totaltickets.RData")
