@@ -540,7 +540,7 @@ print(paste0("Number of qualified tickets: ",length(finalTickets)))
 
 ticketsfile <- ifelse(draftkings,"dktickets.csv",ifelse(yahoo,"yahootickets.csv","fandueltickets.csv"))
 
-string1 <- paste0(gsub("(\\w+\\s+\\w+)","\"\\1\"",rightTickets[[1]]$Position),collapse=",")
+string1 <- paste0(gsub("(\\w+\\s+\\w+)","\"\\1\"",finalTickets[[1]]$Position),collapse=",")
 writeTickets(header=string1,file=ticketsfile)
 
 save(finalTickets,file="totaltickets.RData")
