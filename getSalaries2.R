@@ -31,7 +31,7 @@ while(!(n %in% c(1L, 2L))){
   n <- readline("Please select a number: ")
 }
 
- 
+
 updatePlayerTeams <- ifelse(n==1,0L,1L) # Set to 1 if players moved to other team during this week. 
 
 n <- 0
@@ -129,7 +129,7 @@ defenseName <- list(
   "Texans"="HOU",
   "Titans"="TEN",
   "Vikings"="MIN"
-), ifelse(yahoo,
+), ifelse(yahoo|fanduel,
 defenseName <- list(
   "San Francisco 49ers"="SF",
   "Chicago Bears"="CHI",
@@ -173,21 +173,36 @@ print("Working on cleaning data")
 print(Sys.time())
 
 # Reading the salaries from the file
-salaryFile <- ifelse(draftkings,"DKSalaries.csv",ifelse(yahoo,"YahooSalaries.csv","fanduelSalaries.csv"))
+salaryFile <- ifelse(draftkings,"DKSalaries.csv",ifelse(yahoo,"YahooSalaries.csv","FDSalaries.csv"))
 salary.data <- read.csv(file=salaryFile,header=TRUE,stringsAsFactors=FALSE)
 if(draftkings){
   salary.data$Name <- gsub("(.+)\\s+$","\\1",salary.data$Name) #Removing extra space from the end of the name in dragtkings salary
 } else if(yahoo){
   salary.data$Name <- gsub("(.*)(IR|O|Q|P|D|DTD)$","\\1",salary.data$Name) #Removing the player out,questionable indices from end
+} else if(fanduel){
+  salary.data[salary.data$Position=="D","Position"] <- "DST"
+  salary.data$Name <- paste0(salary.data$First.Name," ",salary.data$Last.Name)
 }
 
 gameInfo <- ifelse(draftkings,"GameInfo",ifelse(yahoo,"Opponent","")) # Getting away and home team information
 pattern <- ifelse(draftkings,
                   "(\\w{2,3})@(\\w{2,3})\\s.*", ifelse(yahoo,
                                                        "(\\w{2,3})\\s*@\\s*(\\w{2,3})\\,.*",""))
-teams <- strsplit(gsub(pattern,"\\1,\\2",salary.data[[gameInfo]]),split=",")
-teams <- lapply(teams,toupper)
-salary.data[,c("Home","Away")] <- do.call(rbind,teams)
+if(draftkings|yahoo){
+  teams <- strsplit(gsub(pattern,"\\1,\\2",salary.data[[gameInfo]]),split=",")
+  teams <- lapply(teams,toupper)
+  salary.data[,c("Home","Away")] <- do.call(rbind,teams)
+}
+if(fanduel){
+  salary.data[,c("Home","Away")] <- salary.data[,c("Team","Opponent")]
+  salary.data$First.Name <- NULL
+  salary.data$Last.Name <- NULL
+  salary.data$Played <- NULL
+  salary.data$Injury.Details <- NULL
+  salary.data$Injury.Indicator <- NULL
+  salary.data$X.1 <- NULL
+  salary.data$X <- NULL
+}
 if(yahoo){
   names(salary.data) <- gsub("Pos","Position",names(salary.data))
   salary.data[salary.data$Position=="DEF","Position"] <- "DST"
@@ -195,7 +210,7 @@ if(yahoo){
 
 if(draftkings){
   salary.data$Team <- toupper(salary.data$teamAbbrev)
-} else {
+} else if(yahoo) {
   salary.data <- merge(salary.data,playerData,by=c("Name","Position"),all.x=TRUE)
   salary.data <- salary.data[complete.cases(salary.data$Salary),]
   matchedIndex <- match(defenseName$ind,salary.data$Name)
@@ -207,24 +222,31 @@ if(draftkings){
 
 
 # Reading the template file
-templatefile <- ifelse(draftkings,"dktemplate.txt",ifelse(yahoo,"yahootemplate.txt",""))
+templatefile <- ifelse(draftkings,"dktemplate.txt",ifelse(yahoo,"yahootemplate.txt","fdtemplate.txt"))
 
 template <- read.csv(templatefile,stringsAsFactors=FALSE,header=TRUE)
 
-playerpoolfile <- ifelse(draftkings,"playerpool.csv",ifelse(yahoo,"yahooplayerpool.csv",""))
+playerpoolfile <- ifelse(draftkings,"playerpool.csv",ifelse(yahoo,"yahooplayerpool.csv","fdplayerpool.csv"))
 
 playerpool <- read.csv(playerpoolfile,header=TRUE,stringsAsFactors=FALSE)
 
 if(yahoo){
   names(playerpool) <- gsub("Pos","Position",names(playerpool))
   playerpool$Name <- gsub("(.*)(IR|O|Q|P|D)$","\\1",playerpool$Name)
-  playerpool[playerpool$Position=="DEF","Position"] <- "DST"
+  playerpool[playerpool$Position%in%"DEF","Position"] <- "DST"
+}
+
+if(fanduel){
+  playerpool[playerpool$Position%in%"D","Position"] <- "DST"
+  playerpool$Name <- paste0(playerpool$First.Name," ",playerpool$Last.Name)
+  # playerpool[,c("Home","Away")] <- salary.data[,c("Team","Opponent")]
 }
 
 wr.salary <- subset(salary.data,Name %in% playerpool$Name & Position=="WR")
 rb.salary <- subset(salary.data,Name %in% playerpool$Name & Position=="RB")
 te.salary <- subset(salary.data,Name %in% playerpool$Name & Position=="TE")
 dst.salary <- subset(salary.data,Name %in% playerpool$Name & Position=="DST")
+k.salary <- subset(salary.data, Name %in% playerpool$Name & Position=="K")
 
 
 
@@ -232,13 +254,13 @@ dst.salary <- subset(salary.data,Name %in% playerpool$Name & Position=="DST")
 print("Cleaned all the data")
 Sys.time()
 
-newOrder <- c("QB","RB","WR","TE","DST")
+newOrder <- ifelse(K==0,c("QB","RB","WR","TE","DST"),c("QB","RB","WR","TE","K","DST"))
 
 
-maxSalary <- ifelse(draftkings,50000,ifelse(yahoo,200,0))
+maxSalary <- ifelse(draftkings,50000,ifelse(yahoo,200,60000))
 print("Please enter the minimum value of tickets to be made!")
 print("E.g. 49700 or 50000 for Draftkings, 196 or 200 for yahoo")
-minSalary <- 51000
+minSalary <- 10000000
 while(maxSalary < minSalary){
   minSalary <- readline("Please enter the amount: ")
   minSalary <- as.integer(minSalary)
@@ -324,6 +346,21 @@ combForm <- function(x,useData,pos,n,flex="WR",totalRemaining){
           },simplify=FALSE))
         }} else {teList <- NULL}
     ifelse(is.null(teList),return(list(NULL)),return(teList))  
+  } else if(pos=="K"){
+    index <- combnPrim(nrow(useData),n)
+    good_rs <- with(useData,apply(index,2,function(y){
+      sum(Salary[y]) <= salary.left & ifelse(exactSalary,sum(Salary[y]) >= salary.right,TRUE) &
+        sum(Team[y] %in% subset(x,Position=="QB")$Team) == 0 & #No QB and DST of same team
+        sum(Team[y] %in% subset(x,Position=="TE")$Team) == 0 & #No TE and DST of same team
+        sum(Team[y] %in% subset(x,Position=="WR")$Team) == 0 & #No WR and DST of same team
+        sum(Team[y] %in% subset(x,Position=="RB")$Team) == 0 & #No RB and DST of home team
+        sum(Team[y] %in% subset(x,Position=="DST")$Team) == 0 #No RB and DST of away team
+    }))
+    if(sum(good_rs)>0){
+      kList <- do.call(list,sapply(index[,good_rs],function(y){
+        rbind(x,useData[y,])
+      },simplify=FALSE))} else{ kList <- NULL}
+    ifelse(is.null(kList),return(list(NULL)),return(kList))
   } else if(pos=="DST"){
     index <- combnPrim(nrow(useData),n)
     good_rs <- with(useData,apply(index,2,function(y){
@@ -339,9 +376,7 @@ combForm <- function(x,useData,pos,n,flex="WR",totalRemaining){
         rbind(x,useData[y,])
       },simplify=FALSE))} else{ dstList <- NULL}
     ifelse(is.null(dstList),return(list(NULL)),return(dstList))
-  } else if(pos=="FLEX"){
-    return(combForm(x,pos=flex,n=n))
-  }
+  } 
 }
 
 
@@ -352,6 +387,7 @@ comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,ds
   wr.num <- wr.num - sum(template.data$Position=="WR")
   rb.num <- rb.num - sum(template.data$Position=="RB")
   te.num <- te.num - sum(template.data$Position=="TE")
+  k.num <- k.num - sum(template.data$Position=="K")
   dst.num <- dst.num - sum(template.data$Position=="DST")
   team.qb <- subset(template.data,Position=="QB")$Team
   team.wr <- subset(template.data,Position=="WR")$Team
@@ -366,7 +402,7 @@ comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,ds
   rb.home <- subset(template.data,Position=="RB")$Home
   rb.away <- subset(template.data,Position=="RB")$Away
   print(paste0("Working on template with QB: ",template["QB"]))
-  total.left <- qb.num + wr.num + rb.num + te.num + dst.num
+  total.left <- qb.num + wr.num + rb.num + te.num + dst.num + k.num
   print(paste0("Numbers of players to add: ",total.left ))
   if(qb.num == 1){
     firstComb <- parallel.lapply(list(template.data),combForm,useData = qb.salary,pos="QB",n=qb.num,envir=envir)
@@ -463,8 +499,31 @@ comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,ds
   } else {
     print(system.time(lastComb <- fourthComb))
   }
+  print("Working on Kickers")
+  if(k.num > 0){
+    passData <- subset(k.salary,
+                       !(Team %in% team.rb |
+                           Name %in% template.data$Name |
+                           Team %in% team.wr |
+                           Team %in% team.dst |
+                           Team %in% team.te |
+                           Team %in% team.qb
+                       )
+    )
+    print(system.time(finalComb <- unlist(parallel.lapply(lastComb,combForm,useData=passData,
+                                                           pos="K",n=k.num,totalRemaining=total.left,
+                                                           envir=envir),recursive=FALSE)))
+    finalComb <- Filter(Negate(is.null),finalComb)
+    print(total.left <- total.left - k.num)
+    print("Done with Kicker combinations")
+    print(paste0("Number of tickets formed: ",length(finalComb)))
+  } else {
+    print(system.time(finalComb <- lastComb))
+    print("Done with Kicker combinations")
+    print(paste0("Number of tickets formed: ",length(finalComb)))
+  }
   newOrder <- get("newOrder",envir)
-  lastComb <- lapply(lastComb,function(x){
+  lastComb <- lapply(finalComb,function(x){
     if(nrow(x)==9){
       return(x)
     } else {
@@ -528,7 +587,7 @@ my_env$var <- ls()
 my_env$n.cores <- n.cores
 
 print(system.time(finalTickets <- unlist(apply(template,1,comboFormPerTemplate,qb.num=QB,envir=my_env,
-                                               rb.num=RB, wr.num=WR, te.num=TE, dst.num=DST),recursive=FALSE)))
+                                               rb.num=RB, wr.num=WR, te.num=TE, dst.num=DST,k.num=K),recursive=FALSE)))
 
 
 # print(system.time(rightTickets <- lapply(finalTickets,aboveSalary,salary=maxSalary)))
@@ -542,5 +601,7 @@ ticketsfile <- ifelse(draftkings,"dktickets.csv",ifelse(yahoo,"yahootickets.csv"
 
 string1 <- paste0(gsub("(\\w+\\s+\\w+)","\"\\1\"",finalTickets[[1]]$Position),collapse=",")
 writeTickets(header=string1,file=ticketsfile)
+
+rdatafile <- ifelse(draftkings,"dktickets.RData",ifelse(yahoo,"yahootickets.RData","fdtickets.RData"))
 
 save(finalTickets,file="totaltickets.RData")
