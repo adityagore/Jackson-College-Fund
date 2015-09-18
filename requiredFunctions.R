@@ -117,7 +117,10 @@ savetickets <- function(){
 writeTickets <- function(header,file){
   write(header,file)
   print("Writing the tickets to the file")
-  lapply(getUniqueTickets(finalTickets),getTickets,filename=file)
+  playerNames <- lapply(getUniqueTickets(finalTickets),function(x) {
+    paste0(gsub("(\\w+\\s?\\.?\\s?\\w+\\s?\\.?\\s?\\w*\\s?\\w+\\.?)","\"\\1\"",x),collapse=",")
+  })
+  lapply(playerNames,write,file=file,append=TRUE)
   print(paste0(length(finalTickets), " tickets written to the file \"", file,"\""))
 }
 
