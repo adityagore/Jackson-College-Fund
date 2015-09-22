@@ -224,7 +224,19 @@ if(draftkings){
 # Reading the template file
 templatefile <- ifelse(draftkings,"dktemplate.txt",ifelse(yahoo,"yahootemplate.txt","fdtemplate.txt"))
 
-template <- read.csv(templatefile,stringsAsFactors=FALSE,header=TRUE)
+template <- read.csv(templatefile,stringsAsFactors=FALSE,header=TRUE,blank.lines.skip = TRUE)
+templatePlayers <- unlist(template)
+templatePlayers <- templatePlayers[!is.na(templatePlayers)]
+templatePlayers <- unique(templatePlayers)
+templatePlayers <- templatePlayers[!(templatePlayers%in%"")]
+playersNotPresent <- templatePlayers[!(templatePlayers%in%salary.data$Name)]
+
+if(length(playersNotPresent)>0){
+  print(playersNotPresent)
+}
+if(length(playersNotPresent)>0) stop("The players above are not spelled right in the template")
+
+
 
 playerpoolfile <- ifelse(draftkings,"playerpool.csv",ifelse(yahoo,"yahooplayerpool.csv","fdplayerpool.csv"))
 
@@ -254,7 +266,7 @@ k.salary <- subset(salary.data, Name %in% playerpool$Name & Position=="K")
 print("Cleaned all the data")
 Sys.time()
 
-newOrder <- ifelse(K==0,c("QB","RB","WR","TE","DST"),c("QB","RB","WR","TE","K","DST"))
+ifelse(K==0,newOrder <- c("QB","RB","WR","TE","DST"),newOrder <-c("QB","RB","WR","TE","K","DST"))
 
 
 maxSalary <- ifelse(draftkings,50000,ifelse(yahoo,200,60000))
@@ -292,7 +304,8 @@ combForm <- function(x,useData,pos,n,flex="WR",totalRemaining){
       sum(Salary[y]) <= salary.left & ifelse(exactSalary,sum(Salary[y]) >= salary.right,TRUE) &
         sum(Team[y] %in% subset(x,Position=="RB")$Team) == 0 & # No WR and RB from same team
         sum(Team[y] %in% subset(x,Position=="TE")$Team) == 0 & # No WR and TE from same team
-        sum(Team[y] %in% subset(x,Position=="DST")$Team) == 0 # No WR and DST from same team
+        sum(Team[y] %in% subset(x,Position=="DST")$Team) == 0 & # No WR and DST from same team
+        sum(count(Team[y])$freq > 1)== 0
     }))
     if(sum(good_rs)>0){
       if(n>1 & sum(good_rs)>1){
@@ -316,7 +329,8 @@ combForm <- function(x,useData,pos,n,flex="WR",totalRemaining){
         sum(Team[y] %in% subset(x,Position=="DST")$Home) == 0 & # No RB and Home Defense
         sum(Team[y] %in% subset(x,Position=="DST")$Away) == 0 & # No RB and Away Defense
         sum(Team[y] %in% subset(x,Position=="K")$Home) == 0 & # No RB and K from home team
-        sum(Team[y] %in% subset(x,Position=="K")$Away) == 0 # No RB and TE from away team
+        sum(Team[y] %in% subset(x,Position=="K")$Away) == 0 & # No RB and TE from away team
+        sum(count(Team[y])$freq > 1)== 0
     }))
     if(sum(good_rs)>0){
       if(n>1 & sum(good_rs)>1){
@@ -334,7 +348,8 @@ combForm <- function(x,useData,pos,n,flex="WR",totalRemaining){
       sum(Salary[y]) <= salary.left & ifelse(exactSalary,sum(Salary[y]) >= salary.right,TRUE) &
         sum(Team[y] %in% subset(x,Position=="RB")$Team) == 0 & # No RB and TE of same team
         sum(Team[y] %in% subset(x,Position=="WR")$Team) == 0 & # No RB and TE of same team
-        sum(Team[y] %in% subset(x,Position=="DST")$Team) == 0 # No RB and TE of same team
+        sum(Team[y] %in% subset(x,Position=="DST")$Team) == 0 & # No RB and TE of same team
+        sum(count(Team[y])$freq > 1)== 0
     }))
     if(sum(good_rs)>0){
       if(n>1 & sum(good_rs)>1){
@@ -597,11 +612,11 @@ print(system.time(finalTickets <- unlist(apply(template,1,comboFormPerTemplate,q
 # print(system.time(rightTickets <- parallel.lapply(rightTickets,reorderData,envir=my_env,newOrder)))
 print(paste0("Number of qualified tickets: ",length(finalTickets)))
 
-ticketsfile <- ifelse(draftkings,"dktickets.csv",ifelse(yahoo,"yahootickets.csv","fandueltickets.csv"))
-
-string1 <- paste0(gsub("(\\w+\\s+\\w+)","\"\\1\"",finalTickets[[1]]$Position),collapse=",")
-writeTickets(header=string1,file=ticketsfile)
-
-rdatafile <- ifelse(draftkings,"dktickets.RData",ifelse(yahoo,"yahootickets.RData","fdtickets.RData"))
-
 save(finalTickets,file="totaltickets.RData")
+
+# ticketsfile <- ifelse(draftkings,"dktickets.csv",ifelse(yahoo,"yahootickets.csv","fandueltickets.csv"))
+
+# string1 <- paste0(gsub("(\\w+\\s+\\w+)","\"\\1\"",finalTickets[[1]]$Position),collapse=",")
+# writeTickets(header=string1,file=ticketsfile)
+
+# rdatafile <- ifelse(draftkings,"dktickets.RData",ifelse(yahoo,"yahootickets.RData","fdtickets.RData"))
