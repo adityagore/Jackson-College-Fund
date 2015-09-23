@@ -35,6 +35,27 @@
     require(plyr,quietly=TRUE)
   }
   
+  if(!require(ggplot2)){
+    install.packages("ggplot2")
+    require(ggplot2,quietly = TRUE)
+  } else {
+    require(ggplot2,quietly = TRUE)
+  }
+  
+  if(!require(data.table)){
+    install.packages("data.table")
+    require(data.table, quietly = TRUE)
+  } else {
+    require(data.table,quietly = TRUE)
+  }
+  
+  if(!require(reshape2)){
+    install.packages("reshape2")
+    require(reshape2, quietly = TRUE)
+  } else {
+    require(reshape2,quietly = TRUE)
+  }
+  
   source("requiredFunctions.R")
     # source("startup.R")
 
