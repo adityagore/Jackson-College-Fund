@@ -612,11 +612,16 @@ print(system.time(finalTickets <- unlist(apply(template,1,comboFormPerTemplate,q
 # print(system.time(rightTickets <- parallel.lapply(rightTickets,reorderData,envir=my_env,newOrder)))
 print(paste0("Number of qualified tickets: ",length(finalTickets)))
 
+
+currentTime <- gsub(":|\\s","-",paste0(Sys.time()))
+ticketFileNames <- ifelse(draftkings,"dktotaltickets",ifelse(yahoo,"yahoototaltickets","fandueltotaltickets"))
+
+ticketFileNames <- paste0(ticketFileNames,"_",currentTime,".rda")
 save(finalTickets,file="totaltickets.RData")
 
-# ticketsfile <- ifelse(draftkings,"dktickets.csv",ifelse(yahoo,"yahootickets.csv","fandueltickets.csv"))
+ticketsfile <- ifelse(draftkings,"dktickets.csv",ifelse(yahoo,"yahootickets.csv","fandueltickets.csv"))
 
-# string1 <- paste0(gsub("(\\w+\\s+\\w+)","\"\\1\"",finalTickets[[1]]$Position),collapse=",")
-# writeTickets(header=string1,file=ticketsfile)
+string1 <- paste0(gsub("(\\w+\\s+\\w+)","\"\\1\"",finalTickets[[1]]$Position),collapse=",")
+writeTickets(header=string1,file=ticketsfile)
 
 # rdatafile <- ifelse(draftkings,"dktickets.RData",ifelse(yahoo,"yahootickets.RData","fdtickets.RData"))
