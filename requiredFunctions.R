@@ -85,9 +85,16 @@ playerDistribution <- function(){
   is.finalTickets <- "finalTickets" %in% ls(globalenv())
   if(!is.finalTickets) load("totaltickets.RData")
   finalTickets <<- finalTickets
-  names.list <- unlist(getUniqueTickets(finalTickets))
+  names <- scan(file="",what=character(),nmax=9,quiet=TRUE,sep="\n")
+  if(length(names)>0){
+    tempTickets <- lapply(finalTickets,namedTickets,names)
+    tempTickets <- Filter(Negate(is.null),tempTickets)
+  } else {
+    tempTickets <- finalTickets
+  }
+  names.list <- unlist(getUniqueTickets(tempTickets))
   totalCounts <- count(names.list)
-  totalTickets <- length(getUniqueTickets(finalTickets))
+  totalTickets <- length(getUniqueTickets(tempTickets))
   names(totalCounts) <- c("Players","Tickets")
   totalCounts$Percentage <- round(totalCounts$Tickets*100/totalTickets,digits=2)
   totalCounts <- totalCounts[order(totalCounts$Percentage,decreasing=TRUE),]
@@ -133,4 +140,26 @@ salaryDistribution <- function(){
   names(tmp) <- c("Salary","Tickets")
   tmp$Percentage <- paste0(as.character(round(tmp$Tickets*100/length(finalTickets),digits = 2)),"%")
   return(tmp)
+}
+
+parseTable <- function(dataTable,contestNumber){
+  print(contestNumber)
+  dataTable$"ContestNumber" <- rep(contestNumber,nrow(dataTable))
+  return(dataTable[,.(Rank, EntryId, EntryName, Points, ContestNumber,
+               QB = gsub("QB (.*) RB.*RB.*WR.*","\\1",Lineup),
+               RB1 = gsub("QB.*RB (.*) RB.*","\\1",Lineup),
+               RB2 = gsub("QB.*RB.*RB (.*) WR.*WR.*WR.*","\\1",Lineup),
+               WR1 = gsub("QB.*WR (.*) WR.*WR.*","\\1",Lineup),
+               WR2 = gsub("QB.*WR.*WR (.*) WR.*","\\1",Lineup),
+               WR3 = gsub("QB.*WR.*WR.*WR (.*) TE.*","\\1",Lineup),
+               TE = gsub("QB.*TE (.*) FLEX.*","\\1",Lineup),
+               FLEX = gsub("QB.*FLEX (.*) DST.*","\\1",Lineup),
+               DST = gsub("QB.*DST (\\w+) ","\\1",Lineup))])
+}
+
+readParseTable <- function(filePath){
+  dataTable <- fread(filePath,stringsAsFactors=FALSE)
+  contestNumber <- gsub("\\D*\\d*\\D*(\\d*).*","\\1",filePath)
+  print(contestNumber)
+  return(parseTable(dataTable,contestNumber))
 }

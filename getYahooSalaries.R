@@ -15,7 +15,7 @@ cprof <- getChromeProfile("C:\\Users\\AGORE\\AppData\\Local\\Google\\Chrome\\Use
 
 remDr <- remoteDriver(browser="chrome" ,extraCapabilities=cprof)
 
-system("java -jar selenium-server-standalone-2.47.1.jar")
+# system("java -jar selenium-server-standalone-2.47.1.jar")
 
 remDr$open()
 
