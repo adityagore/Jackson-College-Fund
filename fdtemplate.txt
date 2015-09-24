@@ -1,2 +1,4 @@
 "QB","RB","RB","WR","WR","WR","TE","K","DST"
-Carson Palmer,Adrian Peterson,Ryan Mathews,,,,Greg Olsen,,Cleveland Browns
+
+Tyrod Taylor,DeAngelo Williams,,,,,Chandler Catanzaro,Philadelphia Eagles
+

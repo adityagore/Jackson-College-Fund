@@ -1,39 +1,48 @@
-"Name","Position","Salary"
-Ryan Mathews,RB,3600
-Danny Woodhead,RB,3700
-Ameer Abdullah,RB,4000
-Chris Ivory,RB,4100
-Darren McFadden,RB,4400
-Benny Cunningham,RB,3000
-Tevin Coleman,RB,4800
-Lamar Miller,RB,5500
-Mark Ingram,RB,5600
-Justin Forsett,RB,6200
-DeMarco Murray,RB,6700
-LeSean McCoy,RB,7200
-Eddie Lacy,RB,7500
-Richard Rodgers,TE,2500
-Jordan Reed,TE,3300
-Martellus Bennett,TE,4300
-Greg Olsen,TE,5300
-Jimmy Graham,TE,5600
-Leonard Hankerson,WR,3000
-Kamar Aiken,WR,3300
-Davante Adams,WR,4400
-John Brown,WR,4500
-Rueben Randle,WR,5100
-Kendall Wright ,WR,5100
-Larry Fitzgerald,WR,5500
-Nelson Agholor,WR,5700
-Andre Johnson,WR,6100
-Keenan Allen,WR,7100
-Calvin Johnson,WR,8500
-Dez Bryant,WR,8700
-Demaryius Thomas,WR,9100
-Julio Jones,WR,9300
-Jeremy Maclin,WR,6900
-Vincent Jackson,WR,6000
-Brandon Marshall,WR,6600
-Amari Cooper,WR,6700
-Allen Robinson,WR,5400
-Brandin Cooks,WR,7100
+"Position","Name","Salary","GameInfo","AvgPointsPerGame","teamAbbrev"
+"WR","Julio Jones",8900,"Atl@NYG 01:00PM ET",21.293,"Atl"
+"WR","Antonio Brown",8800,"SF@Pit 01:00PM ET",25.682,"Pit"
+"WR","Odell Beckham Jr.",8800,"Atl@NYG 01:00PM ET",26.417,"NYG"
+"RB","Adrian Peterson",7700,"Det@Min 01:00PM ET",11.300,"Min"
+"WR","A.J. Green",7500,"SD@Cin 01:00PM ET",17.100,"Cin"
+"RB","Eddie Lacy",7200,"Sea@GB 08:30PM ET",17.167,"GB"
+"WR","Jordan Matthews",7100,"Dal@Phi 04:25PM ET",13.200,"Phi"
+"WR","Keenan Allen",7100,"SD@Cin 01:00PM ET",13.307,"SD"
+"RB","DeMarco Murray",7000,"Dal@Phi 04:25PM ET",24.033,"Phi"
+"WR","Brandin Cooks",7000,"TB@NO 01:00PM ET",13.930,"NO"
+"WR","Julian Edelman",6700,"NE@Buf 01:00PM ET",17.065,"NE"
+"WR","Amari Cooper",6400,"Bal@Oak 04:05PM ET",0,"Oak"
+"RB","Justin Forsett",6200,"Bal@Oak 04:05PM ET",16.233,"Bal"
+"WR","Steve Smith Sr.",6000,"Bal@Oak 04:05PM ET",14.667,"Bal"
+"RB","Mark Ingram",5900,"TB@NO 01:00PM ET",15.762,"NO"
+"WR","Roddy White",5800,"Atl@NYG 01:00PM ET",15.650,"Atl"
+"WR","Andre Johnson",5800,"NYJ@Ind 08:30PM ET",13.107,"Ind"
+"TE","Jimmy Graham",5800,"Sea@GB 08:30PM ET",14.681,"Sea"
+"RB","Jonathan Stewart",5500,"Hou@Car 01:00PM ET",12.227,"Car"
+"RB","Lamar Miller",5500,"Mia@Jax 04:05PM ET",14.525,"Mia"
+"RB","DeAngelo Williams",5300,"SF@Pit 01:00PM ET",4.438,"Pit"
+"WR","Pierre Garcon",5000,"StL@Was 01:00PM ET",10.263,"Was"
+"WR","Kendall Wright",5000,"Ten@Cle 01:00PM ET",12.279,"Ten"
+"TE","Greg Olsen",4900,"Hou@Car 01:00PM ET",13.683,"Car"
+"WR","Davante Adams",4900,"Sea@GB 08:30PM ET",7.389,"GB"
+"RB","Frank Gore",4800,"NYJ@Ind 08:30PM ET",10.794,"Ind"
+"RB","T.J. Yeldon",4800,"Mia@Jax 04:05PM ET",0,"Jax"
+"RB","Chris Ivory",4700,"NYJ@Ind 08:30PM ET",9.963,"NYJ"
+"WR","Rueben Randle",4700,"Atl@NYG 01:00PM ET",11.988,"NYG"
+"WR","Donte Moncrief",4600,"NYJ@Ind 08:30PM ET",6.405,"Ind"
+"RB","Bishop Sankey",4500,"Ten@Cle 01:00PM ET",6.138,"Ten"
+"RB","Tevin Coleman",4500,"Atl@NYG 01:00PM ET",0,"Atl"
+"RB","Isaiah Crowell",4400,"Ten@Cle 01:00PM ET",7.775,"Cle"
+"WR","Stevie Johnson",4200,"SD@Cin 01:00PM ET",7.654,"SD"
+"WR","Terrance Williams",4200,"Dal@Phi 04:25PM ET",10.117,"Dal"
+"TE","Tyler Eifert",4200,"SD@Cin 01:00PM ET",34.400,"Cin"
+"TE","Jordan Cameron",4000,"Mia@Jax 04:05PM ET",8.140,"Mia"
+"RB","Chris Johnson",3800,"Ari@Chi 01:00PM ET",7.463,"Ari"
+"WR","Eddie Royal",3700,"Ari@Chi 01:00PM ET",11.575,"Chi"
+"RB","Ryan Mathews",3600,"Dal@Phi 04:25PM ET",11.650,"Phi"
+"TE","Ladarius Green",3500,"SD@Cin 01:00PM ET",2.971,"SD"
+"WR","Andre Roberts",3300,"StL@Was 01:00PM ET",5.838,"Was"
+"TE","Jason Witten",4300,"Dal@Phi 04:25PM ET",26.000,"Dal"
+"WR","Cole Beasley",3300,"Dal@Phi 04:25PM ET",6.561,"Dal"
+"WR","Brandon Coleman",3300,"TB@NO 01:00PM ET",0,"NO"
+"WR","Danny Amendola",3300,"NE@Buf 01:00PM ET",4.400,"NE"
+"WR","Leonard Hankerson",3000,"Atl@NYG 01:00PM ET",3.600,"Atl"

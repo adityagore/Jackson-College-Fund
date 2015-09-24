@@ -1,908 +1,575 @@
 "Pos","Name","Opponent","Salary"
-"QB","Aaron Rodgers","GB @ Chi, 1:00 PM",48
-"QB","Tony Romo","NYG @ Dal, 8:30 PM",46
-"QB","Matt Ryan","Phi @ Atl, 7:10 PM",46
-"QB","Eli Manning","NYG @ Dal, 8:30 PM",45
-"QB","Drew Brees","NO @ Ari, 4:05 PM",44
-"QB","Ryan Tannehill","Mia @ Was, 1:00 PM",43
-"QB","Russell Wilson","Sea @ StL, 1:00 PM",43
-"QB","Joe Flacco","Bal @ Den, 4:25 PM",43
-"QB","Andrew Luck","Ind @ Buf, 1:00 PM",41
-"QB","Peyton Manning","Bal @ Den, 4:25 PM",41
-"WR","Odell Beckham Jr.","NYG @ Dal, 8:30 PM",41
-"QB","Sam Bradford","Phi @ Atl, 7:10 PM",41
-"QB","Jay Cutler","GB @ Chi, 1:00 PM",40
-"QB","Carson Palmer","NO @ Ari, 4:05 PM",40
-"QB","Cam Newton","Car @ Jax, 1:00 PM",39
-"QB","Philip Rivers","Det @ SD, 4:05 PM",39
-"WR","Julio Jones","Phi @ Atl, 7:10 PM",39
-"QB","Marcus Mariota","Ten @ TB, 4:25 PM",37
-"QB","Jameis Winston","Ten @ TB, 4:25 PM",36
-"RB","C.J. Anderson","Bal @ Den, 4:25 PM",36
-"QB","Teddy Bridgewater","Min @ SF, 10:20 PM",36
-"QB","Ryan Fitzpatrick","Cle @ NYJ, 1:00 PM",35
-"WR","Demaryius Thomas","Bal @ Den, 4:25 PM",35
-"QB","Colin Kaepernick","Min @ SF, 10:20 PM",35
-"RB","Adrian Peterson","Min @ SF, 10:20 PM",34
-"WR","Randall CobbP","GB @ Chi, 1:00 PM",33
-"RB","Matt Forte","GB @ Chi, 1:00 PM",33
-"QB","Alex Smith","KC @ Hou, 1:00 PM",33
-"RB","Marshawn Lynch","Sea @ StL, 1:00 PM",32
-"QB","Matthew Stafford","Det @ SD, 4:05 PM",32
-"WR","Dez BryantP","NYG @ Dal, 8:30 PM",32
-"WR","Alshon JefferyQ","GB @ Chi, 1:00 PM",31
-"QB","Nick Foles","Sea @ StL, 1:00 PM",31
-"WR","Jordy NelsonO","GB @ Chi, 1:00 PM",30
-"RB","Jamaal Charles","KC @ Hou, 1:00 PM",30
-"RB","Arian FosterO","KC @ Hou, 1:00 PM",30
-"QB","Blake Bortles","Car @ Jax, 1:00 PM",30
-"WR","Calvin Johnson","Det @ SD, 4:05 PM",30
-"QB","Andy Dalton","Cin @ Oak, 4:25 PM",30
-"RB","DeMarco Murray","Phi @ Atl, 7:10 PM",30
-"WR","Mike EvansQ","Ten @ TB, 4:25 PM",29
-"QB","Derek Carr","Cin @ Oak, 4:25 PM",29
-"RB","Eddie Lacy","GB @ Chi, 1:00 PM",28
-"WR","A.J. Green","Cin @ Oak, 4:25 PM",28
-"RB","Jeremy Hill","Cin @ Oak, 4:25 PM",28
-"WR","Emmanuel Sanders","Bal @ Den, 4:25 PM",28
-"QB","Brian Hoyer","KC @ Hou, 1:00 PM",27
-"RB","Lamar Miller","Mia @ Was, 1:00 PM",27
-"QB","Robert Griffin IIIO","Mia @ Was, 1:00 PM",27
-"WR","Brandin Cooks","NO @ Ari, 4:05 PM",27
-"WR","Jeremy Maclin","KC @ Hou, 1:00 PM",25
-"WR","Eric Decker","Cle @ NYJ, 1:00 PM",25
-"WR","Keenan Allen","Det @ SD, 4:05 PM",25
-"RB","Justin Forsett","Bal @ Den, 4:25 PM",25
-"QB","Josh McCown","Cle @ NYJ, 1:00 PM",24
-"RB","LeSean McCoyQ","Ind @ Buf, 1:00 PM",24
-"WR","DeSean Jackson","Mia @ Was, 1:00 PM",24
-"WR","Golden Tate","Det @ SD, 4:05 PM",24
-"WR","Amari Cooper","Cin @ Oak, 4:25 PM",24
-"WR","Roddy WhiteP","Phi @ Atl, 7:10 PM",24
-"WR","Torrey Smith","Min @ SF, 10:20 PM",24
-"WR","DeAndre Hopkins","KC @ Hou, 1:00 PM",23
-"WR","Brandon Marshall","Cle @ NYJ, 1:00 PM",23
-"WR","Andre Johnson","Ind @ Buf, 1:00 PM",23
-"WR","T.Y. Hilton","Ind @ Buf, 1:00 PM",23
-"WR","Sammy WatkinsP","Ind @ Buf, 1:00 PM",23
-"RB","Jonathan Stewart","Car @ Jax, 1:00 PM",23
-"RB","Andre Ellington","NO @ Ari, 4:05 PM",23
-"RB","Frank Gore","Ind @ Buf, 1:00 PM",22
-"WR","Jarvis Landry","Mia @ Was, 1:00 PM",22
-"WR","Allen Robinson","Car @ Jax, 1:00 PM",22
-"WR","Marques Colston","NO @ Ari, 4:05 PM",22
-"WR","Steve Smith Sr.","Bal @ Den, 4:25 PM",22
-"WR","Terrance Williams","NYG @ Dal, 8:30 PM",22
-"WR","Jordan Matthews","Phi @ Atl, 7:10 PM",22
-"WR","Anquan Boldin","Min @ SF, 10:20 PM",22
-"QB","Johnny ManzielP","Cle @ NYJ, 1:00 PM",21
-"QB","Matt Cassel","Ind @ Buf, 1:00 PM",21
-"TE","Jimmy Graham","Sea @ StL, 1:00 PM",21
-"RB","Mark Ingram","NO @ Ari, 4:05 PM",21
-"WR","Larry Fitzgerald","NO @ Ari, 4:05 PM",21
-"WR","Michael FloydQ","NO @ Ari, 4:05 PM",21
-"WR","Kendall Wright","Ten @ TB, 4:25 PM",21
-"WR","Vincent Jackson","Ten @ TB, 4:25 PM",21
-"WR","Rueben Randle","NYG @ Dal, 8:30 PM",21
-"WR","Mike Wallace","Min @ SF, 10:20 PM",21
-"QB","Scott TolzienO","GB @ Chi, 1:00 PM",20
-"QB","Matt Blanchard","GB @ Chi, 1:00 PM",20
-"QB","Brett Hundley","GB @ Chi, 1:00 PM",20
-"TE","Martellus Bennett","GB @ Chi, 1:00 PM",20
-"QB","Jimmy Clausen","GB @ Chi, 1:00 PM",20
-"QB","David Fales","GB @ Chi, 1:00 PM",20
-"QB","Shane Carden","GB @ Chi, 1:00 PM",20
-"QB","Chase Daniel","KC @ Hou, 1:00 PM",20
-"TE","Travis Kelce","KC @ Hou, 1:00 PM",20
-"QB","Tyler BrayO","KC @ Hou, 1:00 PM",20
-"QB","Aaron Murray","KC @ Hou, 1:00 PM",20
-"QB","Ryan Mallett","KC @ Hou, 1:00 PM",20
-"QB","Tom SavageIR","KC @ Hou, 1:00 PM",20
-"QB","Zac Dysert","KC @ Hou, 1:00 PM",20
-"QB","Austin Davis","Cle @ NYJ, 1:00 PM",20
-"QB","Thaddeus Lewis","Cle @ NYJ, 1:00 PM",20
-"QB","Connor ShawO","Cle @ NYJ, 1:00 PM",20
-"QB","Matt Flynn","Cle @ NYJ, 1:00 PM",20
-"QB","Geno SmithO","Cle @ NYJ, 1:00 PM",20
-"QB","Bryce Petty","Cle @ NYJ, 1:00 PM",20
-"QB","Jake Heaps","Cle @ NYJ, 1:00 PM",20
-"QB","Josh Johnson","Cle @ NYJ, 1:00 PM",20
-"QB","Matt Hasselbeck","Ind @ Buf, 1:00 PM",20
-"QB","Bryan Bennett","Ind @ Buf, 1:00 PM",20
-"QB","Tyrod Taylor","Ind @ Buf, 1:00 PM",20
-"QB","Matt Simms","Ind @ Buf, 1:00 PM",20
-"QB","EJ Manuel","Ind @ Buf, 1:00 PM",20
-"QB","Matt Moore","Mia @ Was, 1:00 PM",20
-"QB","Josh Freeman","Mia @ Was, 1:00 PM",20
-"QB","McLeod Bethel-Thompson","Mia @ Was, 1:00 PM",20
-"QB","Colt McCoy","Mia @ Was, 1:00 PM",20
-"QB","Kirk Cousins","Mia @ Was, 1:00 PM",20
-"QB","Logan Thomas","Mia @ Was, 1:00 PM",20
-"QB","Derek Anderson","Car @ Jax, 1:00 PM",20
-"QB","Joe Webb","Car @ Jax, 1:00 PM",20
-"QB","Chad Henne","Car @ Jax, 1:00 PM",20
-"QB","Jeff Tuel","Car @ Jax, 1:00 PM",20
-"QB","Tarvaris JacksonO","Sea @ StL, 1:00 PM",20
-"QB","R.J. Archer","Sea @ StL, 1:00 PM",20
-"QB","B.J. Daniels","Sea @ StL, 1:00 PM",20
-"QB","Jake Waters","Sea @ StL, 1:00 PM",20
-"QB","Case Keenum","Sea @ StL, 1:00 PM",20
-"RB","Tre MasonQ","Sea @ StL, 1:00 PM",20
-"QB","Sean Mannion","Sea @ StL, 1:00 PM",20
-"QB","Luke McCown","NO @ Ari, 4:05 PM",20
-"QB","Garrett Grayson","NO @ Ari, 4:05 PM",20
-"QB","Drew Stanton","NO @ Ari, 4:05 PM",20
-"QB","Phillip Sims","NO @ Ari, 4:05 PM",20
-"QB","Matt Barkley","NO @ Ari, 4:05 PM",20
-"QB","Dan Orlovsky","Det @ SD, 4:05 PM",20
-"RB","Joique BellP","Det @ SD, 4:05 PM",20
-"QB","Kellen Moore","Det @ SD, 4:05 PM",20
-"QB","Garrett Gilbert","Det @ SD, 4:05 PM",20
-"QB","Kellen Clemens","Det @ SD, 4:05 PM",20
-"QB","Brad Sorensen","Det @ SD, 4:05 PM",20
-"QB","Chase Rettig","Det @ SD, 4:05 PM",20
-"QB","Ryan Griffin","Ten @ TB, 4:25 PM",20
-"QB","Charlie Whitehurst","Ten @ TB, 4:25 PM",20
-"QB","Alex Tanney","Ten @ TB, 4:25 PM",20
-"QB","Zach Mettenberger","Ten @ TB, 4:25 PM",20
-"QB","Mike Glennon","Ten @ TB, 4:25 PM",20
-"QB","Seth Lobato","Ten @ TB, 4:25 PM",20
-"QB","AJ McCarron","Cin @ Oak, 4:25 PM",20
-"QB","Keith Wenning","Cin @ Oak, 4:25 PM",20
-"QB","Christian Ponder","Cin @ Oak, 4:25 PM",20
-"RB","Latavius Murray","Cin @ Oak, 4:25 PM",20
-"QB","Matt McGloin","Cin @ Oak, 4:25 PM",20
-"QB","Cody Fajardo","Cin @ Oak, 4:25 PM",20
-"QB","Matt Schaub","Bal @ Den, 4:25 PM",20
-"QB","Bryn Renner","Bal @ Den, 4:25 PM",20
-"QB","Brock Osweiler","Bal @ Den, 4:25 PM",20
-"QB","Trevor Siemian","Bal @ Den, 4:25 PM",20
-"WR","Victor CruzO","NYG @ Dal, 8:30 PM",20
-"QB","Ricky Stanzi","NYG @ Dal, 8:30 PM",20
-"QB","Ryan Nassib","NYG @ Dal, 8:30 PM",20
-"TE","Jason Witten","NYG @ Dal, 8:30 PM",20
-"QB","Brandon Weeden","NYG @ Dal, 8:30 PM",20
-"QB","Dustin Vaughan","NYG @ Dal, 8:30 PM",20
-"QB","Jameill Showers","NYG @ Dal, 8:30 PM",20
-"QB","Stephen Morris","Phi @ Atl, 7:10 PM",20
-"QB","Mark Sanchez","Phi @ Atl, 7:10 PM",20
-"QB","Tim Tebow","Phi @ Atl, 7:10 PM",20
-"QB","G.J. Kinne","Phi @ Atl, 7:10 PM",20
-"QB","T.J. Yates","Phi @ Atl, 7:10 PM",20
-"QB","Sean Renfree","Phi @ Atl, 7:10 PM",20
-"QB","Shaun Hill","Min @ SF, 10:20 PM",20
-"QB","Mike KafkaO","Min @ SF, 10:20 PM",20
-"QB","Taylor Heinicke","Min @ SF, 10:20 PM",20
-"QB","Blaine Gabbert","Min @ SF, 10:20 PM",20
-"QB","Dylan Thompson","Min @ SF, 10:20 PM",20
-"WR","Davante Adams","GB @ Chi, 1:00 PM",19
-"WR","Eddie RoyalP","GB @ Chi, 1:00 PM",19
-"WR","Greg Jennings","Mia @ Was, 1:00 PM",19
-"WR","Kenny Stills","Mia @ Was, 1:00 PM",19
-"WR","Pierre Garcon","Mia @ Was, 1:00 PM",19
-"RB","Alfred Morris","Mia @ Was, 1:00 PM",19
-"WR","Devin Funchess","Car @ Jax, 1:00 PM",19
-"WR","Doug Baldwin","Sea @ StL, 1:00 PM",19
-"TE","Charles ClayP","Ind @ Buf, 1:00 PM",18
-"WR","Brian Quick","Sea @ StL, 1:00 PM",18
-"RB","Ameer Abdullah","Det @ SD, 4:05 PM",18
-"TE","Antonio GatesO","Det @ SD, 4:05 PM",18
-"WR","Malcom Floyd","Det @ SD, 4:05 PM",18
-"RB","Melvin Gordon","Det @ SD, 4:05 PM",18
-"RB","Doug Martin","Ten @ TB, 4:25 PM",18
-"RB","Giovani Bernard","Cin @ Oak, 4:25 PM",18
-"RB","Joseph Randle","NYG @ Dal, 8:30 PM",18
-"TE","Zach ErtzQ","Phi @ Atl, 7:10 PM",18
-"WR","Nelson Agholor","Phi @ Atl, 7:10 PM",18
-"WR","Charles Johnson","Min @ SF, 10:20 PM",18
-"RB","Carlos Hyde","Min @ SF, 10:20 PM",18
-"RB","Chris Ivory","Cle @ NYJ, 1:00 PM",17
-"TE","Greg Olsen","Car @ Jax, 1:00 PM",17
-"WR","Kenny Britt","Sea @ StL, 1:00 PM",17
-"WR","John Brown","NO @ Ari, 4:05 PM",17
-"WR","Marvin Jones","Cin @ Oak, 4:25 PM",17
-"RB","Rashad Jennings","NYG @ Dal, 8:30 PM",17
-"RB","Alfred Blue","KC @ Hou, 1:00 PM",16
-"TE","Coby Fleener","Ind @ Buf, 1:00 PM",16
-"WR","Percy HarvinP","Ind @ Buf, 1:00 PM",16
-"TE","Jordan Cameron","Mia @ Was, 1:00 PM",16
-"TE","Julius ThomasO","Car @ Jax, 1:00 PM",16
-"RB","T.J. Yeldon","Car @ Jax, 1:00 PM",16
-"WR","Jermaine Kearse","Sea @ StL, 1:00 PM",16
-"TE","Delanie Walker","Ten @ TB, 4:25 PM",16
-"WR","Breshad PerrimanO","Bal @ Den, 4:25 PM",16
-"RB","Shane Vereen","NYG @ Dal, 8:30 PM",16
-"RB","Tevin Coleman","Phi @ Atl, 7:10 PM",16
-"WR","Nate Washington","KC @ Hou, 1:00 PM",15
-"RB","Duke Johnson Jr.P","Cle @ NYJ, 1:00 PM",15
-"TE","Dwayne Allen","Ind @ Buf, 1:00 PM",15
-"WR","Robert WoodsP","Ind @ Buf, 1:00 PM",15
-"TE","Jordan Reed","Mia @ Was, 1:00 PM",15
-"WR","Allen Hurns","Car @ Jax, 1:00 PM",15
-"TE","Jared Cook","Sea @ StL, 1:00 PM",15
-"RB","Todd GurleyO","Sea @ StL, 1:00 PM",15
-"WR","Michael Crabtree","Cin @ Oak, 4:25 PM",15
-"WR","Cole Beasley","NYG @ Dal, 8:30 PM",15
-"RB","Ryan Mathews","Phi @ Atl, 7:10 PM",15
-"RB","Devonta FreemanQ","Phi @ Atl, 7:10 PM",15
-"DEF","Green Bay Packers","GB @ Chi, 1:00 PM",14
-"WR","Dwayne BoweQ","Cle @ NYJ, 1:00 PM",14
-"RB","Isaiah Crowell","Cle @ NYJ, 1:00 PM",14
-"RB","Daniel HerronIR","Ind @ Buf, 1:00 PM",14
-"RB","Denard Robinson","Car @ Jax, 1:00 PM",14
-"DEF","Carolina Panthers","Car @ Jax, 1:00 PM",14
-"RB","Fred Jackson","Sea @ StL, 1:00 PM",14
-"RB","C.J. SpillerO","NO @ Ari, 4:05 PM",14
-"WR","Harry Douglas","Ten @ TB, 4:25 PM",14
-"TE","Mychal Rivera","Cin @ Oak, 4:25 PM",14
-"TE","Owen Daniels","Bal @ Den, 4:25 PM",14
-"TE","Larry Donnell","NYG @ Dal, 8:30 PM",14
-"TE","Kyle Rudolph","Min @ SF, 10:20 PM",14
-"WR","Jarius Wright","Min @ SF, 10:20 PM",14
-"DEF","Houston Texans","KC @ Hou, 1:00 PM",13
-"WR","Andrew Hawkins","Cle @ NYJ, 1:00 PM",13
-"WR","Donte Moncrief","Ind @ Buf, 1:00 PM",13
-"DEF","Seattle Seahawks","Sea @ StL, 1:00 PM",13
-"DEF","St. Louis Rams","Sea @ StL, 1:00 PM",13
-"WR","Stevie Johnson","Det @ SD, 4:05 PM",13
-"RB","Danny Woodhead","Det @ SD, 4:05 PM",13
-"WR","Dontrelle InmanO","Det @ SD, 4:05 PM",13
-"TE","Tyler Eifert","Cin @ Oak, 4:25 PM",13
-"RB","Roy Helu Jr.","Cin @ Oak, 4:25 PM",13
-"RB","Ronnie Hillman","Bal @ Den, 4:25 PM",13
-"TE","Andrew Quarless","GB @ Chi, 1:00 PM",12
-"WR","Marquess WilsonQ","GB @ Chi, 1:00 PM",12
-"DEF","Buffalo Bills","Ind @ Buf, 1:00 PM",12
-"DEF","Miami Dolphins","Mia @ Was, 1:00 PM",12
-"WR","Corey Brown","Car @ Jax, 1:00 PM",12
-"TE","Marcedes Lewis","Car @ Jax, 1:00 PM",12
-"WR","Brandon Coleman","NO @ Ari, 4:05 PM",12
-"TE","Jermaine GreshamQ","NO @ Ari, 4:05 PM",12
-"TE","Austin Seferian-Jenkins","Ten @ TB, 4:25 PM",12
-"RB","Charles Sims","Ten @ TB, 4:25 PM",12
-"WR","Mohamed Sanu","Cin @ Oak, 4:25 PM",12
-"WR","Kamar Aiken","Bal @ Den, 4:25 PM",12
-"RB","Andre Williams","NYG @ Dal, 8:30 PM",12
-"RB","Darren Sproles","Phi @ Atl, 7:10 PM",12
-"RB","Jerick McKinnon","Min @ SF, 10:20 PM",12
-"RB","Reggie Bush","Min @ SF, 10:20 PM",12
-"TE","Vernon Davis","Min @ SF, 10:20 PM",12
-"DEF","Minnesota Vikings","Min @ SF, 10:20 PM",12
-"DEF","San Francisco 49ers","Min @ SF, 10:20 PM",12
-"TE","Richard Rodgers","GB @ Chi, 1:00 PM",11
-"WR","Ty Montgomery","GB @ Chi, 1:00 PM",11
-"WR","Albert WilsonP","KC @ Hou, 1:00 PM",11
-"WR","Cecil Shorts III","KC @ Hou, 1:00 PM",11
-"TE","Jace AmaroO","Cle @ NYJ, 1:00 PM",11
-"DEF","Cleveland Browns","Cle @ NYJ, 1:00 PM",11
-"WR","Phillip DorsettO","Ind @ Buf, 1:00 PM",11
-"WR","DeVante ParkerP","Mia @ Was, 1:00 PM",11
-"DEF","Washington Redskins","Mia @ Was, 1:00 PM",11
-"WR","Jerricho Cotchery","Car @ Jax, 1:00 PM",11
-"RB","Mike Tolbert","Car @ Jax, 1:00 PM",11
-"WR","Kelvin BenjaminO","Car @ Jax, 1:00 PM",11
-"WR","Marqise LeeO","Car @ Jax, 1:00 PM",11
-"DEF","Jacksonville Jaguars","Car @ Jax, 1:00 PM",11
-"WR","Chris Matthews","Sea @ StL, 1:00 PM",11
-"TE","Luke Willson","Sea @ StL, 1:00 PM",11
-"WR","Tavon Austin","Sea @ StL, 1:00 PM",11
-"RB","Benny Cunningham","Sea @ StL, 1:00 PM",11
-"TE","Benjamin Watson","NO @ Ari, 4:05 PM",11
-"TE","Josh Hill","NO @ Ari, 4:05 PM",11
-"TE","Eric EbronQ","Det @ SD, 4:05 PM",11
-"TE","Ladarius GreenO","Det @ SD, 4:05 PM",11
-"RB","Bishop Sankey","Ten @ TB, 4:25 PM",11
-"DEF","Tennessee Titans","Ten @ TB, 4:25 PM",11
-"DEF","Tampa Bay Buccaneers","Ten @ TB, 4:25 PM",11
-"WR","Rod Streater","Cin @ Oak, 4:25 PM",11
-"RB","Lorenzo TaliaferroO","Bal @ Den, 4:25 PM",11
-"TE","Virgil Green","Bal @ Den, 4:25 PM",11
-"RB","Darren McFadden","NYG @ Dal, 8:30 PM",11
-"WR","Riley Cooper","Phi @ Atl, 7:10 PM",11
-"RB","Matt Asiata","Min @ SF, 10:20 PM",11
-"TE","Khari Lee","GB @ Chi, 1:00 PM",10
-"RB","John Kuhn","GB @ Chi, 1:00 PM",10
-"RB","James Starks","GB @ Chi, 1:00 PM",10
-"WR","Myles White","GB @ Chi, 1:00 PM",10
-"WR","Jared Abbrederis","GB @ Chi, 1:00 PM",10
-"WR","Jeff Janis","GB @ Chi, 1:00 PM",10
-"RB","Rajion Neal","GB @ Chi, 1:00 PM",10
-"TE","Justin Perillo","GB @ Chi, 1:00 PM",10
-"RB","Aaron Ripkowski","GB @ Chi, 1:00 PM",10
-"TE","Kennard Backman","GB @ Chi, 1:00 PM",10
-"TE","Harold Spears","GB @ Chi, 1:00 PM",10
-"WR","Javess Blue","GB @ Chi, 1:00 PM",10
-"RB","John Crockett","GB @ Chi, 1:00 PM",10
-"RB","Alonzo Harris","GB @ Chi, 1:00 PM",10
-"WR","Jimmie Hunt","GB @ Chi, 1:00 PM",10
-"WR","Larry Pinkard","GB @ Chi, 1:00 PM",10
-"WR","Ed Williams","GB @ Chi, 1:00 PM",10
-"TE","Dante Rosario","GB @ Chi, 1:00 PM",10
-"TE","Zach Miller","GB @ Chi, 1:00 PM",10
-"TE","Bear Pascoe","GB @ Chi, 1:00 PM",10
-"WR","Marc Mariani","GB @ Chi, 1:00 PM",10
-"RB","Daniel Thomas","GB @ Chi, 1:00 PM",10
-"RB","Jacquizz Rodgers","GB @ Chi, 1:00 PM",10
-"WR","John Chiles","GB @ Chi, 1:00 PM",10
-"WR","Joshua Bellamy","GB @ Chi, 1:00 PM",10
-"WR","Jeremy Kelley","GB @ Chi, 1:00 PM",10
-"TE","Chris Pantale","GB @ Chi, 1:00 PM",10
-"RB","Ka'Deem Carey","GB @ Chi, 1:00 PM",10
-"TE","Blake Annen","GB @ Chi, 1:00 PM",10
-"WR","Rashad Lawrence","GB @ Chi, 1:00 PM",10
-"RB","Senorise Perry","GB @ Chi, 1:00 PM",10
-"TE","Kevin Greene","GB @ Chi, 1:00 PM",10
-"WR","Kevin WhiteO","GB @ Chi, 1:00 PM",10
-"RB","Jeremy Langford","GB @ Chi, 1:00 PM",10
-"WR","Levi Norwood","GB @ Chi, 1:00 PM",10
-"WR","Cameron Meredith","GB @ Chi, 1:00 PM",10
-"WR","Ify Umodu","GB @ Chi, 1:00 PM",10
-"WR","A.J. Cruz","GB @ Chi, 1:00 PM",10
-"DEF","Chicago Bears","GB @ Chi, 1:00 PM",10
-"TE","Gannon Sinclair","GB @ Chi, 1:00 PM",10
-"WR","James Jones","GB @ Chi, 1:00 PM",10
-"WR","Jason Avant","KC @ Hou, 1:00 PM",10
-"RB","Anthony Sherman","KC @ Hou, 1:00 PM",10
-"TE","Richard GordonO","KC @ Hou, 1:00 PM",10
-"TE","Ryan Taylor","KC @ Hou, 1:00 PM",10
-"WR","Junior Hemingway","KC @ Hou, 1:00 PM",10
-"RB","Knile Davis","KC @ Hou, 1:00 PM",10
-"RB","Spencer Ware","KC @ Hou, 1:00 PM",10
-"WR","Frankie Hammond Jr.","KC @ Hou, 1:00 PM",10
-"TE","Demetrius Harris","KC @ Hou, 1:00 PM",10
-"TE","Adam Schiltz","KC @ Hou, 1:00 PM",10
-"TE","James Winchester","KC @ Hou, 1:00 PM",10
-"WR","Fred Williams","KC @ Hou, 1:00 PM",10
-"WR","De'Anthony Thomas","KC @ Hou, 1:00 PM",10
-"RB","Darrin Reaves","KC @ Hou, 1:00 PM",10
-"RB","Charcandrick WestO","KC @ Hou, 1:00 PM",10
-"WR","L'Damian Washington","KC @ Hou, 1:00 PM",10
-"WR","Chris ConleyP","KC @ Hou, 1:00 PM",10
-"TE","James O'Shaughnessy","KC @ Hou, 1:00 PM",10
-"WR","Da'Ron Brown","KC @ Hou, 1:00 PM",10
-"WR","Kenny Cook","KC @ Hou, 1:00 PM",10
-"WR","Tello Luckett","KC @ Hou, 1:00 PM",10
-"WR","Jeret Smith","KC @ Hou, 1:00 PM",10
-"TE","Garrett Graham","KC @ Hou, 1:00 PM",10
-"WR","Keshawn Martin","KC @ Hou, 1:00 PM",10
-"WR","Damaris Johnson","KC @ Hou, 1:00 PM",10
-"RB","Chris Polk","KC @ Hou, 1:00 PM",10
-"RB","Jonathan Grimes","KC @ Hou, 1:00 PM",10
-"WR","Alan Bonner","KC @ Hou, 1:00 PM",10
-"TE","Ryan Griffin","KC @ Hou, 1:00 PM",10
-"WR","EZ Nwachukwu","KC @ Hou, 1:00 PM",10
-"TE","C.J. Fiedorowicz","KC @ Hou, 1:00 PM",10
-"RB","Jay Prosch","KC @ Hou, 1:00 PM",10
-"WR","Jace Davis","KC @ Hou, 1:00 PM",10
-"TE","Anthony DenhamO","KC @ Hou, 1:00 PM",10
-"WR","Travis Labhart","KC @ Hou, 1:00 PM",10
-"WR","Jaelen Strong","KC @ Hou, 1:00 PM",10
-"WR","Keith Mumphery","KC @ Hou, 1:00 PM",10
-"RB","Kenny Hilliard","KC @ Hou, 1:00 PM",10
-"WR","Chandler Worthy","KC @ Hou, 1:00 PM",10
-"DEF","Kansas City Chiefs","KC @ Hou, 1:00 PM",10
-"TE","Brian Parker","KC @ Hou, 1:00 PM",10
-"TE","Gary Barnidge","Cle @ NYJ, 1:00 PM",10
-"RB","Jalen Parmele","Cle @ NYJ, 1:00 PM",10
-"WR","Brian Hartline","Cle @ NYJ, 1:00 PM",10
-"TE","Jim Dray","Cle @ NYJ, 1:00 PM",10
-"WR","Marlon Moore","Cle @ NYJ, 1:00 PM",10
-"TE","Rob Housler","Cle @ NYJ, 1:00 PM",10
-"RB","Shaun Draughn","Cle @ NYJ, 1:00 PM",10
-"WR","Terrelle Pryor","Cle @ NYJ, 1:00 PM",10
-"WR","Travis Benjamin","Cle @ NYJ, 1:00 PM",10
-"WR","Josh Lenz","Cle @ NYJ, 1:00 PM",10
-"RB","Timothy Flanders","Cle @ NYJ, 1:00 PM",10
-"WR","Taylor Gabriel","Cle @ NYJ, 1:00 PM",10
-"RB","Glenn WinstonO","Cle @ NYJ, 1:00 PM",10
-"WR","Vince Mayle","Cle @ NYJ, 1:00 PM",10
-"RB","Malcolm Johnson","Cle @ NYJ, 1:00 PM",10
-"TE","Randall TelferO","Cle @ NYJ, 1:00 PM",10
-"WR","Shane Wynn","Cle @ NYJ, 1:00 PM",10
-"TE","E.J. Bibbs","Cle @ NYJ, 1:00 PM",10
-"WR","Darius Jennings","Cle @ NYJ, 1:00 PM",10
-"RB","Luke Lundy","Cle @ NYJ, 1:00 PM",10
-"TE","Anthony Ezeakunne","Cle @ NYJ, 1:00 PM",10
-"TE","Kellen Davis","Cle @ NYJ, 1:00 PM",10
-"TE","Jeff Cumberland","Cle @ NYJ, 1:00 PM",10
-"TE","Steve Maneri","Cle @ NYJ, 1:00 PM",10
-"RB","Stevan RidleyO","Cle @ NYJ, 1:00 PM",10
-"RB","Bilal Powell","Cle @ NYJ, 1:00 PM",10
-"WR","Jeremy KerleyO","Cle @ NYJ, 1:00 PM",10
-"WR","DeVier Posey","Cle @ NYJ, 1:00 PM",10
-"WR","T.J. Graham","Cle @ NYJ, 1:00 PM",10
-"RB","Daryl Richardson","Cle @ NYJ, 1:00 PM",10
-"WR","Saalim Hakim","Cle @ NYJ, 1:00 PM",10
-"WR","Chris Owusu","Cle @ NYJ, 1:00 PM",10
-"RB","Zac Stacy","Cle @ NYJ, 1:00 PM",10
-"RB","Tommy Bohanon","Cle @ NYJ, 1:00 PM",10
-"WR","Shaq Evans","Cle @ NYJ, 1:00 PM",10
-"TE","Arthur Lynch","Cle @ NYJ, 1:00 PM",10
-"WR","Walt Powell","Cle @ NYJ, 1:00 PM",10
-"WR","Quincy Enunwa","Cle @ NYJ, 1:00 PM",10
-"WR","Devin SmithO","Cle @ NYJ, 1:00 PM",10
-"WR","Austin Hill","Cle @ NYJ, 1:00 PM",10
-"TE","Wes Saxton","Cle @ NYJ, 1:00 PM",10
-"WR","Jonathon Rumph","Cle @ NYJ, 1:00 PM",10
-"TE","Zach SudfeldO","Cle @ NYJ, 1:00 PM",10
-"DEF","New York Jets","Cle @ NYJ, 1:00 PM",10
-"WR","Vincent Brown","Ind @ Buf, 1:00 PM",10
-"RB","Vick BallardD","Ind @ Buf, 1:00 PM",10
-"TE","Sean McGrath","Ind @ Buf, 1:00 PM",10
-"WR","Griff Whalen","Ind @ Buf, 1:00 PM",10
-"TE","Jack Doyle","Ind @ Buf, 1:00 PM",10
-"TE","Erik Swoope","Ind @ Buf, 1:00 PM",10
-"RB","Zurlon Tipton","Ind @ Buf, 1:00 PM",10
-"WR","Ryan Lankford","Ind @ Buf, 1:00 PM",10
-"WR","Duron Carter","Ind @ Buf, 1:00 PM",10
-"RB","Josh Robinson","Ind @ Buf, 1:00 PM",10
-"WR","Quan Bray","Ind @ Buf, 1:00 PM",10
-"WR","Ezell Ruffin","Ind @ Buf, 1:00 PM",10
-"TE","Justin Sinz","Ind @ Buf, 1:00 PM",10
-"RB","Tyler Varga","Ind @ Buf, 1:00 PM",10
-"RB","Abou Toure","Ind @ Buf, 1:00 PM",10
-"RB","Jerome Felton","Ind @ Buf, 1:00 PM",10
-"TE","Matthew Mulligan","Ind @ Buf, 1:00 PM",10
-"WR","Marcus Easley","Ind @ Buf, 1:00 PM",10
-"RB","John Conner","Ind @ Buf, 1:00 PM",10
-"RB","Boobie Dixon","Ind @ Buf, 1:00 PM",10
-"WR","Chris HoganP","Ind @ Buf, 1:00 PM",10
-"WR","Marcus Thigpen","Ind @ Buf, 1:00 PM",10
-"RB","Bryce Brown","Ind @ Buf, 1:00 PM",10
-"WR","Deonte ThompsonO","Ind @ Buf, 1:00 PM",10
-"WR","Marquise GoodwinO","Ind @ Buf, 1:00 PM",10
-"TE","Chris Gragg","Ind @ Buf, 1:00 PM",10
-"WR","Tobais Palmer","Ind @ Buf, 1:00 PM",10
-"TE","MarQueis Gray","Ind @ Buf, 1:00 PM",10
-"RB","Cierre Wood","Ind @ Buf, 1:00 PM",10
-"RB","Karlos WilliamsP","Ind @ Buf, 1:00 PM",10
-"TE","Nick O'Leary","Ind @ Buf, 1:00 PM",10
-"WR","Dezmin Lewis","Ind @ Buf, 1:00 PM",10
-"WR","Andre Davis","Ind @ Buf, 1:00 PM",10
-"WR","Austin Willis","Ind @ Buf, 1:00 PM",10
-"RB","Bronson Hill","Ind @ Buf, 1:00 PM",10
-"RB","Ricky Seale","Ind @ Buf, 1:00 PM",10
-"DEF","Indianapolis Colts","Ind @ Buf, 1:00 PM",10
-"WR","Kevin Cone","Mia @ Was, 1:00 PM",10
-"RB","LaMichael James","Mia @ Was, 1:00 PM",10
-"WR","Rishard Matthews","Mia @ Was, 1:00 PM",10
-"TE","Gerell Robinson","Mia @ Was, 1:00 PM",10
-"WR","LaRon Byrd","Mia @ Was, 1:00 PM",10
-"TE","Dion Sims","Mia @ Was, 1:00 PM",10
-"RB","Mike Gillislee","Mia @ Was, 1:00 PM",10
-"WR","Cobi Hamilton","Mia @ Was, 1:00 PM",10
-"TE","Jake Stoneburner","Mia @ Was, 1:00 PM",10
-"WR","Matt Hazel","Mia @ Was, 1:00 PM",10
-"RB","Damien Williams","Mia @ Was, 1:00 PM",10
-"RB","Demitrius Bronson","Mia @ Was, 1:00 PM",10
-"WR","Tyler McDonald","Mia @ Was, 1:00 PM",10
-"RB","Jay AjayiIR","Mia @ Was, 1:00 PM",10
-"WR","Christion JonesO","Mia @ Was, 1:00 PM",10
-"WR","Damarr Aultman","Mia @ Was, 1:00 PM",10
-"TE","Tim Semisch","Mia @ Was, 1:00 PM",10
-"WR","Tommy StreeterIR","Mia @ Was, 1:00 PM",10
-"RB","Darrel Young","Mia @ Was, 1:00 PM",10
-"WR","Andre Roberts","Mia @ Was, 1:00 PM",10
-"TE","D.J. Williams","Mia @ Was, 1:00 PM",10
-"TE","Derek Carrier","Mia @ Was, 1:00 PM",10
-"RB","Chris Thompson","Mia @ Was, 1:00 PM",10
-"RB","Jordan Campbell","Mia @ Was, 1:00 PM",10
-"WR","Rashad Ross","Mia @ Was, 1:00 PM",10
-"WR","Ryan Grant","Mia @ Was, 1:00 PM",10
-"TE","Chase Dixon","Mia @ Was, 1:00 PM",10
-"TE","Je'Ron Hamm","Mia @ Was, 1:00 PM",10
-"WR","Colin Lockett","Mia @ Was, 1:00 PM",10
-"RB","Matt Jones","Mia @ Was, 1:00 PM",10
-"WR","Jamison Crowder","Mia @ Was, 1:00 PM",10
-"WR","Evan Spencer","Mia @ Was, 1:00 PM",10
-"WR","Reggie Bell","Mia @ Was, 1:00 PM",10
-"WR","Tony Jones","Mia @ Was, 1:00 PM",10
-"TE","Devin Mahina","Mia @ Was, 1:00 PM",10
-"RB","Trey Williams","Mia @ Was, 1:00 PM",10
-"WR","Quinton Dunbar","Mia @ Was, 1:00 PM",10
-"RB","Mack Brown","Mia @ Was, 1:00 PM",10
-"TE","Ernst Brun","Mia @ Was, 1:00 PM",10
-"RB","Silas Redd Jr.O","Mia @ Was, 1:00 PM",10
-"TE","Niles PaulIR","Mia @ Was, 1:00 PM",10
-"TE","Logan PaulsenO","Mia @ Was, 1:00 PM",10
-"TE","Anthony McCoy","Mia @ Was, 1:00 PM",10
-"WR","Ted Ginn Jr.","Car @ Jax, 1:00 PM",10
-"TE","Ed Dickson","Car @ Jax, 1:00 PM",10
-"TE","Richie Brockel","Car @ Jax, 1:00 PM",10
-"WR","Jarrett Boykin","Car @ Jax, 1:00 PM",10
-"WR","Brenton Bersin","Car @ Jax, 1:00 PM",10
-"WR","De'Andre Presley","Car @ Jax, 1:00 PM",10
-"WR","Mike Brown","Car @ Jax, 1:00 PM",10
-"RB","Fozzy Whittaker","Car @ Jax, 1:00 PM",10
-"TE","Dallas Walker","Car @ Jax, 1:00 PM",10
-"TE","Brandon Williams","Car @ Jax, 1:00 PM",10
-"WR","Marcus Lucas","Car @ Jax, 1:00 PM",10
-"TE","Scott Simonson","Car @ Jax, 1:00 PM",10
-"RB","Cameron Artis-Payne","Car @ Jax, 1:00 PM",10
-"WR","Damiere Byrd","Car @ Jax, 1:00 PM",10
-"RB","Brandon Wegher","Car @ Jax, 1:00 PM",10
-"RB","Lee Ward","Car @ Jax, 1:00 PM",10
-"WR","Paul Browning","Car @ Jax, 1:00 PM",10
-"WR","Avius Capers","Car @ Jax, 1:00 PM",10
-"WR","Stephen HillO","Car @ Jax, 1:00 PM",10
-"RB","Toby GerhartQ","Car @ Jax, 1:00 PM",10
-"TE","Clay Harbor","Car @ Jax, 1:00 PM",10
-"WR","Bryan Walters","Car @ Jax, 1:00 PM",10
-"WR","Tandon Doss","Car @ Jax, 1:00 PM",10
-"RB","Bernard Pierce","Car @ Jax, 1:00 PM",10
-"WR","Greg Jenkins","Car @ Jax, 1:00 PM",10
-"RB","Storm Johnson","Car @ Jax, 1:00 PM",10
-"WR","Erik Lora","Car @ Jax, 1:00 PM",10
-"WR","Tony Washington","Car @ Jax, 1:00 PM",10
-"TE","Nic Jacobs","Car @ Jax, 1:00 PM",10
-"WR","Rashad Greene","Car @ Jax, 1:00 PM",10
-"WR","Neal Sterling","Car @ Jax, 1:00 PM",10
-"TE","Ben Koyack","Car @ Jax, 1:00 PM",10
-"RB","Corey Grant","Car @ Jax, 1:00 PM",10
-"TE","Connor Hamlett","Car @ Jax, 1:00 PM",10
-"WR","Kasey Closs","Car @ Jax, 1:00 PM",10
-"WR","Arrelious BennIR","Car @ Jax, 1:00 PM",10
-"WR","Kevin Norwood","Car @ Jax, 1:00 PM",10
-"RB","Will Tukuafu","Sea @ StL, 1:00 PM",10
-"WR","Ricardo Lockette","Sea @ StL, 1:00 PM",10
-"RB","Robert TurbinO","Sea @ StL, 1:00 PM",10
-"RB","Derrick Coleman","Sea @ StL, 1:00 PM",10
-"TE","Cooper Helfet","Sea @ StL, 1:00 PM",10
-"WR","Paul RichardsonO","Sea @ StL, 1:00 PM",10
-"WR","Kevin Smith","Sea @ StL, 1:00 PM",10
-"TE","RaShaun Allen","Sea @ StL, 1:00 PM",10
-"WR","Douglas McNeil III","Sea @ StL, 1:00 PM",10
-"WR","Tyler Lockett","Sea @ StL, 1:00 PM",10
-"RB","Thomas Rawls","Sea @ StL, 1:00 PM",10
-"RB","Rod Smith","Sea @ StL, 1:00 PM",10
-"RB","Brandon Cottom","Sea @ StL, 1:00 PM",10
-"WR","Deshon Foxx","Sea @ StL, 1:00 PM",10
-"WR","Kasen Williams","Sea @ StL, 1:00 PM",10
-"WR","Damian Williams","Sea @ StL, 1:00 PM",10
-"TE","Lance Kendricks","Sea @ StL, 1:00 PM",10
-"RB","Chase Reynolds","Sea @ StL, 1:00 PM",10
-"RB","Isaiah Pead","Sea @ StL, 1:00 PM",10
-"WR","Chris Givens","Sea @ StL, 1:00 PM",10
-"TE","Brad Smelley","Sea @ StL, 1:00 PM",10
-"TE","Cory Harkey","Sea @ StL, 1:00 PM",10
-"WR","Stedman Bailey","Sea @ StL, 1:00 PM",10
-"TE","Justice Cunningham","Sea @ StL, 1:00 PM",10
-"WR","Emory Blake","Sea @ StL, 1:00 PM",10
-"TE","Alex Bayer","Sea @ StL, 1:00 PM",10
-"RB","Trey WattsO","Sea @ StL, 1:00 PM",10
-"TE","Tyler Ott","Sea @ StL, 1:00 PM",10
-"RB","Malcolm Brown","Sea @ StL, 1:00 PM",10
-"RB","Zach Laskey","Sea @ StL, 1:00 PM",10
-"WR","Bradley Marquez","Sea @ StL, 1:00 PM",10
-"WR","Tyler Slavin","Sea @ StL, 1:00 PM",10
-"WR","Daniel Rodriguez","Sea @ StL, 1:00 PM",10
-"TE","Alex Smith","NO @ Ari, 4:05 PM",10
-"RB","Tim Hightower","NO @ Ari, 4:05 PM",10
-"WR","Josh Morgan","NO @ Ari, 4:05 PM",10
-"RB","Erik Lorig","NO @ Ari, 4:05 PM",10
-"WR","Joseph Morgan","NO @ Ari, 4:05 PM",10
-"TE","Orson Charles","NO @ Ari, 4:05 PM",10
-"WR","Nick Toon","NO @ Ari, 4:05 PM",10
-"RB","Edwin Baker","NO @ Ari, 4:05 PM",10
-"WR","Lance Lewis","NO @ Ari, 4:05 PM",10
-"RB","Austin Johnson","NO @ Ari, 4:05 PM",10
-"RB","Khiry Robinson","NO @ Ari, 4:05 PM",10
-"RB","Toben Opurum","NO @ Ari, 4:05 PM",10
-"WR","Seantavius Jones","NO @ Ari, 4:05 PM",10
-"WR","Willie Snead","NO @ Ari, 4:05 PM",10
-"TE","Chris Manhertz","NO @ Ari, 4:05 PM",10
-"RB","Marcus Murphy","NO @ Ari, 4:05 PM",10
-"WR","R.J. Harris","NO @ Ari, 4:05 PM",10
-"TE","Kevin Brock","NO @ Ari, 4:05 PM",10
-"TE","Jack Tabb","NO @ Ari, 4:05 PM",10
-"TE","Mike Leach","NO @ Ari, 4:05 PM",10
-"RB","Chris Johnson","NO @ Ari, 4:05 PM",10
-"RB","Robert Hughes","NO @ Ari, 4:05 PM",10
-"WR","Brittan Golden","NO @ Ari, 4:05 PM",10
-"TE","Darren Fells","NO @ Ari, 4:05 PM",10
-"TE","Ifeanyi MomahIR","NO @ Ari, 4:05 PM",10
-"RB","Stepfan Taylor","NO @ Ari, 4:05 PM",10
-"RB","Kerwynn Williams","NO @ Ari, 4:05 PM",10
-"WR","Ryan Spadola","NO @ Ari, 4:05 PM",10
-"WR","Jaron Brown","NO @ Ari, 4:05 PM",10
-"WR","Travis Harvey","NO @ Ari, 4:05 PM",10
-"TE","Troy Niklas","NO @ Ari, 4:05 PM",10
-"RB","Marion Grice","NO @ Ari, 4:05 PM",10
-"RB","David Johnson","NO @ Ari, 4:05 PM",10
-"WR","J.J. Nelson","NO @ Ari, 4:05 PM",10
-"TE","Gerald ChristianIR","NO @ Ari, 4:05 PM",10
-"WR","Trevor Harman","NO @ Ari, 4:05 PM",10
-"RB","Paul Lasike","NO @ Ari, 4:05 PM",10
-"WR","Jaxon Shipley","NO @ Ari, 4:05 PM",10
-"DEF","New Orleans Saints","NO @ Ari, 4:05 PM",10
-"DEF","Arizona Cardinals","NO @ Ari, 4:05 PM",10
-"WR","Lance Moore","Det @ SD, 4:05 PM",10
-"TE","Brandon Pettigrew","Det @ SD, 4:05 PM",10
-"WR","Greg SalasIR","Det @ SD, 4:05 PM",10
-"WR","Jeremy Ross","Det @ SD, 4:05 PM",10
-"WR","Ryan Broyles","Det @ SD, 4:05 PM",10
-"TE","Emil Igwenagu","Det @ SD, 4:05 PM",10
-"WR","Corey Fuller","Det @ SD, 4:05 PM",10
-"RB","Theo Riddick","Det @ SD, 4:05 PM",10
-"TE","Joseph Fauria","Det @ SD, 4:05 PM",10
-"RB","George Winn","Det @ SD, 4:05 PM",10
-"WR","TJ Jones","Det @ SD, 4:05 PM",10
-"TE","Jacob Maxwell","Det @ SD, 4:05 PM",10
-"WR","Andrew Peacock","Det @ SD, 4:05 PM",10
-"RB","Michael Burton","Det @ SD, 4:05 PM",10
-"WR","Vernon Johnson","Det @ SD, 4:05 PM",10
-"TE","Casey Pierce","Det @ SD, 4:05 PM",10
-"RB","Zach Zenner","Det @ SD, 4:05 PM",10
-"RB","Desmond Martin","Det @ SD, 4:05 PM",10
-"TE","Deon Butler","Det @ SD, 4:05 PM",10
-"WR","Jacoby Jones","Det @ SD, 4:05 PM",10
-"RB","Donald Brown","Det @ SD, 4:05 PM",10
-"TE","John Phillips","Det @ SD, 4:05 PM",10
-"TE","David Johnson","Det @ SD, 4:05 PM",10
-"WR","Austin Pettis","Det @ SD, 4:05 PM",10
-"TE","Kyle Miller","Det @ SD, 4:05 PM",10
-"TE","Dave Paulson","Det @ SD, 4:05 PM",10
-"WR","Torrence AllenO","Det @ SD, 4:05 PM",10
-"WR","Javontee Herndon","Det @ SD, 4:05 PM",10
-"RB","Branden Oliver","Det @ SD, 4:05 PM",10
-"WR","Titus Davis","Det @ SD, 4:05 PM",10
-"RB","Jahwan Edwards","Det @ SD, 4:05 PM",10
-"RB","Dreamius Smith","Det @ SD, 4:05 PM",10
-"WR","Tyrell Williams","Det @ SD, 4:05 PM",10
-"TE","Logan Stokes","Det @ SD, 4:05 PM",10
-"DEF","Detroit Lions","Det @ SD, 4:05 PM",10
-"DEF","San Diego Chargers","Det @ SD, 4:05 PM",10
-"TE","Tim Wright","Det @ SD, 4:05 PM",10
-"RB","Terrance West","Ten @ TB, 4:25 PM",10
-"TE","Anthony Fasano","Ten @ TB, 4:25 PM",10
-"TE","Craig Stevens","Ten @ TB, 4:25 PM",10
-"WR","Hakeem Nicks","Ten @ TB, 4:25 PM",10
-"TE","Chase Coffman","Ten @ TB, 4:25 PM",10
-"RB","Dexter McCluster","Ten @ TB, 4:25 PM",10
-"WR","Jacoby Ford","Ten @ TB, 4:25 PM",10
-"TE","Beau Brinkley","Ten @ TB, 4:25 PM",10
-"TE","Phillip Supernaw","Ten @ TB, 4:25 PM",10
-"WR","Justin Hunter","Ten @ TB, 4:25 PM",10
-"WR","Rico Richardson","Ten @ TB, 4:25 PM",10
-"RB","Zach Boren","Ten @ TB, 4:25 PM",10
-"RB","David Fluellen","Ten @ TB, 4:25 PM",10
-"RB","Antonio Andrews","Ten @ TB, 4:25 PM",10
-"WR","Josh Stewart","Ten @ TB, 4:25 PM",10
-"WR","Dorial Green-Beckham","Ten @ TB, 4:25 PM",10
-"RB","Jalston Fowler","Ten @ TB, 4:25 PM",10
-"RB","David CobbIR","Ten @ TB, 4:25 PM",10
-"WR","Tre McBride","Ten @ TB, 4:25 PM",10
-"WR","Deon Long","Ten @ TB, 4:25 PM",10
-"WR","Andrew Turzilli","Ten @ TB, 4:25 PM",10
-"TE","Tevin Westbrook","Ten @ TB, 4:25 PM",10
-"WR","Tebucky Jones","Ten @ TB, 4:25 PM",10
-"RB","Connor NeighborsO","Ten @ TB, 4:25 PM",10
-"TE","Dorin DickersonO","Ten @ TB, 4:25 PM",10
-"WR","Louis Murphy","Ten @ TB, 4:25 PM",10
-"TE","Brandon Myers","Ten @ TB, 4:25 PM",10
-"TE","Luke Stocker","Ten @ TB, 4:25 PM",10
-"RB","Bobby Rainey","Ten @ TB, 4:25 PM",10
-"RB","Jorvorskie Lane","Ten @ TB, 4:25 PM",10
-"TE","Andrew DePaola","Ten @ TB, 4:25 PM",10
-"WR","Tavarres King","Ten @ TB, 4:25 PM",10
-"RB","Mike James","Ten @ TB, 4:25 PM",10
-"WR","Russell Shepard","Ten @ TB, 4:25 PM",10
-"WR","Robert Herron","Ten @ TB, 4:25 PM",10
-"TE","Cameron Brate","Ten @ TB, 4:25 PM",10
-"WR","Kenny BellIR","Ten @ TB, 4:25 PM",10
-"WR","Kaelin Clay","Ten @ TB, 4:25 PM",10
-"RB","Joey Iosefa","Ten @ TB, 4:25 PM",10
-"RB","Dominique Brown","Ten @ TB, 4:25 PM",10
-"WR","Rannell Hall","Ten @ TB, 4:25 PM",10
-"WR","Donteea Dye","Ten @ TB, 4:25 PM",10
-"WR","Adam Humphries","Ten @ TB, 4:25 PM",10
-"TE","Clark Harris","Cin @ Oak, 4:25 PM",10
-"WR","Brandon Tate","Cin @ Oak, 4:25 PM",10
-"RB","Cedric Peerman","Cin @ Oak, 4:25 PM",10
-"WR","Greg Little","Cin @ Oak, 4:25 PM",10
-"WR","Denarius Moore","Cin @ Oak, 4:25 PM",10
-"RB","Rex Burkhead","Cin @ Oak, 4:25 PM",10
-"WR","Onterio McCalebb","Cin @ Oak, 4:25 PM",10
-"WR","Tevin Reese","Cin @ Oak, 4:25 PM",10
-"TE","Ryan Hewitt","Cin @ Oak, 4:25 PM",10
-"RB","James Wilder Jr.","Cin @ Oak, 4:25 PM",10
-"TE","Tyler Kroft","Cin @ Oak, 4:25 PM",10
-"TE","C.J. Uzomah","Cin @ Oak, 4:25 PM",10
-"WR","Mario Alford","Cin @ Oak, 4:25 PM",10
-"WR","Desmond Lawrence","Cin @ Oak, 4:25 PM",10
-"WR","Jake Kumerow","Cin @ Oak, 4:25 PM",10
-"TE","Matt Lengel","Cin @ Oak, 4:25 PM",10
-"RB","Mark Weisman","Cin @ Oak, 4:25 PM",10
-"TE","John Peters","Cin @ Oak, 4:25 PM",10
-"RB","Terrell Watson","Cin @ Oak, 4:25 PM",10
-"WR","Michael Bennett","Cin @ Oak, 4:25 PM",10
-"WR","James WrightIR","Cin @ Oak, 4:25 PM",10
-"RB","Marcel Reece","Cin @ Oak, 4:25 PM",10
-"WR","Trindon Holliday","Cin @ Oak, 4:25 PM",10
-"WR","Kris Durham","Cin @ Oak, 4:25 PM",10
-"RB","Taiwan Jones","Cin @ Oak, 4:25 PM",10
-"TE","Lee Smith","Cin @ Oak, 4:25 PM",10
-"WR","Andre Holmes","Cin @ Oak, 4:25 PM",10
-"RB","Trent Richardson","Cin @ Oak, 4:25 PM",10
-"WR","Devon Wylie","Cin @ Oak, 4:25 PM",10
-"RB","Jamize Olawale","Cin @ Oak, 4:25 PM",10
-"WR","Brice Butler","Cin @ Oak, 4:25 PM",10
-"TE","Brian Leonhardt","Cin @ Oak, 4:25 PM",10
-"WR","Kenbrell Thompkins","Cin @ Oak, 4:25 PM",10
-"RB","George Atkinson III","Cin @ Oak, 4:25 PM",10
-"WR","Seth Roberts","Cin @ Oak, 4:25 PM",10
-"TE","Clive WalfordP","Cin @ Oak, 4:25 PM",10
-"WR","Josh Harper","Cin @ Oak, 4:25 PM",10
-"TE","Gabe Holmes","Cin @ Oak, 4:25 PM",10
-"WR","Milton Williams III","Cin @ Oak, 4:25 PM",10
-"RB","Michael Dyer","Cin @ Oak, 4:25 PM",10
-"WR","Andre Debose","Cin @ Oak, 4:25 PM",10
-"DEF","Cincinnati Bengals","Cin @ Oak, 4:25 PM",10
-"DEF","Oakland Raiders","Cin @ Oak, 4:25 PM",10
-"TE","Mitchell Henry","Bal @ Den, 4:25 PM",10
-"WR","Tom Nelson","Bal @ Den, 4:25 PM",10
-"TE","Dennis PittaO","Bal @ Den, 4:25 PM",10
-"WR","Aldrick Robinson","Bal @ Den, 4:25 PM",10
-"TE","Konrad Reuland","Bal @ Den, 4:25 PM",10
-"TE","Allen ReisnerO","Bal @ Den, 4:25 PM",10
-"TE","Patrick Scales","Bal @ Den, 4:25 PM",10
-"RB","Kyle Juszczyk","Bal @ Den, 4:25 PM",10
-"WR","Marlon Brown","Bal @ Den, 4:25 PM",10
-"TE","Crockett Gillmore","Bal @ Den, 4:25 PM",10
-"WR","Michael Campanaro","Bal @ Den, 4:25 PM",10
-"RB","Kiero Small","Bal @ Den, 4:25 PM",10
-"WR","Jeremy Butler","Bal @ Den, 4:25 PM",10
-"RB","Fitzgerald Toussaint","Bal @ Den, 4:25 PM",10
-"TE","Maxx Williams","Bal @ Den, 4:25 PM",10
-"RB","Javorius Allen","Bal @ Den, 4:25 PM",10
-"TE","Nick Boyle","Bal @ Den, 4:25 PM",10
-"WR","Darren Waller","Bal @ Den, 4:25 PM",10
-"WR","DeAndre Carter","Bal @ Den, 4:25 PM",10
-"RB","Terrence Magee","Bal @ Den, 4:25 PM",10
-"WR","Daniel Brown","Bal @ Den, 4:25 PM",10
-"WR","Trent Steelman","Bal @ Den, 4:25 PM",10
-"WR","Cam WorthyIR","Bal @ Den, 4:25 PM",10
-"WR","Andre Caldwell","Bal @ Den, 4:25 PM",10
-"TE","James Casey","Bal @ Den, 4:25 PM",10
-"WR","Jordan Norwood","Bal @ Den, 4:25 PM",10
-"RB","Jeremy Stewart","Bal @ Den, 4:25 PM",10
-"TE","Dominique Jones","Bal @ Den, 4:25 PM",10
-"WR","Nathan Palmer","Bal @ Den, 4:25 PM",10
-"WR","Corbin Louks","Bal @ Den, 4:25 PM",10
-"RB","Montee Ball","Bal @ Den, 4:25 PM",10
-"WR","Cody Latimer","Bal @ Den, 4:25 PM",10
-"RB","Kapri Bibbs","Bal @ Den, 4:25 PM",10
-"WR","Isaiah Burse","Bal @ Den, 4:25 PM",10
-"WR","Bennie Fowler","Bal @ Den, 4:25 PM",10
-"RB","Juwan Thompson","Bal @ Den, 4:25 PM",10
-"TE","Marcel Jensen","Bal @ Den, 4:25 PM",10
-"WR","Solomon Patton","Bal @ Den, 4:25 PM",10
-"TE","Jake Murphy","Bal @ Den, 4:25 PM",10
-"TE","Joe Don Duncan","Bal @ Den, 4:25 PM",10
-"TE","Jeff HeuermanO","Bal @ Den, 4:25 PM",10
-"WR","Jordan Taylor","Bal @ Den, 4:25 PM",10
-"WR","Kyle WilliamsO","Bal @ Den, 4:25 PM",10
-"DEF","Baltimore Ravens","Bal @ Den, 4:25 PM",10
-"DEF","Denver Broncos","Bal @ Den, 4:25 PM",10
-"RB","Christine Michael","NYG @ Dal, 8:30 PM",10
-"TE","Daniel Fells","NYG @ Dal, 8:30 PM",10
-"WR","Preston Parker","NYG @ Dal, 8:30 PM",10
-"WR","Dwayne Harris","NYG @ Dal, 8:30 PM",10
-"RB","Henry Hynoski","NYG @ Dal, 8:30 PM",10
-"TE","Adrien Robinson","NYG @ Dal, 8:30 PM",10
-"WR","Juron Criner","NYG @ Dal, 8:30 PM",10
-"WR","Julian Talley","NYG @ Dal, 8:30 PM",10
-"RB","Nikita Whitlock","NYG @ Dal, 8:30 PM",10
-"WR","Corey Washington","NYG @ Dal, 8:30 PM",10
-"RB","Orleans Darkwa","NYG @ Dal, 8:30 PM",10
-"WR","Derrick Johnson","NYG @ Dal, 8:30 PM",10
-"TE","Jerome Cunningham","NYG @ Dal, 8:30 PM",10
-"WR","Geremy Davis","NYG @ Dal, 8:30 PM",10
-"RB","Akeem Hunt","NYG @ Dal, 8:30 PM",10
-"RB","Kenneth Harper","NYG @ Dal, 8:30 PM",10
-"TE","Will Tye","NYG @ Dal, 8:30 PM",10
-"WR","Chris HarperO","NYG @ Dal, 8:30 PM",10
-"WR","Marcus HarrisO","NYG @ Dal, 8:30 PM",10
-"RB","Tyler Clutts","NYG @ Dal, 8:30 PM",10
-"WR","Clyde Gates","NYG @ Dal, 8:30 PM",10
-"WR","A.J. Jenkins","NYG @ Dal, 8:30 PM",10
-"TE","James HannaO","NYG @ Dal, 8:30 PM",10
-"WR","Phil Bates","NYG @ Dal, 8:30 PM",10
-"TE","Brandon Barden","NYG @ Dal, 8:30 PM",10
-"RB","Lance Dunbar","NYG @ Dal, 8:30 PM",10
-"TE","Gavin Escobar","NYG @ Dal, 8:30 PM",10
-"RB","Michael Hill","NYG @ Dal, 8:30 PM",10
-"WR","Devin Street","NYG @ Dal, 8:30 PM",10
-"RB","Ray Agnew","NYG @ Dal, 8:30 PM",10
-"RB","Ben Malena","NYG @ Dal, 8:30 PM",10
-"TE","Geoff Swaim","NYG @ Dal, 8:30 PM",10
-"RB","Gus Johnson","NYG @ Dal, 8:30 PM",10
-"WR","Antwan Goodley","NYG @ Dal, 8:30 PM",10
-"WR","Nick Harwell","NYG @ Dal, 8:30 PM",10
-"WR","Lucky Whitehead","NYG @ Dal, 8:30 PM",10
-"WR","David Porter","NYG @ Dal, 8:30 PM",10
-"RB","Ryan WilliamsIR","NYG @ Dal, 8:30 PM",10
-"DEF","New York Giants","NYG @ Dal, 8:30 PM",10
-"DEF","Dallas Cowboys","NYG @ Dal, 8:30 PM",10
-"WR","Miles Austin","Phi @ Atl, 7:10 PM",10
-"TE","Brent Celek","Phi @ Atl, 7:10 PM",10
-"WR","Seyi Ajirotutu","Phi @ Atl, 7:10 PM",10
-"WR","Jeff MaehlO","Phi @ Atl, 7:10 PM",10
-"RB","Kenjon Barner","Phi @ Atl, 7:10 PM",10
-"WR","Josh Huff","Phi @ Atl, 7:10 PM",10
-"TE","Trey Burton","Phi @ Atl, 7:10 PM",10
-"WR","Quron Pratt","Phi @ Atl, 7:10 PM",10
-"WR","Freddie Martino","Phi @ Atl, 7:10 PM",10
-"WR","Rasheed Bailey","Phi @ Atl, 7:10 PM",10
-"TE","Andrew Gleichert","Phi @ Atl, 7:10 PM",10
-"RB","Raheem Mostert","Phi @ Atl, 7:10 PM",10
-"TE","Eric Tomlinson","Phi @ Atl, 7:10 PM",10
-"TE","Justin Tukes","Phi @ Atl, 7:10 PM",10
-"WR","Josh Reese","Phi @ Atl, 7:10 PM",10
-"RB","Kevin Monangai","Phi @ Atl, 7:10 PM",10
-"WR","Mike Johnson","Phi @ Atl, 7:10 PM",10
-"WR","Devin Hester","Phi @ Atl, 7:10 PM",10
-"WR","Eric Weems","Phi @ Atl, 7:10 PM",10
-"TE","Jacob Tamme","Phi @ Atl, 7:10 PM",10
-"RB","Antone Smith","Phi @ Atl, 7:10 PM",10
-"TE","Tony Moeaki","Phi @ Atl, 7:10 PM",10
-"WR","Carlton Mitchell","Phi @ Atl, 7:10 PM",10
-"TE","Mickey Shuler","Phi @ Atl, 7:10 PM",10
-"WR","Leonard Hankerson","Phi @ Atl, 7:10 PM",10
-"RB","Evan Royster","Phi @ Atl, 7:10 PM",10
-"RB","Patrick DiMarco","Phi @ Atl, 7:10 PM",10
-"RB","Collin MooneyO","Phi @ Atl, 7:10 PM",10
-"TE","Levine Toilolo","Phi @ Atl, 7:10 PM",10
-"RB","Michael Ford","Phi @ Atl, 7:10 PM",10
-"WR","Nick Williams","Phi @ Atl, 7:10 PM",10
-"TE","D.J. Tialavea","Phi @ Atl, 7:10 PM",10
-"WR","Bernard Reedy","Phi @ Atl, 7:10 PM",10
-"RB","Jerome Smith","Phi @ Atl, 7:10 PM",10
-"WR","Justin Hardy","Phi @ Atl, 7:10 PM",10
-"WR","John Harris","Phi @ Atl, 7:10 PM",10
-"WR","Marquez Clark","Phi @ Atl, 7:10 PM",10
-"RB","Terron Ward","Phi @ Atl, 7:10 PM",10
-"TE","Beau Gardner","Phi @ Atl, 7:10 PM",10
-"DEF","Philadelphia Eagles","Phi @ Atl, 7:10 PM",10
-"DEF","Atlanta Falcons","Phi @ Atl, 7:10 PM",10
-"WR","Ryan Whalen","Min @ SF, 10:20 PM",10
-"RB","DuJuan Harris","Min @ SF, 10:20 PM",10
-"TE","Rhett Ellison","Min @ SF, 10:20 PM",10
-"TE","Chase Ford","Min @ SF, 10:20 PM",10
-"RB","Joe Banyard","Min @ SF, 10:20 PM",10
-"TE","Brandon Bostick","Min @ SF, 10:20 PM",10
-"WR","Cordarrelle Patterson","Min @ SF, 10:20 PM",10
-"RB","Zach Line","Min @ SF, 10:20 PM",10
-"TE","Kevin McDermott","Min @ SF, 10:20 PM",10
-"WR","Adam Thielen","Min @ SF, 10:20 PM",10
-"RB","Dominique Williams","Min @ SF, 10:20 PM",10
-"WR","Donte Foster","Min @ SF, 10:20 PM",10
-"TE","MyCole Pruitt","Min @ SF, 10:20 PM",10
-"WR","Stefon Diggs","Min @ SF, 10:20 PM",10
-"WR","Jordan Leslie","Min @ SF, 10:20 PM",10
-"RB","Blake Renaud","Min @ SF, 10:20 PM",10
-"WR","Isaac Fruechte","Min @ SF, 10:20 PM",10
-"WR","Gavin Lutman","Min @ SF, 10:20 PM",10
-"WR","Jerome SimpsonO","Min @ SF, 10:20 PM",10
-"RB","Kendall HunterIR","Min @ SF, 10:20 PM",10
-"RB","Bruce Miller","Min @ SF, 10:20 PM",10
-"TE","Kyle Nelson","Min @ SF, 10:20 PM",10
-"TE","Garrett Celek","Min @ SF, 10:20 PM",10
-"TE","Vance McDonald","Min @ SF, 10:20 PM",10
-"WR","Quinton Patton","Min @ SF, 10:20 PM",10
-"RB","Kendall Gaskins","Min @ SF, 10:20 PM",10
-"WR","Chuck Jacobs","Min @ SF, 10:20 PM",10
-"WR","Bruce Ellington","Min @ SF, 10:20 PM",10
-"RB","Trey Millard","Min @ SF, 10:20 PM",10
-"TE","Xavier Grimble","Min @ SF, 10:20 PM",10
-"RB","Jarryd Hayne","Min @ SF, 10:20 PM",10
-"TE","Blake Bell","Min @ SF, 10:20 PM",10
-"RB","Mike Davis","Min @ SF, 10:20 PM",10
-"WR","DeAndre SmelterO","Min @ SF, 10:20 PM",10
-"TE","Busta AndersonO","Min @ SF, 10:20 PM",10
-"WR","Dres AndersonO","Min @ SF, 10:20 PM",10
-"WR","Issac Blakeney","Min @ SF, 10:20 PM",10
-"WR","DiAndre Campbell","Min @ SF, 10:20 PM",10
-"WR","DeAndrew White","Min @ SF, 10:20 PM",10
-"WR","Nigel King","Min @ SF, 10:20 PM",10
-"WR","Mario Hull","Min @ SF, 10:20 PM",10
+"QB","Tom Brady","Jax @ NE, Sun 1:00 PM",46
+"QB","Andrew Luck","Ind @ Ten, Sun 1:00 PM",43
+"QB","Ben Roethlisberger","Pit @ StL, Sun 1:00 PM",43
+"QB","Russell Wilson","Chi @ Sea, Sun 4:25 PM",43
+"QB","Aaron Rodgers","KC @ GB, Mon 8:30 PM",43
+"QB","Matt Ryan","Atl @ Dal, Sun 1:00 PM",42
+"QB","Tony RomoO","Atl @ Dal, Sun 1:00 PM",40
+"QB","Carson Palmer","SF @ Ari, Sun 4:05 PM",40
+"QB","Drew BreesO","NO @ Car, Sun 1:00 PM",39
+"WR","Antonio Brown","Pit @ StL, Sun 1:00 PM",39
+"QB","Peyton ManningP","Den @ Det, Sun 8:30 PM",38
+"WR","Julio JonesP","Atl @ Dal, Sun 1:00 PM",37
+"QB","Ryan Tannehill","Buf @ Mia, Sun 4:25 PM",37
+"QB","Joe Flacco","Cin @ Bal, Sun 1:00 PM",36
+"WR","Julian Edelman","Jax @ NE, Sun 1:00 PM",36
+"TE","Rob Gronkowski","Jax @ NE, Sun 1:00 PM",36
+"QB","Cam Newton","NO @ Car, Sun 1:00 PM",36
+"QB","Ryan Fitzpatrick","Phi @ NYJ, Sun 1:00 PM",36
+"RB","Arian FosterO","TB @ Hou, Sun 1:00 PM",36
+"QB","Philip Rivers","SD @ Min, Sun 1:00 PM",36
+"RB","Marshawn LynchP","Chi @ Sea, Sun 4:25 PM",36
+"QB","Sam Bradford","Phi @ NYJ, Sun 1:00 PM",35
+"RB","Le'Veon BellO","Pit @ StL, Sun 1:00 PM",35
+"QB","Jay CutlerO","Chi @ Sea, Sun 4:25 PM",35
+"RB","Matt Forte","Chi @ Sea, Sun 4:25 PM",35
+"QB","Marcus Mariota","Ind @ Ten, Sun 1:00 PM",34
+"RB","Adrian Peterson","SD @ Min, Sun 1:00 PM",34
+"QB","Teddy Bridgewater","SD @ Min, Sun 1:00 PM",34
+"QB","Matthew StaffordP","Den @ Det, Sun 8:30 PM",34
+"QB","Andy Dalton","Cin @ Bal, Sun 1:00 PM",33
+"QB","Jameis Winston","TB @ Hou, Sun 1:00 PM",33
+"QB","Nick Foles","Pit @ StL, Sun 1:00 PM",33
+"WR","Demaryius ThomasP","Den @ Det, Sun 8:30 PM",33
+"QB","Alex Smith","KC @ GB, Mon 8:30 PM",33
+"RB","Eddie LacyQ","KC @ GB, Mon 8:30 PM",33
+"RB","DeMarco Murray","Phi @ NYJ, Sun 1:00 PM",32
+"RB","Jamaal Charles","KC @ GB, Mon 8:30 PM",32
+"WR","Calvin Johnson","Den @ Det, Sun 8:30 PM",31
+"WR","Randall CobbP","KC @ GB, Mon 8:30 PM",31
+"QB","Johnny ManzielP","Oak @ Cle, Sun 1:00 PM",30
+"QB","Colin Kaepernick","SF @ Ari, Sun 4:05 PM",30
+"RB","Carlos HydeQ","SF @ Ari, Sun 4:05 PM",30
+"WR","Emmanuel Sanders","Den @ Det, Sun 8:30 PM",30
+"WR","A.J. Green","Cin @ Bal, Sun 1:00 PM",29
+"RB","Justin ForsettP","Cin @ Bal, Sun 1:00 PM",29
+"RB","LeSean McCoy","Buf @ Mia, Sun 4:25 PM",29
+"RB","Lamar MillerQ","Buf @ Mia, Sun 4:25 PM",29
+"WR","Dez BryantO","Atl @ Dal, Sun 1:00 PM",28
+"RB","Jeremy Hill","Cin @ Bal, Sun 1:00 PM",28
+"QB","Blake Bortles","Jax @ NE, Sun 1:00 PM",28
+"RB","Chris IvoryP","Phi @ NYJ, Sun 1:00 PM",28
+"WR","Mike Evans","TB @ Hou, Sun 1:00 PM",28
+"RB","C.J. AndersonQ","Den @ Det, Sun 8:30 PM",28
+"WR","T.Y. HiltonQ","Ind @ Ten, Sun 1:00 PM",27
+"RB","Jonathan StewartP","NO @ Car, Sun 1:00 PM",27
+"WR","DeAndre Hopkins","TB @ Hou, Sun 1:00 PM",27
+"WR","Keenan Allen","SD @ Min, Sun 1:00 PM",27
+"WR","Alshon JefferyO","Chi @ Sea, Sun 4:25 PM",27
+"TE","Jimmy Graham","Chi @ Sea, Sun 4:25 PM",27
+"RB","Frank Gore","Ind @ Ten, Sun 1:00 PM",26
+"QB","Derek CarrP","Oak @ Cle, Sun 1:00 PM",26
+"RB","Mark Ingram","NO @ Car, Sun 1:00 PM",26
+"WR","Jordan Matthews","Phi @ NYJ, Sun 1:00 PM",26
+"RB","Ameer Abdullah","Den @ Det, Sun 8:30 PM",26
+"WR","Brandon Marshall","Phi @ NYJ, Sun 1:00 PM",25
+"WR","Eric Decker","Phi @ NYJ, Sun 1:00 PM",25
+"RB","Todd GurleyQ","Pit @ StL, Sun 1:00 PM",25
+"WR","Jarvis Landry","Buf @ Mia, Sun 4:25 PM",25
+"WR","Kendall Wright","Ind @ Ten, Sun 1:00 PM",24
+"RB","Latavius Murray","Oak @ Cle, Sun 1:00 PM",24
+"RB","Giovani Bernard","Cin @ Bal, Sun 1:00 PM",24
+"RB","Dion Lewis","Jax @ NE, Sun 1:00 PM",24
+"QB","Brian Hoyer","TB @ Hou, Sun 1:00 PM",24
+"QB","Ryan Mallett","TB @ Hou, Sun 1:00 PM",24
+"RB","Andre EllingtonO","SF @ Ari, Sun 4:05 PM",24
+"QB","Tyrod Taylor","Buf @ Mia, Sun 4:25 PM",24
+"QB","Jimmy Clausen","Chi @ Sea, Sun 4:25 PM",24
+"WR","Golden TateP","Den @ Det, Sun 8:30 PM",24
+"TE","Jason WittenQ","Atl @ Dal, Sun 1:00 PM",23
+"QB","Josh McCownO","Oak @ Cle, Sun 1:00 PM",23
+"WR","Larry Fitzgerald","SF @ Ari, Sun 4:05 PM",23
+"WR","Jeremy MaclinP","KC @ GB, Mon 8:30 PM",23
+"RB","Tevin ColemanO","Atl @ Dal, Sun 1:00 PM",22
+"WR","Terrance Williams","Atl @ Dal, Sun 1:00 PM",22
+"WR","Andre Johnson","Ind @ Ten, Sun 1:00 PM",22
+"TE","Tyler Eifert","Cin @ Bal, Sun 1:00 PM",22
+"WR","Steve Smith Sr.","Cin @ Bal, Sun 1:00 PM",22
+"WR","Allen Robinson","Jax @ NE, Sun 1:00 PM",22
+"RB","LeGarrette Blount","Jax @ NE, Sun 1:00 PM",22
+"RB","Melvin Gordon","SD @ Min, Sun 1:00 PM",22
+"WR","Mike Wallace","SD @ Min, Sun 1:00 PM",22
+"WR","Torrey Smith","SF @ Ari, Sun 4:05 PM",22
+"RB","Chris Johnson","SF @ Ari, Sun 4:05 PM",22
+"RB","David Johnson","SF @ Ari, Sun 4:05 PM",22
+"TE","Travis KelceP","KC @ GB, Mon 8:30 PM",22
+"WR","Roddy White","Atl @ Dal, Sun 1:00 PM",21
+"WR","Amari Cooper","Oak @ Cle, Sun 1:00 PM",21
+"RB","T.J. Yeldon","Jax @ NE, Sun 1:00 PM",21
+"WR","Brandin Cooks","NO @ Car, Sun 1:00 PM",21
+"TE","Greg Olsen","NO @ Car, Sun 1:00 PM",21
+"WR","Anquan Boldin","SF @ Ari, Sun 4:05 PM",21
+"RB","Joique Bell","Den @ Det, Sun 8:30 PM",21
+"QB","Sean Renfree","Atl @ Dal, Sun 1:00 PM",20
+"QB","Brandon Weeden","Atl @ Dal, Sun 1:00 PM",20
+"RB","Joseph Randle","Atl @ Dal, Sun 1:00 PM",20
+"QB","Matt Hasselbeck","Ind @ Ten, Sun 1:00 PM",20
+"QB","Charlie Whitehurst","Ind @ Ten, Sun 1:00 PM",20
+"QB","Zach Mettenberger","Ind @ Ten, Sun 1:00 PM",20
+"QB","Matt McGloin","Oak @ Cle, Sun 1:00 PM",20
+"WR","Travis Benjamin","Oak @ Cle, Sun 1:00 PM",20
+"QB","Austin Davis","Oak @ Cle, Sun 1:00 PM",20
+"QB","Connor ShawO","Oak @ Cle, Sun 1:00 PM",20
+"QB","AJ McCarron","Cin @ Bal, Sun 1:00 PM",20
+"QB","Matt Schaub","Cin @ Bal, Sun 1:00 PM",20
+"QB","Chad Henne","Jax @ NE, Sun 1:00 PM",20
+"TE","Julius ThomasO","Jax @ NE, Sun 1:00 PM",20
+"QB","Jimmy Garoppolo","Jax @ NE, Sun 1:00 PM",20
+"QB","Luke McCown","NO @ Car, Sun 1:00 PM",20
+"WR","Brandon Coleman","NO @ Car, Sun 1:00 PM",20
+"QB","Garrett Grayson","NO @ Car, Sun 1:00 PM",20
+"QB","Derek Anderson","NO @ Car, Sun 1:00 PM",20
+"QB","Joe Webb","NO @ Car, Sun 1:00 PM",20
+"QB","Mark Sanchez","Phi @ NYJ, Sun 1:00 PM",20
+"QB","Stephen Morris","Phi @ NYJ, Sun 1:00 PM",20
+"QB","Geno SmithO","Phi @ NYJ, Sun 1:00 PM",20
+"QB","Bryce Petty","Phi @ NYJ, Sun 1:00 PM",20
+"QB","Mike Glennon","TB @ Hou, Sun 1:00 PM",20
+"QB","Ryan Griffin","TB @ Hou, Sun 1:00 PM",20
+"QB","Tom SavageIR","TB @ Hou, Sun 1:00 PM",20
+"QB","Kellen Clemens","SD @ Min, Sun 1:00 PM",20
+"QB","Shaun Hill","SD @ Min, Sun 1:00 PM",20
+"QB","Taylor Heinicke","SD @ Min, Sun 1:00 PM",20
+"QB","Michael Vick","Pit @ StL, Sun 1:00 PM",20
+"QB","Landry JonesP","Pit @ StL, Sun 1:00 PM",20
+"QB","Bruce GradkowskiIR","Pit @ StL, Sun 1:00 PM",20
+"QB","Case Keenum","Pit @ StL, Sun 1:00 PM",20
+"RB","Tre MasonQ","Pit @ StL, Sun 1:00 PM",20
+"QB","Sean Mannion","Pit @ StL, Sun 1:00 PM",20
+"QB","Blaine Gabbert","SF @ Ari, Sun 4:05 PM",20
+"QB","Drew Stanton","SF @ Ari, Sun 4:05 PM",20
+"QB","Matt Barkley","SF @ Ari, Sun 4:05 PM",20
+"QB","Matt Cassel","Buf @ Mia, Sun 4:25 PM",20
+"QB","EJ Manuel","Buf @ Mia, Sun 4:25 PM",20
+"QB","Matt Moore","Buf @ Mia, Sun 4:25 PM",20
+"QB","Tarvaris Jackson","Chi @ Sea, Sun 4:25 PM",20
+"QB","Brock Osweiler","Den @ Det, Sun 8:30 PM",20
+"QB","Trevor Siemian","Den @ Det, Sun 8:30 PM",20
+"QB","Dan Orlovsky","Den @ Det, Sun 8:30 PM",20
+"QB","Chase Daniel","KC @ GB, Mon 8:30 PM",20
+"QB","Aaron Murray","KC @ GB, Mon 8:30 PM",20
+"WR","James Jones","KC @ GB, Mon 8:30 PM",20
+"QB","Scott Tolzien","KC @ GB, Mon 8:30 PM",20
+"WR","Davante AdamsQ","KC @ GB, Mon 8:30 PM",20
+"QB","Brett Hundley","KC @ GB, Mon 8:30 PM",20
+"WR","Donte Moncrief","Ind @ Ten, Sun 1:00 PM",19
+"TE","Delanie WalkerQ","Ind @ Ten, Sun 1:00 PM",19
+"RB","Bishop Sankey","Ind @ Ten, Sun 1:00 PM",19
+"RB","Isaiah Crowell","Oak @ Cle, Sun 1:00 PM",19
+"WR","Marques Colston","NO @ Car, Sun 1:00 PM",19
+"RB","Doug Martin","TB @ Hou, Sun 1:00 PM",19
+"TE","Heath Miller","Pit @ StL, Sun 1:00 PM",19
+"WR","Michael FloydP","SF @ Ari, Sun 4:05 PM",19
+"WR","John Brown","SF @ Ari, Sun 4:05 PM",19
+"TE","Martellus Bennett","Chi @ Sea, Sun 4:25 PM",19
+"WR","Doug Baldwin","Chi @ Sea, Sun 4:25 PM",19
+"WR","Jermaine Kearse","Chi @ Sea, Sun 4:25 PM",19
+"RB","Devonta Freeman","Atl @ Dal, Sun 1:00 PM",18
+"WR","Rashad Greene","Jax @ NE, Sun 1:00 PM",18
+"WR","Vincent Jackson","TB @ Hou, Sun 1:00 PM",18
+"WR","Nate WashingtonP","TB @ Hou, Sun 1:00 PM",18
+"WR","Stevie Johnson","SD @ Min, Sun 1:00 PM",18
+"RB","Danny Woodhead","SD @ Min, Sun 1:00 PM",18
+"WR","Percy HarvinP","Buf @ Mia, Sun 4:25 PM",18
+"TE","Charles Clay","Buf @ Mia, Sun 4:25 PM",18
+"WR","Sammy Watkins","Buf @ Mia, Sun 4:25 PM",18
+"WR","Tyler Lockett","Chi @ Sea, Sun 4:25 PM",18
+"WR","Cole Beasley","Atl @ Dal, Sun 1:00 PM",17
+"WR","Harry Douglas","Ind @ Ten, Sun 1:00 PM",17
+"WR","Danny Amendola","Jax @ NE, Sun 1:00 PM",17
+"RB","Darren Sproles","Phi @ NYJ, Sun 1:00 PM",17
+"WR","Malcom Floyd","SD @ Min, Sun 1:00 PM",17
+"TE","Kyle Rudolph","SD @ Min, Sun 1:00 PM",17
+"WR","Markus Wheaton","Pit @ StL, Sun 1:00 PM",17
+"WR","Kenny Britt","Pit @ StL, Sun 1:00 PM",17
+"WR","Eddie Royal","Chi @ Sea, Sun 4:25 PM",17
+"WR","Allen Hurns","Jax @ NE, Sun 1:00 PM",16
+"RB","C.J. Spiller","NO @ Car, Sun 1:00 PM",16
+"DEF","Carolina Panthers","NO @ Car, Sun 1:00 PM",16
+"RB","Ryan Mathews","Phi @ NYJ, Sun 1:00 PM",16
+"TE","Zach Ertz","Phi @ NYJ, Sun 1:00 PM",16
+"TE","Austin Seferian-Jenkins","TB @ Hou, Sun 1:00 PM",16
+"WR","Charles Johnson","SD @ Min, Sun 1:00 PM",16
+"WR","Brian Quick","Pit @ StL, Sun 1:00 PM",16
+"WR","Greg Jennings","Buf @ Mia, Sun 4:25 PM",16
+"TE","Jordan CameronO","Buf @ Mia, Sun 4:25 PM",16
+"DEF","Seattle Seahawks","Chi @ Sea, Sun 4:25 PM",16
+"RB","Ronnie Hillman","Den @ Det, Sun 8:30 PM",16
+"TE","Dwayne AllenO","Ind @ Ten, Sun 1:00 PM",15
+"RB","Roy Helu Jr.","Oak @ Cle, Sun 1:00 PM",15
+"WR","Marvin Jones","Cin @ Bal, Sun 1:00 PM",15
+"TE","Crockett Gillmore","Cin @ Bal, Sun 1:00 PM",15
+"WR","Nelson Agholor","Phi @ NYJ, Sun 1:00 PM",15
+"WR","Cecil Shorts III","TB @ Hou, Sun 1:00 PM",15
+"DEF","Houston Texans","TB @ Hou, Sun 1:00 PM",15
+"RB","DeAngelo Williams","Pit @ StL, Sun 1:00 PM",15
+"TE","Jared Cook","Pit @ StL, Sun 1:00 PM",15
+"RB","Reggie BushO","SF @ Ari, Sun 4:05 PM",15
+"RB","Karlos Williams","Buf @ Mia, Sun 4:25 PM",15
+"DEF","Buffalo Bills","Buf @ Mia, Sun 4:25 PM",15
+"DEF","Denver Broncos","Den @ Det, Sun 8:30 PM",15
+"WR","Leonard Hankerson","Atl @ Dal, Sun 1:00 PM",14
+"RB","Darren McFadden","Atl @ Dal, Sun 1:00 PM",14
+"TE","Coby Fleener","Ind @ Ten, Sun 1:00 PM",14
+"WR","Michael Crabtree","Oak @ Cle, Sun 1:00 PM",14
+"DEF","Baltimore Ravens","Cin @ Bal, Sun 1:00 PM",14
+"RB","Denard RobinsonO","Jax @ NE, Sun 1:00 PM",14
+"WR","Jerricho CotcheryQ","NO @ Car, Sun 1:00 PM",14
+"WR","Ted Ginn Jr.","NO @ Car, Sun 1:00 PM",14
+"RB","Bilal Powell","Phi @ NYJ, Sun 1:00 PM",14
+"DEF","New York Jets","Phi @ NYJ, Sun 1:00 PM",14
+"WR","Robert Woods","Buf @ Mia, Sun 4:25 PM",14
+"WR","Kenny Stills","Buf @ Mia, Sun 4:25 PM",14
+"DEF","Miami Dolphins","Buf @ Mia, Sun 4:25 PM",14
+"TE","Eric Ebron","Den @ Det, Sun 8:30 PM",14
+"WR","Jordy NelsonO","KC @ GB, Mon 8:30 PM",14
+"RB","Lance Dunbar","Atl @ Dal, Sun 1:00 PM",13
+"WR","Justin Hunter","Ind @ Ten, Sun 1:00 PM",13
+"RB","Marcel Reece","Oak @ Cle, Sun 1:00 PM",13
+"WR","Dwayne Bowe","Oak @ Cle, Sun 1:00 PM",13
+"RB","Kyle Juszczyk","Cin @ Bal, Sun 1:00 PM",13
+"DEF","New England Patriots","Jax @ NE, Sun 1:00 PM",13
+"RB","Khiry Robinson","NO @ Car, Sun 1:00 PM",13
+"RB","Charles Sims","TB @ Hou, Sun 1:00 PM",13
+"RB","Chris Polk","TB @ Hou, Sun 1:00 PM",13
+"RB","Jonathan Grimes","TB @ Hou, Sun 1:00 PM",13
+"RB","Alfred Blue","TB @ Hou, Sun 1:00 PM",13
+"TE","Ladarius Green","SD @ Min, Sun 1:00 PM",13
+"WR","Tavon Austin","Pit @ StL, Sun 1:00 PM",13
+"RB","Benny Cunningham","Pit @ StL, Sun 1:00 PM",13
+"DEF","St. Louis Rams","Pit @ StL, Sun 1:00 PM",13
+"TE","Vernon Davis","SF @ Ari, Sun 4:05 PM",13
+"TE","Darren Fells","SF @ Ari, Sun 4:05 PM",13
+"RB","Boobie Dixon","Buf @ Mia, Sun 4:25 PM",13
+"WR","DeVante Parker","Buf @ Mia, Sun 4:25 PM",13
+"RB","Jonas Gray","Buf @ Mia, Sun 4:25 PM",13
+"RB","Fred Jackson","Chi @ Sea, Sun 4:25 PM",13
+"TE","Owen Daniels","Den @ Det, Sun 8:30 PM",13
+"DEF","Detroit Lions","Den @ Det, Sun 8:30 PM",13
+"RB","Knile Davis","KC @ GB, Mon 8:30 PM",13
+"TE","Jacob Tamme","Atl @ Dal, Sun 1:00 PM",12
+"TE","Gavin Escobar","Atl @ Dal, Sun 1:00 PM",12
+"TE","Anthony Fasano","Ind @ Ten, Sun 1:00 PM",12
+"TE","Mychal Rivera","Oak @ Cle, Sun 1:00 PM",12
+"WR","Andrew Hawkins","Oak @ Cle, Sun 1:00 PM",12
+"WR","Mohamed Sanu","Cin @ Bal, Sun 1:00 PM",12
+"RB","Javorius Allen","Cin @ Bal, Sun 1:00 PM",12
+"DEF","Cincinnati Bengals","Cin @ Bal, Sun 1:00 PM",12
+"TE","Scott Chandler","Jax @ NE, Sun 1:00 PM",12
+"TE","Garrett Graham","TB @ Hou, Sun 1:00 PM",12
+"RB","Matt Asiata","SD @ Min, Sun 1:00 PM",12
+"WR","Jarius Wright","SD @ Min, Sun 1:00 PM",12
+"RB","Jerick McKinnonP","SD @ Min, Sun 1:00 PM",12
+"TE","Lance Kendricks","Pit @ StL, Sun 1:00 PM",12
+"DEF","Pittsburgh Steelers","Pit @ StL, Sun 1:00 PM",12
+"DEF","Arizona Cardinals","SF @ Ari, Sun 4:05 PM",12
+"WR","Rishard Matthews","Buf @ Mia, Sun 4:25 PM",12
+"RB","James Starks","KC @ GB, Mon 8:30 PM",12
+"TE","Richard Rodgers","KC @ GB, Mon 8:30 PM",12
+"WR","Devin HesterO","Atl @ Dal, Sun 1:00 PM",11
+"WR","Phillip Dorsett","Ind @ Ten, Sun 1:00 PM",11
+"WR","Dorial Green-Beckham","Ind @ Ten, Sun 1:00 PM",11
+"DEF","Indianapolis Colts","Ind @ Ten, Sun 1:00 PM",11
+"RB","Duke Johnson Jr.","Oak @ Cle, Sun 1:00 PM",11
+"DEF","Oakland Raiders","Oak @ Cle, Sun 1:00 PM",11
+"DEF","Cleveland Browns","Oak @ Cle, Sun 1:00 PM",11
+"WR","Kamar Aiken","Cin @ Bal, Sun 1:00 PM",11
+"TE","Marcedes Lewis","Jax @ NE, Sun 1:00 PM",11
+"WR","Marqise Lee","Jax @ NE, Sun 1:00 PM",11
+"RB","Brandon Bolden","Jax @ NE, Sun 1:00 PM",11
+"RB","Mike Tolbert","NO @ Car, Sun 1:00 PM",11
+"WR","Corey Brown","NO @ Car, Sun 1:00 PM",11
+"WR","Devin Funchess","NO @ Car, Sun 1:00 PM",11
+"WR","Kelvin BenjaminO","NO @ Car, Sun 1:00 PM",11
+"TE","Brent Celek","Phi @ NYJ, Sun 1:00 PM",11
+"WR","Riley Cooper","Phi @ NYJ, Sun 1:00 PM",11
+"WR","Josh Huff","Phi @ NYJ, Sun 1:00 PM",11
+"TE","Jeff Cumberland","Phi @ NYJ, Sun 1:00 PM",11
+"DEF","Philadelphia Eagles","Phi @ NYJ, Sun 1:00 PM",11
+"DEF","Tampa Bay Buccaneers","TB @ Hou, Sun 1:00 PM",11
+"WR","Dontrelle Inman","SD @ Min, Sun 1:00 PM",11
+"WR","Darrius Heyward-Bey","Pit @ StL, Sun 1:00 PM",11
+"TE","Jermaine GreshamP","SF @ Ari, Sun 4:05 PM",11
+"WR","Jaron Brown","SF @ Ari, Sun 4:05 PM",11
+"DEF","San Francisco 49ers","SF @ Ari, Sun 4:05 PM",11
+"WR","Marquess Wilson","Chi @ Sea, Sun 4:25 PM",11
+"RB","Jeremy Langford","Chi @ Sea, Sun 4:25 PM",11
+"WR","Chris Matthews","Chi @ Sea, Sun 4:25 PM",11
+"TE","Virgil Green","Den @ Det, Sun 8:30 PM",11
+"RB","Theo Riddick","Den @ Det, Sun 8:30 PM",11
+"WR","Albert WilsonP","KC @ GB, Mon 8:30 PM",11
+"WR","Brice Butler","Atl @ Dal, Sun 1:00 PM",10
+"WR","Eric Weems","Atl @ Dal, Sun 1:00 PM",10
+"RB","Patrick DiMarco","Atl @ Dal, Sun 1:00 PM",10
+"TE","Levine Toilolo","Atl @ Dal, Sun 1:00 PM",10
+"WR","Nick Williams","Atl @ Dal, Sun 1:00 PM",10
+"WR","Justin Hardy","Atl @ Dal, Sun 1:00 PM",10
+"RB","Terron Ward","Atl @ Dal, Sun 1:00 PM",10
+"RB","Collin MooneyO","Atl @ Dal, Sun 1:00 PM",10
+"TE","Beau Gardner","Atl @ Dal, Sun 1:00 PM",10
+"RB","Tyler Clutts","Atl @ Dal, Sun 1:00 PM",10
+"TE","James HannaO","Atl @ Dal, Sun 1:00 PM",10
+"RB","Christine Michael","Atl @ Dal, Sun 1:00 PM",10
+"WR","Devin Street","Atl @ Dal, Sun 1:00 PM",10
+"TE","Geoff Swaim","Atl @ Dal, Sun 1:00 PM",10
+"WR","Lucky WhiteheadP","Atl @ Dal, Sun 1:00 PM",10
+"RB","Michael Hill","Atl @ Dal, Sun 1:00 PM",10
+"DEF","Atlanta Falcons","Atl @ Dal, Sun 1:00 PM",10
+"DEF","Dallas Cowboys","Atl @ Dal, Sun 1:00 PM",10
+"WR","Griff Whalen","Ind @ Ten, Sun 1:00 PM",10
+"TE","Jack Doyle","Ind @ Ten, Sun 1:00 PM",10
+"RB","Josh Robinson","Ind @ Ten, Sun 1:00 PM",10
+"RB","Tyler Varga","Ind @ Ten, Sun 1:00 PM",10
+"TE","Craig Stevens","Ind @ Ten, Sun 1:00 PM",10
+"TE","Chase Coffman","Ind @ Ten, Sun 1:00 PM",10
+"RB","Dexter McCluster","Ind @ Ten, Sun 1:00 PM",10
+"TE","Beau Brinkley","Ind @ Ten, Sun 1:00 PM",10
+"TE","Phillip Supernaw","Ind @ Ten, Sun 1:00 PM",10
+"RB","Terrance West","Ind @ Ten, Sun 1:00 PM",10
+"RB","Antonio AndrewsO","Ind @ Ten, Sun 1:00 PM",10
+"RB","Jalston Fowler","Ind @ Ten, Sun 1:00 PM",10
+"RB","David CobbIR","Ind @ Ten, Sun 1:00 PM",10
+"RB","Connor NeighborsO","Ind @ Ten, Sun 1:00 PM",10
+"TE","Dorin DickersonO","Ind @ Ten, Sun 1:00 PM",10
+"DEF","Tennessee Titans","Ind @ Ten, Sun 1:00 PM",10
+"RB","Taiwan Jones","Oak @ Cle, Sun 1:00 PM",10
+"TE","Lee Smith","Oak @ Cle, Sun 1:00 PM",10
+"WR","Andre Holmes","Oak @ Cle, Sun 1:00 PM",10
+"WR","Rod Streater","Oak @ Cle, Sun 1:00 PM",10
+"RB","Jamize OlawaleO","Oak @ Cle, Sun 1:00 PM",10
+"WR","Seth Roberts","Oak @ Cle, Sun 1:00 PM",10
+"TE","Clive Walford","Oak @ Cle, Sun 1:00 PM",10
+"WR","Andre DeboseO","Oak @ Cle, Sun 1:00 PM",10
+"TE","Gary Barnidge","Oak @ Cle, Sun 1:00 PM",10
+"WR","Brian Hartline","Oak @ Cle, Sun 1:00 PM",10
+"TE","Jim Dray","Oak @ Cle, Sun 1:00 PM",10
+"WR","Marlon Moore","Oak @ Cle, Sun 1:00 PM",10
+"TE","Rob Housler","Oak @ Cle, Sun 1:00 PM",10
+"RB","Shaun Draughn","Oak @ Cle, Sun 1:00 PM",10
+"RB","Robert TurbinO","Oak @ Cle, Sun 1:00 PM",10
+"WR","Taylor Gabriel","Oak @ Cle, Sun 1:00 PM",10
+"RB","Malcolm Johnson","Oak @ Cle, Sun 1:00 PM",10
+"TE","E.J. Bibbs","Oak @ Cle, Sun 1:00 PM",10
+"RB","Luke Lundy","Oak @ Cle, Sun 1:00 PM",10
+"TE","Clark Harris","Cin @ Bal, Sun 1:00 PM",10
+"WR","Brandon Tate","Cin @ Bal, Sun 1:00 PM",10
+"RB","Cedric Peerman","Cin @ Bal, Sun 1:00 PM",10
+"WR","Greg Little","Cin @ Bal, Sun 1:00 PM",10
+"RB","Rex Burkhead","Cin @ Bal, Sun 1:00 PM",10
+"TE","Ryan Hewitt","Cin @ Bal, Sun 1:00 PM",10
+"TE","Tyler Kroft","Cin @ Bal, Sun 1:00 PM",10
+"TE","C.J. Uzomah","Cin @ Bal, Sun 1:00 PM",10
+"WR","Mario Alford","Cin @ Bal, Sun 1:00 PM",10
+"WR","James WrightIR","Cin @ Bal, Sun 1:00 PM",10
+"WR","Marlon Brown","Cin @ Bal, Sun 1:00 PM",10
+"RB","Lorenzo TaliaferroP","Cin @ Bal, Sun 1:00 PM",10
+"WR","Michael Campanaro","Cin @ Bal, Sun 1:00 PM",10
+"WR","Breshad PerrimanO","Cin @ Bal, Sun 1:00 PM",10
+"TE","Maxx Williams","Cin @ Bal, Sun 1:00 PM",10
+"TE","Nick Boyle","Cin @ Bal, Sun 1:00 PM",10
+"WR","Darren WallerQ","Cin @ Bal, Sun 1:00 PM",10
+"RB","Terrence Magee","Cin @ Bal, Sun 1:00 PM",10
+"TE","Allen ReisnerO","Cin @ Bal, Sun 1:00 PM",10
+"WR","Cam WorthyIR","Cin @ Bal, Sun 1:00 PM",10
+"RB","Toby GerhartO","Jax @ NE, Sun 1:00 PM",10
+"TE","Clay Harbor","Jax @ NE, Sun 1:00 PM",10
+"WR","Bryan Walters","Jax @ NE, Sun 1:00 PM",10
+"RB","Bernard Pierce","Jax @ NE, Sun 1:00 PM",10
+"TE","Nic Jacobs","Jax @ NE, Sun 1:00 PM",10
+"RB","Corey Grant","Jax @ NE, Sun 1:00 PM",10
+"WR","Damian Copeland","Jax @ NE, Sun 1:00 PM",10
+"WR","Arrelious BennIR","Jax @ NE, Sun 1:00 PM",10
+"WR","Matthew Slater","Jax @ NE, Sun 1:00 PM",10
+"TE","Michael Hoomanawanui","Jax @ NE, Sun 1:00 PM",10
+"RB","Travaris Cadet","Jax @ NE, Sun 1:00 PM",10
+"WR","Aaron Dobson","Jax @ NE, Sun 1:00 PM",10
+"TE","Michael Williams","Jax @ NE, Sun 1:00 PM",10
+"RB","James White","Jax @ NE, Sun 1:00 PM",10
+"RB","James DevelinO","Jax @ NE, Sun 1:00 PM",10
+"WR","Josh Boyce","Jax @ NE, Sun 1:00 PM",10
+"WR","Jonathan Krause","Jax @ NE, Sun 1:00 PM",10
+"WR","Brian TymsIR","Jax @ NE, Sun 1:00 PM",10
+"WR","Brandon GibsonIR","Jax @ NE, Sun 1:00 PM",10
+"RB","Tyler GaffneyO","Jax @ NE, Sun 1:00 PM",10
+"TE","A.J. DerbyO","Jax @ NE, Sun 1:00 PM",10
+"DEF","Jacksonville Jaguars","Jax @ NE, Sun 1:00 PM",10
+"TE","Benjamin Watson","NO @ Car, Sun 1:00 PM",10
+"RB","Austin Johnson","NO @ Car, Sun 1:00 PM",10
+"TE","Josh Hill","NO @ Car, Sun 1:00 PM",10
+"WR","Willie Snead","NO @ Car, Sun 1:00 PM",10
+"RB","Marcus Murphy","NO @ Car, Sun 1:00 PM",10
+"TE","Kevin BrockIR","NO @ Car, Sun 1:00 PM",10
+"TE","Jack Tabb","NO @ Car, Sun 1:00 PM",10
+"TE","Ed Dickson","NO @ Car, Sun 1:00 PM",10
+"TE","Richie BrockelQ","NO @ Car, Sun 1:00 PM",10
+"RB","Fozzy Whittaker","NO @ Car, Sun 1:00 PM",10
+"TE","Brandon Williams","NO @ Car, Sun 1:00 PM",10
+"WR","Kevin Norwood","NO @ Car, Sun 1:00 PM",10
+"RB","Cameron Artis-Payne","NO @ Car, Sun 1:00 PM",10
+"RB","Brandon Wegher","NO @ Car, Sun 1:00 PM",10
+"WR","Stephen HillO","NO @ Car, Sun 1:00 PM",10
+"DEF","New Orleans Saints","NO @ Car, Sun 1:00 PM",10
+"WR","Joseph Morgan","NO @ Car, Sun 1:00 PM",10
+"TE","Orson Charles","NO @ Car, Sun 1:00 PM",10
+"RB","Tim Hightower","NO @ Car, Sun 1:00 PM",10
+"WR","Miles Austin","Phi @ NYJ, Sun 1:00 PM",10
+"WR","Seyi AjirotutuO","Phi @ NYJ, Sun 1:00 PM",10
+"RB","Kenjon Barner","Phi @ NYJ, Sun 1:00 PM",10
+"TE","Trey Burton","Phi @ NYJ, Sun 1:00 PM",10
+"TE","Kellen Davis","Phi @ NYJ, Sun 1:00 PM",10
+"WR","Jeremy Kerley","Phi @ NYJ, Sun 1:00 PM",10
+"WR","Chris Owusu","Phi @ NYJ, Sun 1:00 PM",10
+"RB","Zac Stacy","Phi @ NYJ, Sun 1:00 PM",10
+"RB","Tommy Bohanon","Phi @ NYJ, Sun 1:00 PM",10
+"WR","Quincy Enunwa","Phi @ NYJ, Sun 1:00 PM",10
+"WR","Devin SmithP","Phi @ NYJ, Sun 1:00 PM",10
+"TE","Jace AmaroO","Phi @ NYJ, Sun 1:00 PM",10
+"TE","Zach SudfeldO","Phi @ NYJ, Sun 1:00 PM",10
+"WR","Louis Murphy","TB @ Hou, Sun 1:00 PM",10
+"TE","Brandon Myers","TB @ Hou, Sun 1:00 PM",10
+"TE","Luke Stocker","TB @ Hou, Sun 1:00 PM",10
+"RB","Bobby Rainey","TB @ Hou, Sun 1:00 PM",10
+"RB","Jorvorskie Lane","TB @ Hou, Sun 1:00 PM",10
+"TE","Andrew DePaola","TB @ Hou, Sun 1:00 PM",10
+"RB","Mike James","TB @ Hou, Sun 1:00 PM",10
+"WR","Russell Shepard","TB @ Hou, Sun 1:00 PM",10
+"WR","Adam Humphries","TB @ Hou, Sun 1:00 PM",10
+"WR","Kenny BellIR","TB @ Hou, Sun 1:00 PM",10
+"WR","Keshawn Martin","TB @ Hou, Sun 1:00 PM",10
+"TE","C.J. Fiedorowicz","TB @ Hou, Sun 1:00 PM",10
+"RB","Jay Prosch","TB @ Hou, Sun 1:00 PM",10
+"WR","Jaelen Strong","TB @ Hou, Sun 1:00 PM",10
+"WR","Keith Mumphery","TB @ Hou, Sun 1:00 PM",10
+"TE","Ryan GriffinIR","TB @ Hou, Sun 1:00 PM",10
+"TE","Anthony DenhamO","TB @ Hou, Sun 1:00 PM",10
+"WR","Jacoby JonesD","SD @ Min, Sun 1:00 PM",10
+"RB","Donald Brown","SD @ Min, Sun 1:00 PM",10
+"TE","John Phillips","SD @ Min, Sun 1:00 PM",10
+"TE","David Johnson","SD @ Min, Sun 1:00 PM",10
+"RB","Branden Oliver","SD @ Min, Sun 1:00 PM",10
+"WR","Tyrell Williams","SD @ Min, Sun 1:00 PM",10
+"WR","Torrence AllenO","SD @ Min, Sun 1:00 PM",10
+"TE","Rhett Ellison","SD @ Min, Sun 1:00 PM",10
+"TE","Chase Ford","SD @ Min, Sun 1:00 PM",10
+"WR","Cordarrelle Patterson","SD @ Min, Sun 1:00 PM",10
+"RB","Zach Line","SD @ Min, Sun 1:00 PM",10
+"TE","Kevin McDermott","SD @ Min, Sun 1:00 PM",10
+"WR","Adam Thielen","SD @ Min, Sun 1:00 PM",10
+"TE","MyCole Pruitt","SD @ Min, Sun 1:00 PM",10
+"WR","Stefon Diggs","SD @ Min, Sun 1:00 PM",10
+"WR","Gavin Lutman","SD @ Min, Sun 1:00 PM",10
+"DEF","San Diego Chargers","SD @ Min, Sun 1:00 PM",10
+"DEF","Minnesota Vikings","SD @ Min, Sun 1:00 PM",10
+"TE","Matt Spaeth","Pit @ StL, Sun 1:00 PM",10
+"RB","Jordan Todman","Pit @ StL, Sun 1:00 PM",10
+"RB","Will Johnson","Pit @ StL, Sun 1:00 PM",10
+"WR","Dri Archer","Pit @ StL, Sun 1:00 PM",10
+"RB","Roosevelt Nix","Pit @ StL, Sun 1:00 PM",10
+"WR","Sammie Coates","Pit @ StL, Sun 1:00 PM",10
+"TE","Jesse James","Pit @ StL, Sun 1:00 PM",10
+"WR","Tyler Murphy","Pit @ StL, Sun 1:00 PM",10
+"TE","Ray Hamilton","Pit @ StL, Sun 1:00 PM",10
+"WR","David NelsonO","Pit @ StL, Sun 1:00 PM",10
+"TE","Rob BlanchflowerO","Pit @ StL, Sun 1:00 PM",10
+"WR","Eli Rogers","Pit @ StL, Sun 1:00 PM",10
+"RB","Chase ReynoldsO","Pit @ StL, Sun 1:00 PM",10
+"RB","Isaiah Pead","Pit @ StL, Sun 1:00 PM",10
+"WR","Chris Givens","Pit @ StL, Sun 1:00 PM",10
+"TE","Cory Harkey","Pit @ StL, Sun 1:00 PM",10
+"WR","Stedman Bailey","Pit @ StL, Sun 1:00 PM",10
+"WR","Bradley Marquez","Pit @ StL, Sun 1:00 PM",10
+"TE","Brad Smelley","Pit @ StL, Sun 1:00 PM",10
+"WR","Isiah FergusonO","Pit @ StL, Sun 1:00 PM",10
+"RB","Bruce Miller","SF @ Ari, Sun 4:05 PM",10
+"TE","Kyle Nelson","SF @ Ari, Sun 4:05 PM",10
+"TE","Garrett Celek","SF @ Ari, Sun 4:05 PM",10
+"TE","Vance McDonald","SF @ Ari, Sun 4:05 PM",10
+"WR","Quinton Patton","SF @ Ari, Sun 4:05 PM",10
+"WR","Bruce EllingtonQ","SF @ Ari, Sun 4:05 PM",10
+"RB","Jarryd Hayne","SF @ Ari, Sun 4:05 PM",10
+"TE","Blake Bell","SF @ Ari, Sun 4:05 PM",10
+"RB","Mike Davis","SF @ Ari, Sun 4:05 PM",10
+"WR","DeAndrew White","SF @ Ari, Sun 4:05 PM",10
+"RB","Kendall Hunter","SF @ Ari, Sun 4:05 PM",10
+"TE","Busta AndersonO","SF @ Ari, Sun 4:05 PM",10
+"WR","Dres AndersonO","SF @ Ari, Sun 4:05 PM",10
+"TE","Mike Leach","SF @ Ari, Sun 4:05 PM",10
+"WR","Brittan Golden","SF @ Ari, Sun 4:05 PM",10
+"RB","Stepfan Taylor","SF @ Ari, Sun 4:05 PM",10
+"TE","Joseph Fauria","SF @ Ari, Sun 4:05 PM",10
+"TE","Troy NiklasP","SF @ Ari, Sun 4:05 PM",10
+"WR","J.J. NelsonO","SF @ Ari, Sun 4:05 PM",10
+"TE","Ifeanyi MomahIR","SF @ Ari, Sun 4:05 PM",10
+"TE","Gerald ChristianIR","SF @ Ari, Sun 4:05 PM",10
+"WR","Travis Harvey","SF @ Ari, Sun 4:05 PM",10
+"RB","Jerome Felton","Buf @ Mia, Sun 4:25 PM",10
+"TE","Matthew Mulligan","Buf @ Mia, Sun 4:25 PM",10
+"WR","Marcus Easley","Buf @ Mia, Sun 4:25 PM",10
+"WR","Chris Hogan","Buf @ Mia, Sun 4:25 PM",10
+"WR","Marcus Thigpen","Buf @ Mia, Sun 4:25 PM",10
+"WR","Marquise GoodwinO","Buf @ Mia, Sun 4:25 PM",10
+"TE","Chris Gragg","Buf @ Mia, Sun 4:25 PM",10
+"TE","MarQueis Gray","Buf @ Mia, Sun 4:25 PM",10
+"WR","Austin Willis","Buf @ Mia, Sun 4:25 PM",10
+"TE","Dion SimsO","Buf @ Mia, Sun 4:25 PM",10
+"TE","Jake Stoneburner","Buf @ Mia, Sun 4:25 PM",10
+"WR","Matt Hazel","Buf @ Mia, Sun 4:25 PM",10
+"RB","Damien Williams","Buf @ Mia, Sun 4:25 PM",10
+"RB","Raheem Mostert","Buf @ Mia, Sun 4:25 PM",10
+"RB","Jay AjayiIR","Buf @ Mia, Sun 4:25 PM",10
+"TE","Zach Miller","Chi @ Sea, Sun 4:25 PM",10
+"WR","Marc Mariani","Chi @ Sea, Sun 4:25 PM",10
+"RB","Jacquizz Rodgers","Chi @ Sea, Sun 4:25 PM",10
+"WR","Joshua Bellamy","Chi @ Sea, Sun 4:25 PM",10
+"RB","Ka'Deem Carey","Chi @ Sea, Sun 4:25 PM",10
+"WR","Cameron Meredith","Chi @ Sea, Sun 4:25 PM",10
+"TE","Khari Lee","Chi @ Sea, Sun 4:25 PM",10
+"WR","John Chiles","Chi @ Sea, Sun 4:25 PM",10
+"RB","Senorise Perry","Chi @ Sea, Sun 4:25 PM",10
+"RB","Will TukuafuP","Chi @ Sea, Sun 4:25 PM",10
+"WR","Ricardo Lockette","Chi @ Sea, Sun 4:25 PM",10
+"RB","Derrick Coleman","Chi @ Sea, Sun 4:25 PM",10
+"TE","Cooper Helfet","Chi @ Sea, Sun 4:25 PM",10
+"TE","Luke Willson","Chi @ Sea, Sun 4:25 PM",10
+"WR","B.J. Daniels","Chi @ Sea, Sun 4:25 PM",10
+"RB","Thomas Rawls","Chi @ Sea, Sun 4:25 PM",10
+"WR","Paul RichardsonO","Chi @ Sea, Sun 4:25 PM",10
+"DEF","Chicago Bears","Chi @ Sea, Sun 4:25 PM",10
+"WR","Andre Caldwell","Den @ Det, Sun 8:30 PM",10
+"TE","James Casey","Den @ Det, Sun 8:30 PM",10
+"WR","Jordan Norwood","Den @ Det, Sun 8:30 PM",10
+"WR","Cody Latimer","Den @ Det, Sun 8:30 PM",10
+"WR","Bennie Fowler","Den @ Det, Sun 8:30 PM",10
+"RB","Juwan Thompson","Den @ Det, Sun 8:30 PM",10
+"TE","Mitchell Henry","Den @ Det, Sun 8:30 PM",10
+"TE","Jeff HeuermanO","Den @ Det, Sun 8:30 PM",10
+"WR","Kyle WilliamsO","Den @ Det, Sun 8:30 PM",10
+"WR","Lance Moore","Den @ Det, Sun 8:30 PM",10
+"TE","Brandon PettigrewO","Den @ Det, Sun 8:30 PM",10
+"WR","Corey Fuller","Den @ Det, Sun 8:30 PM",10
+"TE","Tim Wright","Den @ Det, Sun 8:30 PM",10
+"WR","TJ Jones","Den @ Det, Sun 8:30 PM",10
+"RB","Michael Burton","Den @ Det, Sun 8:30 PM",10
+"RB","Zach Zenner","Den @ Det, Sun 8:30 PM",10
+"TE","Jordan ThompsonO","Den @ Det, Sun 8:30 PM",10
+"WR","Jason AvantP","KC @ GB, Mon 8:30 PM",10
+"RB","Anthony Sherman","KC @ GB, Mon 8:30 PM",10
+"WR","Frankie Hammond Jr.","KC @ GB, Mon 8:30 PM",10
+"TE","Demetrius HarrisP","KC @ GB, Mon 8:30 PM",10
+"TE","James Winchester","KC @ GB, Mon 8:30 PM",10
+"WR","De'Anthony ThomasP","KC @ GB, Mon 8:30 PM",10
+"RB","Charcandrick WestP","KC @ GB, Mon 8:30 PM",10
+"WR","Chris Conley","KC @ GB, Mon 8:30 PM",10
+"TE","James O'Shaughnessy","KC @ GB, Mon 8:30 PM",10
+"TE","Brian Parker","KC @ GB, Mon 8:30 PM",10
+"RB","John Kuhn","KC @ GB, Mon 8:30 PM",10
+"TE","Andrew Quarless","KC @ GB, Mon 8:30 PM",10
+"WR","Jeff Janis","KC @ GB, Mon 8:30 PM",10
+"WR","Ty Montgomery","KC @ GB, Mon 8:30 PM",10
+"RB","Aaron Ripkowski","KC @ GB, Mon 8:30 PM",10
+"TE","Kennard Backman","KC @ GB, Mon 8:30 PM",10
+"RB","Alonzo Harris","KC @ GB, Mon 8:30 PM",10
+"WR","Javess Blue","KC @ GB, Mon 8:30 PM",10
+"DEF","Kansas City Chiefs","KC @ GB, Mon 8:30 PM",10
+"DEF","Green Bay Packers","KC @ GB, Mon 8:30 PM",10
