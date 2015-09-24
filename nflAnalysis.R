@@ -42,8 +42,22 @@ setwd(currentPath)
 ContestData2 <- melt(ContestData,measure=c("QB","RB1","RB2","WR1","WR2","WR3","TE","FLEX","DST"),id=c("ContestNumber","EntryId"))
 save(ContestData,ContestData2,file="ContestData.rda")
 
+salary.data <- read.csv("DKSalaries.csv",stringsAsFactors = FALSE)
+qbNames <- subset(salary.data,Position=="QB")$Name
+wrNames <- subset(salary.data,Position=="WR")$Name
+rbNames <- subset(salary.data,Position=="RB")$Name
+teNames <- subset(salary.data,Position=="TE")$Name
+dstNames <- subset(salary.data,Position=="DST")$Name
+
 load("ContestData.rda")
-PlayerCount <- ddply(ContestData2,.(ContestNumber,EntryId,variable),summarise,Player=count(value)$x,Tickets=count(value)$freq)
+PlayerCount <- ddply(ContestData2,.(ContestNumber,variable),summarise,Player=count(value)$x,Tickets=count(value)$freq)
+PlayerCount <- data.table(PlayerCount)
+setkeyv(PlayerCount,c("ContestNumber","Player","variable"))
+qbCount <- PlayerCount[Player%in%qbNames&variable%in%"QB"]
+wrCount <- PlayerCount[Player%in%wrNames]
+teCount <- PlayerCount[Player%in%teNames]
+dstCount <- PlayerCount[Player%in%dstNames]
+
 
 qbCount <- subset(PlayerCount,variable=="QB")
 rbCount <- count(subset(dk.table2,value%in%rbNames)$value)

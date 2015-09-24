@@ -1,25 +1,16 @@
 "QB","RB","RB","WR","WR","WR","TE","FLEX","DEF"
-Matt Ryan,,,Davante Adams,Larry Fitzgerald,,,Julio Jones,Colts
-Matt Ryan,,,Davante Adams,Keenan Allen,,,Julio Jones,Seahawks
-Matt Ryan,,,Larry Fitzgerald,Keenan Allen,,,Julio Jones,Packers
-Russell Wilson,,,Davante Adams,Larry Fitzgerald,,Jimmy Graham,,Colts
-Russell Wilson,,,Davante Adams,Keenan Allen,,Jimmy Graham,,Eagles
-Russell Wilson,,,Larry Fitzgerald,Keenan Allen,,Jimmy Graham,,Packers
-Eli Manning,,,Davante Adams,Larry Fitzgerald,,,Odell Beckham Jr.,Seahawks
-Eli Manning,,,Davante Adams,Keenan Allen,,,Odell Beckham Jr.,Colts
-Eli Manning,,,Larry Fitzgerald,Keenan Allen,,,Odell Beckham Jr.,Packers
-Eli Manning,,,Dez Bryant,Larry Fitzgerald,,,Rueben Randle,Colts
-Eli Manning,,,Davante Adams,,,Jason Witten,Rueben Randle,Colts
-Ryan Tannehill,,,Davante Adams,,,Martellus Bennett,Nelson Agholor,Colts
-Tony Romo,,,Davante Adams,Larry Fitzgerald,,,Dez Bryant,Colts
-Tony Romo,,,Davante Adams,Keenan Allen,,,Dez Bryant,Seahawks
-Tony Romo,,,Davante Adams,Rueben Randle,,,Dez Bryant,Seahawks
-Matthew Stafford,,,Calvin Johnson,Keenan Allen,,Jimmy Graham,Packers
-Sam Bradford,,,Larry Fitzgerald,Keenan Allen,,,Jordan Matthews,Packers
-Sam Bradford,Tevin Coleman,,Davante Adams,,,Jordan Matthews,Seahawks
-Sam Bradford,Tevin Coleman,,Larry Fitzgerald,,,Nelson Agholor,Packers
-Tyrod Taylor,DeMarco Murray,,Davante Adams,Sammy Watkins,,,,Colts
-Tyrod Taylor,Eddie Lacy,,Sammy Watkins,,,Jordan Reed,,Seahawks
 
-
-
+Andy Dalton,,,A.J. Green,,,,,Eagles
+Andy Dalton,,,,,,Tyler Eifert,,Patriots
+Johnny Manziel,,,Terrance Williams,,,,,Eagles
+Johnny Manziel,,,A.J. Green,,,,,Patriots
+Eli Manning,,,Odell Beckham Jr.,,,,,Eagles
+Eli Manning,,,Rueben Randle,,,,,Cardinals
+Eli Manning,,,Odell Beckham Jr.,,,,,Patriots
+Andy Dalton,,,A.J. Green,,,,,Cardinals
+Marcus Mariota,,,Brandin Cooks,,,,,Browns
+Marcus Mariota,DeAngelo Williams,,,,,,,Browns
+Eli Manning,Tevin Coleman,,Odell Beckham Jr.,,,,,Patriots
+Eli Manning,Tevin Coleman,,Rueben Randle,,,,,Eagles
+Andy Dalton,Isaiah Crowell,,A.J. Green,,,,,Patriots
+Andy Dalton,,,Brandin Cooks,,,Tyler Eifert,,Eagles
