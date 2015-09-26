@@ -218,6 +218,8 @@ if(draftkings){
   matchedValues <- match(salary.data$Name,defenseName$ind)
   matchedValues <- matchedValues[!(is.na(matchedValues))]
   salary.data[matchedIndex,"Team"] <- defenseName$values[matchedValues]
+  salary.data[salary.data$Team%in%"ARZ","Team"] <- "ARI"
+  salary.data[salary.data$Team%in%"WSH","Team"] <- "WAS"
 }
 
 
@@ -312,6 +314,8 @@ combForm <- function(x,useData,pos,n,flex="WR",totalRemaining){
         wrList <- do.call(list,apply(index[,good_rs],2,function(y){
           rbind(x, useData[y,])
         }))
+      } else if(n>1 & sum(good_rs)==1) {
+        wrList <- list(rbind(x,useData[index[,good_rs]]))
       } else { #n==1|sum(good_rs)==1
         wrList <- do.call(list,sapply(index[,good_rs],function(y){
           rbind(x, useData[y,])
@@ -336,7 +340,9 @@ combForm <- function(x,useData,pos,n,flex="WR",totalRemaining){
       if(n>1 & sum(good_rs)>1){
         rbList <- do.call(list,apply(index[,good_rs],2,function(y){
           rbind(x,useData[y,])
-        }))} else {
+        }))} else if(n>1 & sum(good_rs)==1){
+          rbList <- list(rbind(x,useData[index[,good_rs],]))
+        } else {
           rbList <- do.call(list,sapply(index[,good_rs],function(y){
             rbind(x,useData[y,])
           },simplify=FALSE))
@@ -355,7 +361,9 @@ combForm <- function(x,useData,pos,n,flex="WR",totalRemaining){
       if(n>1 & sum(good_rs)>1){
         teList <- do.call(list,apply(index[,good_rs],2,function(y){
           rbind(x,useData[y,])
-        }))} else {
+        }))} else if(n>1 & sum(good_rs)==1){
+          teList <- list(rbind(x,useData[index[,good_rs],]))
+        }else {
           teList <- do.call(list,sapply(index[,good_rs],function(y){
             rbind(x,useData[y,])
           },simplify=FALSE))
@@ -462,6 +470,8 @@ comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,ds
     )
     print(system.time(thirdComb <- unlist(parallel.lapply(secondComb,combForm,useData=passData,
                                                           pos="RB",n=rb.num,totalRemaining=total.left,envir=envir),recursive=FALSE)))
+    # print(system.time(thirdComb <- unlist(lapply(secondComb,combForm,useData=passData,
+                                                          # pos="RB",n=rb.num,totalRemaining=total.left),recursive=FALSE)))
     thirdComb <- Filter(Negate(is.null),thirdComb)
     print(total.left <- total.left - rb.num)
     print("Done with RB combinations")

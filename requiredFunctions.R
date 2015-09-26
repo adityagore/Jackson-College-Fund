@@ -163,3 +163,29 @@ readParseTable <- function(filePath){
   print(contestNumber)
   return(parseTable(dataTable,contestNumber))
 }
+
+factorToCharacter <- function(datatable){
+  tmp <- lapply(datatable,function(x){
+    if(is.factor(x)) return(as.character(x)) else return(x)
+  })
+  tmp <- data.table(tmp)
+  return(tmp)
+}
+
+cleanFactors <- function(dataframe){
+  classObject <- class(dataframe)
+  tmp <- lapply(dataframe,function(x){
+    if(is.factor(x)) return(factor(x)) else return(x)
+  })
+  ifelse("data.table"%in%classObject,return(data.table(data.frame(tmp))),return(data.frame(tmp)))
+}
+
+findStacks <- function(position,teams,stackNumber){
+  qbIndex <- position %in% "QB"
+  team.qb <- teams[qbIndex]
+  if(sum(teams[!qbIndex]%in%team.qb)==stackNumber){
+    return(TRUE)
+  } else {
+    return(FALSE)
+  }
+}
