@@ -18,10 +18,28 @@ if(draftkings|yahoo){
   print("1. WR")
   print("2. RB")
   print("3. TE")
-  while(!(n %in% c(1L, 2L, 3L))){
+  print("4. WR/TE")
+  print("5. WR/RB")
+  print("6. TE/RB")
+  print("7. WR/TE/RB")
+  while(!(n %in% c(1L, 2L, 3L, 4L, 5L, 6L, 7L))){
     n <- readline("Please select a number: ")
   }
-  flex <- ifelse(n==1,"WR",ifelse(n==2,"RB","TE"))
+  if(n==1){
+    flex <- "WR"
+  } else if(n==2) {
+    flex <- "RB"
+  } else if(n==3) {
+    flex <- "TE"
+  } else if(n==4){
+    flex <- "WRTE"
+  } else if(n==5){
+    flex <- "WRRB"
+  } else if(n==6){
+    flex <- "TERB"
+  } else {
+    flex <- "WRTERB"
+  }
 }
 n <- 0
 print("Do you want to update team players belong to?")
@@ -41,9 +59,9 @@ print(Sys.time())
 # Setting the numbers of players by position for each website
 if(draftkings|yahoo){
   QB <- 1
-  RB <- ifelse(flex=="RB",3,2)
-  WR <- ifelse(flex=="WR",4,3)
-  TE <- ifelse(flex=="TE",2,1)
+  RB <- ifelse(flex%in%c("RB","WRRB","TERB","WRTERB"),3,2)
+  WR <- ifelse(flex%in%c("WR","WRRB","WRTE","WRTERB"),4,3)
+  TE <- ifelse(flex%in%c("TE","WRTE","TERB","WRTERB"),2,1)
   DST <- 1
   K <- 0  
 } else {
@@ -307,7 +325,7 @@ combForm <- function(x,useData,pos,n,flex="WR",totalRemaining){
         sum(Team[y] %in% subset(x,Position=="RB")$Team) == 0 & # No WR and RB from same team
         sum(Team[y] %in% subset(x,Position=="TE")$Team) == 0 & # No WR and TE from same team
         sum(Team[y] %in% subset(x,Position=="DST")$Team) == 0 & # No WR and DST from same team
-        sum(count(Team[y])$freq > 1)== 0
+        sum(table(Team[y]) > 1)== 0
     }))
     if(sum(good_rs)>0){
       if(n>1 & sum(good_rs)>1){
@@ -334,7 +352,7 @@ combForm <- function(x,useData,pos,n,flex="WR",totalRemaining){
         sum(Team[y] %in% subset(x,Position=="DST")$Away) == 0 & # No RB and Away Defense
         sum(Team[y] %in% subset(x,Position=="K")$Home) == 0 & # No RB and K from home team
         sum(Team[y] %in% subset(x,Position=="K")$Away) == 0 & # No RB and TE from away team
-        sum(count(Team[y])$freq > 1)== 0
+        sum(table(Team[y]) > 1)== 0
     }))
     if(sum(good_rs)>0){
       if(n>1 & sum(good_rs)>1){
@@ -355,7 +373,7 @@ combForm <- function(x,useData,pos,n,flex="WR",totalRemaining){
         sum(Team[y] %in% subset(x,Position=="RB")$Team) == 0 & # No RB and TE of same team
         sum(Team[y] %in% subset(x,Position=="WR")$Team) == 0 & # No RB and TE of same team
         sum(Team[y] %in% subset(x,Position=="DST")$Team) == 0 & # No RB and TE of same team
-        sum(count(Team[y])$freq > 1)== 0
+        sum(table(Team[y]) > 1)== 0
     }))
     if(sum(good_rs)>0){
       if(n>1 & sum(good_rs)>1){
@@ -445,6 +463,8 @@ comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,ds
     )
     print(system.time(secondComb <- unlist(parallel.lapply(firstComb,FUN=combForm,useData = passData,pos="WR",n=wr.num,totalRemaining=total.left,envir=envir),
                                            recursive=FALSE)))
+#     print(system.time(secondComb <- unlist(lapply(firstComb,FUN=combForm,useData = passData,pos="WR",n=wr.num,totalRemaining=total.left),
+#                                            recursive=FALSE)))
     secondComb <- Filter(Negate(is.null),secondComb)
     print(total.left <- total.left - wr.num)
     print("Done with WR combinations")
@@ -611,8 +631,42 @@ my_env <- new.env()
 my_env$var <- ls()
 my_env$n.cores <- n.cores
 
-print(system.time(finalTickets <- unlist(apply(template,1,comboFormPerTemplate,qb.num=QB,envir=my_env,
-                                               rb.num=RB, wr.num=WR, te.num=TE, dst.num=DST,k.num=K),recursive=FALSE)))
+
+doWR <- !identical(grep("WR",flex),integer(0))
+doRB <- !identical(grep("RB",flex),integer(0))
+doTE <- !identical(grep("TE",flex),integer(0))
+
+if(sum(doWR,doRB,doTE)==1|fanduel){
+  print(system.time(finalTickets <- unlist(apply(template,1,comboFormPerTemplate,qb.num=QB,envir=my_env,
+                                                 rb.num=RB, wr.num=WR, te.num=TE, dst.num=DST,k.num=K),recursive=FALSE)))
+} else if (sum(doWR,doRB,doTE)>1){
+  WR.new <- WR - ifelse(doWR,1,0)
+  RB.new <- RB - ifelse(doRB,1,0)
+  TE.new <- TE - ifelse(doTE,1,0)
+  finalTickets.wr <- list()
+  finalTickets.rb <- list()
+  finalTickets.te <- list()
+  finalTickets <- list()
+  if(doWR){
+    print("Making Tickets with flex as WR")
+    print(system.time(finalTickets.wr <- unlist(apply(template,1,comboFormPerTemplate,qb.num=QB,envir=my_env,
+                                                   rb.num=RB.new, wr.num=WR, te.num=TE.new, dst.num=DST,k.num=K),recursive=FALSE)))
+  }
+  if(doRB){
+    print("Making Tickets with flex as RB")
+    print(system.time(finalTickets.rb <- unlist(apply(template,1,comboFormPerTemplate,qb.num=QB,envir=my_env,
+                                                   rb.num=RB, wr.num=WR.new, te.num=TE.new, dst.num=DST,k.num=K),recursive=FALSE)))
+  }
+  if(doTE){
+    print("Making Tickets with flex as TE")
+    print(system.time(finalTickets.te <- unlist(apply(template,1,comboFormPerTemplate,qb.num=QB,envir=my_env,
+                                                   rb.num=RB.new, wr.num=WR.new, te.num=TE, dst.num=DST,k.num=K),recursive=FALSE)))
+  }
+  print("Joining Tickets")
+  finalTickets <- append(finalTickets,finalTickets.wr)
+  finalTickets <- append(finalTickets,finalTickets.rb)
+  finalTickets <- append(finalTickets,finalTickets.te)
+}
 
 
 # print(system.time(rightTickets <- lapply(finalTickets,aboveSalary,salary=maxSalary)))

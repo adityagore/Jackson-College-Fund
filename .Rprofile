@@ -27,14 +27,6 @@
     require(parallel)
   }
   
-  # Loading plyr package for distribution
-  if(!require(plyr)){
-    install.packages("plyr")
-    require(plyr,quietly=TRUE)
-  } else {
-    require(plyr,quietly=TRUE)
-  }
-  
   if(!require(ggplot2)){
     install.packages("ggplot2")
     require(ggplot2,quietly = TRUE)
@@ -54,6 +46,26 @@
     require(reshape2, quietly = TRUE)
   } else {
     require(reshape2,quietly = TRUE)
+  }
+#   if(!require(dplyr)){
+#     install.packages("dplyr")
+#     require(dplyr, quietly = TRUE)
+#   } else {
+#     require(dplyr,quietly = TRUE)
+#   }
+#   if(!require(tidyr)){
+#     install.packages("tidyr")
+#     require(tidyr, quietly = TRUE)
+#   } else {
+#     require(tidyr,quietly = TRUE)
+#   }
+  
+  # Loading plyr package for distribution
+  if(!require(plyr)){
+    install.packages("plyr")
+    require(plyr,quietly=TRUE)
+  } else {
+    require(plyr,quietly=TRUE)
   }
   
   source("requiredFunctions.R")

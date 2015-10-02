@@ -143,10 +143,9 @@ salaryDistribution <- function(){
 }
 
 parseTable <- function(dataTable,contestNumber){
-  print(contestNumber)
-  dataTable$"ContestNumber" <- rep(contestNumber,nrow(dataTable))
-  return(dataTable[,.(Rank, EntryId, EntryName, Points, ContestNumber,
-               QB = gsub("QB (.*) RB.*RB.*WR.*","\\1",Lineup),
+  dataTable[,ContestNumber:=contestNumber]
+  setkeyv(dataTable,c("ContestNumber","EntryId","Rank","Lineup"))
+  return(dataTable[,':=' (QB = gsub("QB (.*) RB.*RB.*WR.*","\\1",Lineup),
                RB1 = gsub("QB.*RB (.*) RB.*","\\1",Lineup),
                RB2 = gsub("QB.*RB.*RB (.*) WR.*WR.*WR.*","\\1",Lineup),
                WR1 = gsub("QB.*WR (.*) WR.*WR.*","\\1",Lineup),
@@ -154,11 +153,13 @@ parseTable <- function(dataTable,contestNumber){
                WR3 = gsub("QB.*WR.*WR.*WR (.*) TE.*","\\1",Lineup),
                TE = gsub("QB.*TE (.*) FLEX.*","\\1",Lineup),
                FLEX = gsub("QB.*FLEX (.*) DST.*","\\1",Lineup),
-               DST = gsub("QB.*DST (\\w+) ","\\1",Lineup))])
+               DST = gsub("QB.*DST (\\w+)\\s*$","\\1",Lineup))])
 }
 
 readParseTable <- function(filePath){
   dataTable <- fread(filePath,stringsAsFactors=FALSE)
+  week <- gsub(".*(Week\\d+).*","\\1",filePath)
+  dataTable[,Week:=week]
   contestNumber <- gsub("\\D*\\d*\\D*(\\d*).*","\\1",filePath)
   print(contestNumber)
   return(parseTable(dataTable,contestNumber))
@@ -180,12 +181,50 @@ cleanFactors <- function(dataframe){
   ifelse("data.table"%in%classObject,return(data.table(data.frame(tmp))),return(data.frame(tmp)))
 }
 
-findStacks <- function(position,teams,stackNumber){
-  qbIndex <- position %in% "QB"
-  team.qb <- teams[qbIndex]
-  if(sum(teams[!qbIndex]%in%team.qb)==stackNumber){
+findStacks <- function(position,teams,stackNumber=0,exact=TRUE,na=FALSE){
+  if((sum(is.na(teams))>0|"" %in% teams)&!na) {
+    return(FALSE)
+  } else if((sum(is.na(teams))>0|"" %in% teams)&na){
+    return(TRUE)
+  } else if(!na) {
+    qbIndex <- position %in% "QB"
+    team.qb <- teams[qbIndex]
+    if(exact){
+      ifelse(sum(teams[!qbIndex]%in%team.qb)==stackNumber,return(TRUE),return(FALSE))
+    } else {
+      ifelse(sum(teams[!qbIndex]%in%team.qb)>=stackNumber,return(TRUE),return(FALSE))
+    }
+  } else {
+    return(FALSE)
+  }
+}
+
+NoTeamInformation <- function(teams){
+  if(sum(is.na(teams))>0|""%in%teams){
     return(TRUE)
   } else {
     return(FALSE)
   }
+}
+
+combineSalaries <- function(){
+  salary.datadk <- read.csv("DKSalaries.csv",stringsAsFactors = FALSE)
+  salary.datafd <- read.csv("FDSalaries.csv",stringsAsFactors=FALSE)
+  salary.datayahoo <- read.csv("YahooSalaries.csv",stringsAsFactors = FALSE)
+  salary.datadk$Name <- gsub("(.+)\\s+$","\\1",salary.datadk$Name)
+  salary.datayahoo$Name <- gsub("(.*)(IR|O|Q|P|D|DTD)$","\\1",salary.datayahoo$Name)
+  salary.datafd$Name <- paste0(salary.datafd$First.Name," ",salary.datafd$Last.Name)
+  salary.datafd[salary.datafd$Position=="D","Position"] <- "DST"
+  salary.datayahoo[salary.datayahoo$Pos=="DEF","Pos"] <- "DST"
+  salary.datadk <- salary.datadk[,c("Position","Name","Salary","teamAbbrev")]
+  salary.datafd <- salary.datafd[,c("Position","Name","Salary","Team")]
+  salary.datayahoo <- salary.datayahoo[,c("Pos","Name","Salary")]
+  names <- unlist(sapply(salary.datadk$Name,function(x) grep(x,salary.datayahoo$Name,value=TRUE)))
+  salary.datadk[salary.datadk$Name %in% names(names)&salary.datadk$Position=="DST","Name"] <- names[names(names)%in%salary.datadk[salary.datadk$Position=="DST","Name"]]
+  salary.merge1 <- merge(salary.datadk,salary.datayahoo,by.x=c("Position",
+                        "Name"),by.y = c("Pos","Name"),suffixes = c("DK","Yahoo"),all=TRUE)
+  salary.data <- merge(salary.merge1,salary.datafd,by=c("Position","Name"),all=TRUE)
+  salary.data <- salary.data[,c("Position","Name","SalaryDK","Salary","SalaryYahoo","Team")]
+  names(salary.data) <- c("Position","Name","SalaryDK","SalaryFD","SalaryYahoo","Team")
+  write.table(salary.data,"compareSalary.csv",sep=",",row.names = FALSE)
 }
