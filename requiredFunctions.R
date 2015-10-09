@@ -93,13 +93,15 @@ playerDistribution <- function(){
     tempTickets <- finalTickets
   }
   names.list <- unlist(getUniqueTickets(tempTickets))
+  position.list <- unlist(lapply(tempTickets,function(x) x$Position))
+  names.list <- cbind(position.list,names.list)
   totalCounts <- count(names.list)
   totalTickets <- length(getUniqueTickets(tempTickets))
-  names(totalCounts) <- c("Players","Tickets")
+  names(totalCounts) <- c("Position","Players","Tickets")
   totalCounts$Percentage <- round(totalCounts$Tickets*100/totalTickets,digits=2)
   totalCounts <- totalCounts[order(totalCounts$Percentage,decreasing=TRUE),]
   totalCounts$Percentage <- paste0(as.character(totalCounts$Percentage),"%")
-  return(totalCounts)
+  return(arrange(totalCounts,desc(Position),desc(Tickets)))
 }
 
 savetickets <- function(){
@@ -227,4 +229,10 @@ combineSalaries <- function(){
   salary.data <- salary.data[,c("Position","Name","SalaryDK","Salary","SalaryYahoo","Team")]
   names(salary.data) <- c("Position","Name","SalaryDK","SalaryFD","SalaryYahoo","Team")
   write.table(salary.data,"compareSalary.csv",sep=",",row.names = FALSE)
+}
+
+cleanFDSalaries <- function(){
+  tmp <- read.csv("FDSalaries.csv",stringsAsFactors = FALSE)
+  write.csv(tmp,file="FDSalaries.csv",row.names=FALSE)
+  rm(tmp)
 }

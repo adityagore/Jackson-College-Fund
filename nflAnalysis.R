@@ -19,7 +19,7 @@ for(week in weeks){
 
 n <- readline()
 
-system.time(ContestData <- lapply(as.list(unlist(fileLists)),
+system.time(ContestData <- lapply(as.list(unlist(fileLists[[3]])),
                                                readParseTable))
 ContestData <- rbindlist(ContestData)
 ContestData[,Lineup:=NULL]
@@ -40,7 +40,7 @@ ContestData <- ContestData %>% filter(Points!=0) # &
 #                         !(DST %in% "LOCKED"))
 ContestData[,DST:=gsub("(.+)\\s+$","\\1",DST)]
 
-salary.data <- do.call(rbind.data.frame,lapply(salaryfiles,read.csv,stringsAsFactors=FALSE))
+salary.data <- do.call(rbind.data.frame,lapply(salaryfiles[[3]],read.csv,stringsAsFactors=FALSE))
 salary.data[,"Week"] <- gsub("(.*)\\.\\d*","\\1",rownames(salary.data))
 salary.data <- data.table(salary.data)
 salary.data[,c("Salary","GameInfo","AvgPointsPerGame"):=NULL]
@@ -110,7 +110,7 @@ totalPctOwned <- totalNumbers %>% mutate(Contest=paste0(ContestNumber,":",Week))
 setkeyv(totalPctOwned,c("Position","Name"))
 totalPctOwned$AvgPct <- rowMeans(totalPctOwned[,c(3,4,5),with=FALSE],na.rm=TRUE)
 totalPctOwned <- totalPctOwned[order(Position,AvgPct,decreasing = TRUE)]
-write.csv(totalPctOwned,file="PercentOwned.csv",row.names = FALSE)
+write.csv(totalPctOwned,file="PercentOwnedWeek4.csv",row.names = FALSE)
 
 
 playerData <- merge(totalNumbers,salary.data,by=c("Position","Name","Week"),all.x=TRUE)
@@ -123,7 +123,8 @@ ContestData2[NewPosition=="FLEX"&Name%in%wrNames,NewPosition:="WR"]
 ContestData2[NewPosition=="FLEX"&Name%in%rbNames,NewPosition:="RB"]
 ContestData2[NewPosition=="FLEX"&Name%in%teNames,NewPosition:="TE"]
 
-ContestFullData <- merge(ContestData2,salary.data,by=c("Name","Week","Position"),all.x=TRUE)
+ContestFullData <- merge(ContestData2,salary.data,by.y=c("Name","Week","Position"),by.x=c("Name","Week","NewPosition"),all.x=TRUE)
+ContestFullData[,Team:=toupper(Team)]
 
 ContestFullData[,':='(Stack0=findStacks(Position,Team,0),
                       Stack1=findStacks(Position,Team,1),
@@ -132,6 +133,7 @@ ContestFullData[,':='(Stack0=findStacks(Position,Team,0),
                       Stack4=findStacks(Position,Team,4,exact=FALSE),
                       Garbage=findStacks(Position,Team,na=TRUE)),
                 by=.(ContestNumber,EntryId,Week)]
+
 
 StackNumbers <- ContestFullData[,.(Stack0=sum(Stack0)/9,
                                    Stack1=sum(Stack1)/9,

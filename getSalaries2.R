@@ -631,10 +631,15 @@ my_env <- new.env()
 my_env$var <- ls()
 my_env$n.cores <- n.cores
 
+doWR <- 0
+doRB <- 0
+doTE <- 0
 
-doWR <- !identical(grep("WR",flex),integer(0))
-doRB <- !identical(grep("RB",flex),integer(0))
-doTE <- !identical(grep("TE",flex),integer(0))
+if(draftkings|yahoo){
+  doWR <- !identical(grep("WR",flex),integer(0))
+  doRB <- !identical(grep("RB",flex),integer(0))
+  doTE <- !identical(grep("TE",flex),integer(0))
+}
 
 if(sum(doWR,doRB,doTE)==1|fanduel){
   print(system.time(finalTickets <- unlist(apply(template,1,comboFormPerTemplate,qb.num=QB,envir=my_env,
