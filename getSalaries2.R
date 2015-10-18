@@ -459,6 +459,7 @@ comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,ds
                            Team %in% team.te |
                            Team %in% team.wr|
                            Team %in% team.qb |
+                           Team %in% team.k |
                            Team %in% team.dst)
     )
     print(system.time(secondComb <- unlist(parallel.lapply(firstComb,FUN=combForm,useData = passData,pos="WR",n=wr.num,totalRemaining=total.left,envir=envir),
@@ -508,6 +509,7 @@ comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,ds
                            Name %in% template.data$Name |
                            Team %in% team.wr |
                            Team %in% team.dst |
+                           Team %in% team.k |
                            Team %in% team.te
                        )
     )
@@ -531,6 +533,7 @@ comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,ds
                            Team %in% rb.home |
                            Team %in% rb.away |
                            Team %in% team.wr |
+                           Team %in% team.k |
                            Team %in% team.te
                        )
     )
