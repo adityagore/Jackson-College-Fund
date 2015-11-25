@@ -274,6 +274,10 @@ if(fanduel){
   # playerpool[,c("Home","Away")] <- salary.data[,c("Team","Opponent")]
 }
 
+if(draftkings){
+  playerpool$Name <- gsub("(.+)\\s+$","\\1",playerpool$Name) #Removing extra space from the end of the name in dragtkings salary
+}
+
 wr.salary <- subset(salary.data,Name %in% playerpool$Name & Position=="WR")
 rb.salary <- subset(salary.data,Name %in% playerpool$Name & Position=="RB")
 te.salary <- subset(salary.data,Name %in% playerpool$Name & Position=="TE")
@@ -322,10 +326,11 @@ combForm <- function(x,useData,pos,n,flex="WR",totalRemaining){
     index <- combnPrim(nrow(useData),n)
     good_rs <- with(useData,apply(index,2,function(y){
       sum(Salary[y]) <= salary.left & ifelse(exactSalary,sum(Salary[y]) >= salary.right,TRUE) &
-        sum(Team[y] %in% subset(x,Position=="RB")$Team) == 0 & # No WR and RB from same team
-        sum(Team[y] %in% subset(x,Position=="TE")$Team) == 0 & # No WR and TE from same team
-        sum(Team[y] %in% subset(x,Position=="DST")$Team) == 0 & # No WR and DST from same team
-        sum(table(Team[y]) > 1)== 0
+        # sum(Team[y] %in% subset(x,Position=="RB")$Team) == 0 & # No WR and RB from same team
+        # sum(Team[y] %in% subset(x,Position=="TE")$Team) == 0 & # No WR and TE from same team
+        sum(Team[y] %in% subset(x,Position=="TE")$Team) <= 1 & # At most 2 pass catcher from the same team
+        # sum(Team[y] %in% subset(x,Position=="DST")$Team) == 0 & # No WR and DST from same team
+        sum(table(Team[y]) > 2)== 0
     }))
     if(sum(good_rs)>0){
       if(n>1 & sum(good_rs)>1){
@@ -345,14 +350,14 @@ combForm <- function(x,useData,pos,n,flex="WR",totalRemaining){
     index <- combnPrim(nrow(useData),n)
     good_rs <- with(useData,apply(index,2,function(y){
       sum(Salary[y]) <= salary.left & ifelse(exactSalary,sum(Salary[y]) >= salary.right,TRUE) &
-        sum(Team[y] %in% subset(x,Position=="QB")$Team) == 0 & # No QB and RB from same team
-        sum(Team[y] %in% subset(x,Position=="WR")$Team) == 0 & # No RB and WR from same team
-        sum(Team[y] %in% subset(x,Position=="TE")$Team) == 0 & # No RB and TE from same team
-        sum(Team[y] %in% subset(x,Position=="DST")$Home) == 0 & # No RB and Home Defense
-        sum(Team[y] %in% subset(x,Position=="DST")$Away) == 0 & # No RB and Away Defense
-        sum(Team[y] %in% subset(x,Position=="K")$Home) == 0 & # No RB and K from home team
-        sum(Team[y] %in% subset(x,Position=="K")$Away) == 0 & # No RB and TE from away team
-        sum(table(Team[y]) > 1)== 0
+        sum(Team[y] %in% subset(x,Position=="QB")$Team) == 0 # No QB and RB from same team
+        # sum(Team[y] %in% subset(x,Position=="WR")$Team) == 0 & # No RB and WR from same team
+        # sum(Team[y] %in% subset(x,Position=="TE")$Team) == 0 & # No RB and TE from same team
+        # sum(Team[y] %in% subset(x,Position=="DST")$Home) == 0 & # No RB and Home Defense
+        # sum(Team[y] %in% subset(x,Position=="DST")$Away) == 0 & # No RB and Away Defense
+        # sum(Team[y] %in% subset(x,Position=="K")$Home) == 0 & # No RB and K from home team
+        # sum(Team[y] %in% subset(x,Position=="K")$Away) == 0 & # No RB and TE from away team
+        # sum(table(Team[y]) > 1)== 0
     }))
     if(sum(good_rs)>0){
       if(n>1 & sum(good_rs)>1){
@@ -370,10 +375,11 @@ combForm <- function(x,useData,pos,n,flex="WR",totalRemaining){
     index <- combnPrim(nrow(useData),n)
     good_rs <- with(useData,apply(index,2,function(y){
       sum(Salary[y]) <= salary.left & ifelse(exactSalary,sum(Salary[y]) >= salary.right,TRUE) &
-        sum(Team[y] %in% subset(x,Position=="RB")$Team) == 0 & # No RB and TE of same team
-        sum(Team[y] %in% subset(x,Position=="WR")$Team) == 0 & # No RB and TE of same team
-        sum(Team[y] %in% subset(x,Position=="DST")$Team) == 0 & # No RB and TE of same team
-        sum(table(Team[y]) > 1)== 0
+        # sum(Team[y] %in% subset(x,Position=="RB")$Team) == 0 & # No RB and TE of same team
+        # sum(Team[y] %in% subset(x,Position=="WR")$Team) == 0 & # No WR and TE of same team
+        sum(Team[y] %in% subset(x,Position=="WR")$Team) <= 1 # No WR and TE of same team
+        # sum(Team[y] %in% subset(x,Position=="DST")$Team) == 0 & # No RB and TE of same team
+        # sum(table(Team[y]) > 1)== 0
     }))
     if(sum(good_rs)>0){
       if(n>1 & sum(good_rs)>1){
@@ -405,12 +411,12 @@ combForm <- function(x,useData,pos,n,flex="WR",totalRemaining){
   } else if(pos=="DST"){
     index <- combnPrim(nrow(useData),n)
     good_rs <- with(useData,apply(index,2,function(y){
-      sum(Salary[y]) <= salary.left & ifelse(exactSalary,sum(Salary[y]) >= salary.right,TRUE) &
-        sum(Team[y] %in% subset(x,Position=="QB")$Team) == 0 & #No QB and DST of same team
-        sum(Team[y] %in% subset(x,Position=="TE")$Team) == 0 & #No TE and DST of same team
-        sum(Team[y] %in% subset(x,Position=="WR")$Team) == 0 & #No WR and DST of same team
-        sum(Team[y] %in% subset(x,Position=="RB")$Home) == 0 & #No RB and DST of home team
-        sum(Team[y] %in% subset(x,Position=="RB")$Away) == 0 #No RB and DST of away team
+      sum(Salary[y]) <= salary.left & ifelse(exactSalary,sum(Salary[y]) >= salary.right,TRUE)
+        # sum(Team[y] %in% subset(x,Position=="QB")$Team) == 0 & #No QB and DST of same team
+        # sum(Team[y] %in% subset(x,Position=="TE")$Team) == 0 & #No TE and DST of same team
+        # sum(Team[y] %in% subset(x,Position=="WR")$Team) == 0 & #No WR and DST of same team
+        # sum(Team[y] %in% subset(x,Position=="RB")$Home) == 0 & #No RB and DST of home team
+        # sum(Team[y] %in% subset(x,Position=="RB")$Away) == 0 #No RB and DST of away team
     }))
     if(sum(good_rs)>0){
       dstList <- do.call(list,sapply(index[,good_rs],function(y){
@@ -454,13 +460,14 @@ comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,ds
   print("Working on WRs")
   if(wr.num > 0){
     passData <- subset(wr.salary,
-                       !(Team %in% team.rb |
-                           Name %in% template.data$Name |
-                           Team %in% team.te |
-                           Team %in% team.wr|
-                           Team %in% team.qb |
-                           Team %in% team.k |
-                           Team %in% team.dst)
+                       !(#Team %in% team.rb |
+                           Name %in% template.data$Name
+                           #Team %in% team.te |
+                           #Team %in% team.wr|
+                           #Team %in% team.qb |
+                           #Team %in% team.k |
+                           #Team %in% team.dst
+                             )
     )
     print(system.time(secondComb <- unlist(parallel.lapply(firstComb,FUN=combForm,useData = passData,pos="WR",n=wr.num,totalRemaining=total.left,envir=envir),
                                            recursive=FALSE)))
@@ -478,15 +485,15 @@ comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,ds
   print("Working on RBs")
   if(rb.num > 0){
     passData <- subset(rb.salary,
-                       !(Team %in% team.qb |
-                           Name %in% template.data$Name |
-                           Team %in% team.te |
-                           Team %in% dst.home |
-                           Team %in% dst.away |
-                           Team %in% k.home |
-                           Team %in% k.away |
-                           Team %in% rb.home |
-                           Team %in% rb.away
+                       !(#Team %in% team.qb |
+                           Name %in% template.data$Name 
+#                            Team %in% team.te |
+#                            Team %in% dst.home |
+#                            Team %in% dst.away |
+#                            Team %in% k.home |
+#                            Team %in% k.away |
+#                            Team %in% rb.home |
+#                            Team %in% rb.away
                        )
     )
     print(system.time(thirdComb <- unlist(parallel.lapply(secondComb,combForm,useData=passData,
@@ -505,12 +512,12 @@ comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,ds
   print("Working on TEs")
   if(te.num > 0){
     passData <- subset(te.salary,
-                       !(Team %in% team.rb |
-                           Name %in% template.data$Name |
-                           Team %in% team.wr |
-                           Team %in% team.dst |
-                           Team %in% team.k |
-                           Team %in% team.te
+                       !(#Team %in% team.rb |
+                           Name %in% template.data$Name
+#                            Team %in% team.wr |
+#                            Team %in% team.dst |
+#                            Team %in% team.k |
+#                            Team %in% team.te
                        )
     )
     print(system.time(fourthComb <- unlist(parallel.lapply(thirdComb,combForm,useData=passData,
@@ -528,13 +535,13 @@ comboFormPerTemplate <- function(template,qb.num=1,wr.num=4,rb.num=2,te.num=1,ds
   print("Working on DST")
   if(dst.num > 0){
     passData <- subset(dst.salary,
-                       !(Team %in% team.qb |
-                           Name %in% template.data$Name |
-                           Team %in% rb.home |
-                           Team %in% rb.away |
-                           Team %in% team.wr |
-                           Team %in% team.k |
-                           Team %in% team.te
+                       !(#Team %in% team.qb |
+                           Name %in% template.data$Name
+#                            Team %in% rb.home |
+#                            Team %in% rb.away |
+#                            Team %in% team.wr |
+#                            Team %in% team.k |
+#                            Team %in% team.te
                        )
     )
     print(system.time(lastComb <- unlist(parallel.lapply(fourthComb,combForm,useData=passData,
